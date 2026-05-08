@@ -1,0 +1,131 @@
+.admin-layout {
+  display: flex;
+  width: 100%;
+  height: 100dvh;
+  overflow: hidden;
+  background: #f4fdfb;
+}
+
+.admin-sidebar {
+  width: 260px;
+  height: 100dvh;
+  background: linear-gradient(180deg, #0f766e, #134e4a);
+  color: white;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.admin-sidebar-top {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.admin-logo {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.admin-subtitle {
+  margin: 4px 0 26px;
+  text-align: center;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.admin-sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admin-sidebar nav a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.9);
+  padding: 13px 15px;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 700;
+  transition: 0.25s;
+}
+
+.admin-sidebar nav a:hover,
+.admin-sidebar nav a.active {
+  background: white;
+  color: #0f766e;
+}
+
+.admin-logout-btn {
+  width: 100%;
+  border: none;
+  margin-top: auto;
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+  padding: 14px;
+  border-radius: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 800;
+}
+
+.admin-logout-btn:hover {
+  background: #ef4444;
+}
+
+.admin-content {
+  flex: 1;
+  height: 100dvh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #f4fdfb;
+  padding-bottom: 60px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .admin-layout {
+    flex-direction: column;
+    height: auto;
+    min-height: 100dvh;
+    overflow: visible;
+  }
+
+  .admin-sidebar {
+    width: 100%;
+    height: auto;
+    min-height: auto;
+  }
+
+  .admin-sidebar-top {
+    overflow: visible;
+  }
+
+  .admin-sidebar nav {
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+
+  .admin-sidebar nav a {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .admin-logout-btn {
+    margin-top: 14px;
+  }
+
+  .admin-content {
+    height: auto;
+    min-height: 100dvh;
+    overflow: visible;
+    padding-bottom: 120px;
+  }
+}

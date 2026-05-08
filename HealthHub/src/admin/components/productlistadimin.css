@@ -1,0 +1,378 @@
+.pla-container {
+  width: 100%;
+  min-height: 100%;
+  background: #f4fdfb;
+  padding-bottom: 120px;
+  box-sizing: border-box;
+}
+
+/* HEADER */
+
+.pla-header {
+  width: 100%;
+  background: linear-gradient(135deg, #164e63, #0f766e);
+  color: white;
+  padding: 18px 26px;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr auto;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 10px 25px rgba(15, 118, 110, 0.14);
+  box-sizing: border-box;
+}
+
+.pla-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pla-header-icon-btn,
+.pla-icon {
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.14);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pla-header-icon-btn {
+  cursor: pointer;
+}
+
+.pla-header-icon-btn:hover {
+  background: white;
+  color: #0f766e;
+}
+
+.pla-header-text h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.pla-header-text p {
+  margin: 4px 0 0;
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+/* SEARCH */
+
+.pla-search-box {
+  width: 100%;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 14px;
+  box-sizing: border-box;
+}
+
+.pla-search-box input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: white;
+  font-size: 13px;
+}
+
+.pla-search-box input::placeholder {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.pla-action-btn {
+  border: none;
+  border-radius: 14px;
+  padding: 12px 15px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pla-primary-btn {
+  background: white;
+  color: #0f766e;
+}
+
+.pla-primary-btn:hover {
+  background: #ccfbf1;
+}
+
+/* FILTERS */
+
+.pla-filters {
+  padding: 18px 20px 0;
+}
+
+.pla-filter-buttons {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.pla-filter-buttons button {
+  border: 1px solid #d1fae5;
+  background: white;
+  color: #0f766e;
+  padding: 10px 15px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.pla-filter-buttons button.active,
+.pla-filter-buttons button:hover {
+  background: #0f766e;
+  color: white;
+}
+
+/* PRODUCT LIST */
+
+.pla-product-list {
+  padding: 20px;
+}
+
+.pla-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+  gap: 18px;
+  justify-items: center;
+}
+
+.pla-card {
+  width: 100%;
+  max-width: 280px;
+  background: white;
+  border: 1px solid #d1fae5;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(15, 118, 110, 0.08);
+  transition: 0.25s;
+}
+
+.pla-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(15, 118, 110, 0.12);
+}
+
+.pla-card-img {
+  width: 100%;
+  height: 160px;
+  background: #ecfeff;
+}
+
+.pla-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pla-card-body {
+  padding: 14px;
+}
+
+.pla-card-body h3 {
+  margin: 0 0 8px;
+  color: #0f172a;
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.pla-card-category {
+  display: inline-block;
+  margin: 0 0 8px;
+  background: #ccfbf1;
+  color: #0f766e;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.pla-card-brand,
+.pla-card-desc {
+  margin: 0 0 8px;
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.pla-card-price {
+  margin: 0 0 12px;
+  color: #0f766e;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.pla-stock-top {
+  display: flex;
+  justify-content: space-between;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 800;
+  margin-bottom: 7px;
+}
+
+.pla-product-stock-bar {
+  width: 100%;
+  height: 7px;
+  background: #e2e8f0;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.pla-product-stock-fill {
+  height: 100%;
+  border-radius: 999px;
+}
+
+.pla-product-stock-fill.in {
+  background: #0f766e;
+}
+
+.pla-product-stock-fill.low {
+  background: #f59e0b;
+}
+
+.pla-product-stock-fill.out {
+  background: #dc2626;
+}
+
+.pla-stock-badge {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.pla-stock-badge.in {
+  background: #ccfbf1;
+  color: #0f766e;
+}
+
+.pla-stock-badge.low {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.pla-stock-badge.out {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+/* ACTIONS */
+
+.pla-card-actions {
+  display: flex;
+  gap: 10px;
+  padding: 0 14px 14px;
+}
+
+.pla-card-actions button {
+  flex: 1;
+  border: none;
+  border-radius: 13px;
+  padding: 10px;
+  cursor: pointer;
+  background: #ecfeff;
+  color: #0f766e;
+}
+
+.pla-card-actions button:hover:first-child {
+  background: #0f766e;
+  color: white;
+}
+
+.pla-card-actions button:hover:last-child {
+  background: #dc2626;
+  color: white;
+}
+
+/* EMPTY */
+
+.pla-empty-state {
+  grid-column: 1 / -1;
+  width: 100%;
+  max-width: 850px;
+  min-height: 230px;
+  background: white;
+  border: 1px dashed #99f6e4;
+  border-radius: 22px;
+  color: #64748b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.pla-empty-state span {
+  color: #0f766e;
+  font-size: 44px;
+}
+
+.pla-empty-state h3 {
+  margin: 8px 0 5px;
+  color: #0f766e;
+}
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+  .pla-container {
+    padding-bottom: 140px;
+  }
+
+  .pla-header {
+    grid-template-columns: 1fr;
+    padding: 16px 14px;
+  }
+
+  .pla-header-text h1 {
+    font-size: 21px;
+  }
+
+  .pla-header-right,
+  .pla-header-center {
+    width: 100%;
+  }
+
+  .pla-action-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .pla-product-list,
+  .pla-filters {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .pla-card-grid {
+    grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+    gap: 14px;
+  }
+
+  .pla-card {
+    max-width: 100%;
+  }
+
+  .pla-card-img {
+    height: 135px;
+  }
+}

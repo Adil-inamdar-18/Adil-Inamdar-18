@@ -1,0 +1,354 @@
+.uhs-container {
+  width: 100%;
+  min-height: 100vh;
+height: auto;
+  background: #f4fdfb;
+  color: #0f172a;
+  
+}
+
+/* HEADER */
+
+.uhs-navbar {
+  width: 100%;
+  background: linear-gradient(135deg, #164e63, #0f766e);
+  backdrop-filter: blur(12px);
+  padding: 18px 26px;
+  color: white;
+  box-shadow: 0 10px 25px rgba(15, 118, 110, 0.14);
+}
+
+.uhs-navbar-top {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.uhs-logo-section {
+  min-width: 190px;
+}
+
+.uhs-logo-text {
+  font-size: 25px;
+  font-weight: 800;
+  margin: 0;
+}
+
+.uhs-text-span {
+  color: #ccfbf1;
+}
+
+.uhs-logo-sub {
+  font-size: 12px;
+  opacity: 0.9;
+  margin-top: 3px;
+}
+
+/* SEARCH */
+
+.uhs-header-search {
+  flex: 1;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  gap: 8px;
+}
+
+.uhs-header-search input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: white;
+  font-size: 14px;
+}
+
+.uhs-header-search input::placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.uhs-header-search-icon {
+  font-size: 22px;
+}
+
+/* HEADER BUTTONS */
+
+.uhs-navbar-buttons {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.uhs-btn-icon {
+  min-width: 43px;
+  height: 43px;
+  border: none;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.16);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 12px;
+  position: relative;
+  transition: 0.25s;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.uhs-btn-icon:hover {
+  background: white;
+  color: #0f766e;
+}
+
+.uhs-cart-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #ef4444;
+  color: white;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 999px;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* MAIN SCROLL AREA */
+
+.uhs-main {
+  width: 100%;
+  height: calc(100vh - 80px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 22px;
+  box-sizing: border-box;
+}
+
+/* PRODUCT SECTION */
+
+.uhs-product-section {
+  width: 100%;
+  background: white;
+  border-radius: 22px;
+  padding: 22px;
+  box-shadow: 0 6px 18px rgba(15, 118, 110, 0.08);
+}
+
+.uhs-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.uhs-section-header h3 {
+  font-size: 20px;
+  color: #0f766e;
+  margin: 0;
+}
+
+.uhs-view-all-btn {
+  border: none;
+  background: #ecfeff;
+  color: #0f766e;
+  padding: 9px 16px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.uhs-view-all-btn:hover {
+  background: #0f766e;
+  color: white;
+}
+
+/* PRODUCT GRID */
+
+.uhs-product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 22px;
+  align-items: stretch;
+}
+
+.uhs-product-card {
+  width: 100%;
+  max-width: 260px;
+  margin: 0 auto;
+  background: #f8fffe;
+  border: 1px solid #d1fae5;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: 0.25s;
+}
+
+.uhs-product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(15, 118, 110, 0.12);
+}
+
+.uhs-product-image {
+  height: 150px;
+  background: #ecfeff;
+  position: relative;
+  overflow: hidden;
+}
+
+.uhs-product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.uhs-favorite-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 12px;
+  background: white;
+  color: #0f766e;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.uhs-favorite-btn.active {
+  background: #ef4444;
+  color: white;
+}
+
+.uhs-product-info {
+  padding: 14px;
+}
+
+.uhs-category {
+  display: inline-block;
+  background: #ccfbf1;
+  color: #0f766e;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 9px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+
+.uhs-title {
+  font-size: 15px;
+  color: #0f172a;
+  margin: 0 0 12px;
+  line-height: 1.3;
+  min-height: 38px;
+}
+
+.uhs-price-cart {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.uhs-price {
+  font-size: 16px;
+  font-weight: 800;
+  color: #0f766e;
+  margin-right: auto;
+}
+
+.uhs-link-btn {
+  border: none;
+  background: transparent;
+  color: #0f766e;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.uhs-cart-btn-small {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 12px;
+  background: #0f766e;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.uhs-cart-btn-small:hover {
+  background: #115e59;
+}
+
+.uhs-no-products {
+  color: #64748b;
+  background: #f0fdfa;
+  border: 1px dashed #99f6e4;
+  border-radius: 18px;
+  padding: 24px;
+  text-align: center;
+  grid-column: 1 / -1;
+}
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+  .uhs-navbar-top {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .uhs-navbar-buttons {
+    flex-wrap: wrap;
+  }
+
+  .uhs-main {
+    height: auto;
+    overflow: visible;
+  }
+
+  .uhs-product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .uhs-navbar {
+    padding: 18px 14px;
+  }
+
+  .uhs-main {
+    padding: 14px;
+  }
+
+  .uhs-product-section {
+    padding: 16px;
+  }
+
+  .uhs-product-card {
+    max-width: 100%;
+  }
+
+  .uhs-product-image {
+    height: 130px;
+  }
+}
+.user-content {
+  flex: 1;
+  height: 100vh;
+  overflow: hidden;
+  background: #f8fafc;
+}
