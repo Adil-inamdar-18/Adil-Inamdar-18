@@ -5,16 +5,25 @@ import { useCart } from "../components/context/CartContext";
 
 function PrescriptionUploader() {
   const navigate = useNavigate();
-  const { addToCart, cartCount } = useCart();
+  const { addToCart } = useCart();
 
   const [previewImage, setPreviewImage] = useState("");
   const [showModal, setShowModal] = useState(false);
 
   const getImageUrl = (url) => {
     if (!url) return "https://via.placeholder.com/300x300?text=No+Image";
+
     return url.startsWith("http") || url.startsWith("data:image")
       ? url
       : `https://batch-6-backend-production.up.railway.app${url}`;
+  };
+
+  const formatINR = (price) => {
+    return new Intl.NumberFormat("en-IN", {
+      style: "currency",
+      currency: "INR",
+      maximumFractionDigits: 0,
+    }).format(Number(price) || 0);
   };
 
   const handleImageUpload = (e) => {
@@ -28,151 +37,156 @@ function PrescriptionUploader() {
 
   const matchedProducts = useMemo(() => {
     const savedMedicines = JSON.parse(localStorage.getItem("medicines")) || [];
+
     if (!previewImage) return [];
-    return savedMedicines.slice(0, 8);
+
+    return Array.isArray(savedMedicines) ? savedMedicines.slice(0, 8) : [];
   }, [previewImage]);
 
   return (
-    <div className="pu-page">
-      <header className="pu-header">
-        <div className="pu-header-left">
-          {/* <button className="pu-icon-btn" onClick={() => navigate("/userhome")}>
-            <span className="material-symbols-outlined">arrow_back</span>
-          </button> */}
-
-          <div className="pu-title-wrap">
-            <h1>Prescription Uploader</h1>
-            <p>Upload and preview matched medicines</p>
-          </div>
+    <main className="pu-page">
+      <div className="pu-page-header">
+        <div>
+          <h1>Prescription Upload</h1>
+          <p>Upload your prescription and quickly add matched medicines</p>
         </div>
 
-        <div className="pu-header-actions">
-          <button className="pu-icon-btn" onClick={() => navigate("/userhome")}>
-            <span className="material-symbols-outlined">home</span>
-          </button>
+        <button className="pu-back-btn" onClick={() => navigate("/userhome")}>
+          <span className="material-symbols-outlined">storefront</span>
+          Back to Store
+        </button>
+      </div>
 
-          <button
-            className="pu-icon-btn pu-cart-header-btn"
-            onClick={() => navigate("/cart")}
-          >
-            <span className="material-symbols-outlined">shopping_cart</span>
+      <section className="pu-layout">
+        <div className="pu-left">
+          <div className="pu-card">
+            <div className="pu-card-title">
+              <h2>Upload Prescription</h2>
+              <p>Choose an image from your device</p>
+            </div>
 
-            {cartCount > 0 && (
-              <span className="pu-cart-count">{cartCount}</span>
-            )}
-          </button>
+            <div className={`pu-upload-box ${previewImage ? "has-preview" : ""}`}>
+              <label className="pu-upload-label">
+                <input type="file" accept="image/*" onChange={handleImageUpload} />
 
-          <button className="pu-icon-btn" onClick={() => navigate("/profile")}>
-            <span className="material-symbols-outlined">person</span>
-          </button>
-        </div>
-      </header>
+                <span className="material-symbols-outlined">upload_file</span>
 
-      <div className="pu-container">
-        <div className="pu-card">
-          <h2>Upload Prescription</h2>
-          <p className="pu-subtitle">
-            Upload prescription image and preview matched medicine cards
-          </p>
+                <strong>Choose Prescription Image</strong>
+                <small>PNG, JPG or JPEG supported</small>
+              </label>
 
-          <div className="pu-upload-box">
-            <label className="pu-upload-label">
-              <input
-                type="file"
-                accept="image/*"
-                onChange={handleImageUpload}
-              />
-              <span className="material-symbols-outlined">upload_file</span>
-              <span>Choose Prescription Image</span>
-            </label>
-
-            {previewImage && (
-              <div className="pu-preview-section">
-                <div className="pu-small-preview">
-                  <img
-                    src={previewImage}
-                    alt="Prescription Preview"
-                    className="pu-small-preview-img"
-                  />
-                </div>
-
-                <button
-                  className="pu-preview-btn"
-                  onClick={() => setShowModal(true)}
-                >
-                  See Prescription
-                </button>
-              </div>
-            )}
-          </div>
-        </div>
-
-        <div className="pu-card">
-          <h2>Matched Medicines</h2>
-          <p className="pu-subtitle">Matched medicines in card grid</p>
-
-          {previewImage && matchedProducts.length > 0 ? (
-            <div className="pu-product-grid">
-              {matchedProducts.map((item, index) => (
-                <div
-                  className="pu-product-card"
-                  key={item._id || item.id || index}
-                >
-                  <div className="pu-product-img-wrap">
-                    <img
-                      src={getImageUrl(item.imageUrl || item.image)}
-                      alt={item.name}
-                      className="pu-product-img"
-                    />
+              {previewImage && (
+                <div className="pu-preview-section">
+                  <div className="pu-small-preview">
+                    <img src={previewImage} alt="Prescription Preview" />
                   </div>
 
-                  <div className="pu-product-info">
-                    <h3>{item.name}</h3>
+                  <div className="pu-preview-actions">
+                    <button
+                      className="pu-preview-btn"
+                      onClick={() => setShowModal(true)}
+                    >
+                      <span className="material-symbols-outlined">visibility</span>
+                      See Prescription
+                    </button>
 
                     <button
-                      className="pu-cart-icon-btn"
-                      onClick={() => addToCart(item)}
+                      className="pu-remove-btn"
+                      onClick={() => {
+                        setPreviewImage("");
+                        setShowModal(false);
+                      }}
                     >
-                      <span className="material-symbols-outlined">
-                        add_shopping_cart
-                      </span>
+                      Remove
                     </button>
                   </div>
                 </div>
-              ))}
+              )}
             </div>
-          ) : (
-            <div className="pu-empty">
-              <h3>No matched medicines yet</h3>
-              <p>Upload prescription image to view matched medicine cards.</p>
+
+            <div className="pu-info-box">
+              <span className="material-symbols-outlined">info</span>
+              <p>
+                Upload a clear prescription image. Matched medicines will appear
+                on the right side after upload.
+              </p>
             </div>
-          )}
+          </div>
         </div>
-      </div>
+
+        <aside className="pu-right">
+          <div className="pu-card">
+            <div className="pu-card-title">
+              <h2>Matched Medicines</h2>
+              <p>
+                {previewImage
+                  ? `${matchedProducts.length} medicines found`
+                  : "Upload prescription to view medicines"}
+              </p>
+            </div>
+
+            {previewImage && matchedProducts.length > 0 ? (
+              <div className="pu-product-grid">
+                {matchedProducts.map((item, index) => (
+                  <div className="pu-product-card" key={item._id || item.id || index}>
+                    <div className="pu-product-img-wrap">
+                      <img
+                        src={getImageUrl(item.imageUrl || item.image)}
+                        alt={item.name || "Medicine"}
+                        onError={(e) => {
+                          e.target.src =
+                            "https://via.placeholder.com/300x300?text=No+Image";
+                        }}
+                      />
+                    </div>
+
+                    <div className="pu-product-info">
+                      <p>{item.category || item.brand || "Medicine"}</p>
+                      <h3>{item.name || "Medicine"}</h3>
+
+                      <div className="pu-product-bottom">
+                        <strong>{formatINR(item.price)}</strong>
+
+                        <button
+                          className="pu-cart-icon-btn"
+                          onClick={() => addToCart(item)}
+                        >
+                          <span className="material-symbols-outlined">
+                            add_shopping_cart
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="pu-empty">
+                <span className="material-symbols-outlined">medication</span>
+                <h3>No matched medicines yet</h3>
+                <p>Upload prescription image to view medicine cards.</p>
+              </div>
+            )}
+          </div>
+        </aside>
+      </section>
 
       {showModal && (
         <div className="pu-modal-overlay" onClick={() => setShowModal(false)}>
           <div className="pu-modal-box" onClick={(e) => e.stopPropagation()}>
-            <button
-              className="pu-modal-close"
-              onClick={() => setShowModal(false)}
-            >
+            <button className="pu-modal-close" onClick={() => setShowModal(false)}>
               <span className="material-symbols-outlined">close</span>
             </button>
 
             <h3>Prescription Preview</h3>
 
             <div className="pu-modal-image-wrap">
-              <img
-                src={previewImage}
-                alt="Full Prescription"
-                className="pu-modal-img"
-              />
+              <img src={previewImage} alt="Full Prescription" />
             </div>
           </div>
         </div>
       )}
-    </div>
+    </main>
   );
 }
 

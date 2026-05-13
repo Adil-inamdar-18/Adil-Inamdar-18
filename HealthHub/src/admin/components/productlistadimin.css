@@ -1,78 +1,107 @@
 .pla-container {
-  width: 100%;
   min-height: 100%;
-  background: #f4fdfb;
-  padding-bottom: 120px;
-  box-sizing: border-box;
+  background: #f1f3f6;
+  padding: 24px;
+  color: #172337;
 }
 
-/* HEADER */
-
 .pla-header {
-  width: 100%;
-  background: linear-gradient(135deg, #164e63, #0f766e);
-  color: white;
-  padding: 18px 26px;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 22px 24px;
+  margin-bottom: 22px;
+
   display: grid;
-  grid-template-columns: 1fr 1.2fr auto;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: 16px;
-  box-shadow: 0 10px 25px rgba(15, 118, 110, 0.14);
-  box-sizing: border-box;
+  gap: 18px;
+
+  box-shadow: 0 8px 26px rgba(15, 23, 42, 0.08);
 }
 
 .pla-header-left {
   display: flex;
   align-items: center;
-  gap: 12px;
-}
-
-.pla-header-icon-btn,
-.pla-icon {
-  width: 42px;
-  height: 42px;
-  border: none;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.14);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  gap: 14px;
 }
 
 .pla-header-icon-btn {
+  width: 46px;
+  height: 46px;
+
+  border: none;
+  border-radius: 14px;
+
+  background: #ecfeff;
+  color: #0f766e;
+
+  display: grid;
+  place-items: center;
+
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 .pla-header-icon-btn:hover {
-  background: white;
+  background: #ccfbf1;
+}
+
+.pla-icon {
+  width: 52px;
+  height: 52px;
+
+  border-radius: 16px;
+
+  background: #ecfeff;
   color: #0f766e;
+
+  display: grid;
+  place-items: center;
+
+  flex-shrink: 0;
+}
+
+.pla-icon span {
+  font-size: 30px;
 }
 
 .pla-header-text h1 {
   margin: 0;
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 900;
+  color: #172337;
 }
 
 .pla-header-text p {
-  margin: 4px 0 0;
-  font-size: 12px;
-  opacity: 0.9;
+  margin: 5px 0 0;
+  color: #64748b;
+  font-size: 14px;
 }
 
-/* SEARCH */
+.pla-header-center {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 
 .pla-search-box {
   width: 100%;
-  height: 44px;
-  background: rgba(255, 255, 255, 0.14);
-  border-radius: 15px;
+  max-width: 520px;
+  height: 48px;
+
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+
   padding: 0 14px;
-  box-sizing: border-box;
+}
+
+.pla-search-box span {
+  color: #64748b;
 }
 
 .pla-search-box input {
@@ -80,159 +109,182 @@
   border: none;
   outline: none;
   background: transparent;
-  color: white;
-  font-size: 13px;
+
+  color: #172337;
+  font-size: 14px;
 }
 
-.pla-search-box input::placeholder {
-  color: rgba(255, 255, 255, 0.82);
+.pla-header-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .pla-action-btn {
+  min-height: 46px;
   border: none;
   border-radius: 14px;
-  padding: 12px 15px;
-  cursor: pointer;
-  font-size: 13px;
+
+  padding: 0 18px;
+
+  font-size: 14px;
   font-weight: 900;
+
+  cursor: pointer;
+
   display: flex;
   align-items: center;
   gap: 8px;
+
+  transition: 0.2s ease;
 }
 
 .pla-primary-btn {
-  background: white;
-  color: #0f766e;
-}
-
-.pla-primary-btn:hover {
-  background: #ccfbf1;
-}
-
-/* FILTERS */
-
-.pla-filters {
-  padding: 18px 20px 0;
-}
-
-.pla-filter-buttons {
-  display: flex;
-  gap: 10px;
-  overflow-x: auto;
-  padding-bottom: 4px;
-}
-
-.pla-filter-buttons button {
-  border: 1px solid #d1fae5;
-  background: white;
-  color: #0f766e;
-  padding: 10px 15px;
-  border-radius: 999px;
-  cursor: pointer;
-  font-size: 13px;
-  font-weight: 800;
-  white-space: nowrap;
-}
-
-.pla-filter-buttons button.active,
-.pla-filter-buttons button:hover {
   background: #0f766e;
   color: white;
 }
 
-/* PRODUCT LIST */
+.pla-primary-btn:hover {
+  background: #115e59;
+}
 
-.pla-product-list {
-  padding: 20px;
+.pla-filters {
+  margin-bottom: 22px;
+}
+
+.pla-filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.pla-filter-buttons button {
+  min-height: 42px;
+
+  border: 1px solid #d1d5db;
+  border-radius: 999px;
+
+  background: white;
+  color: #334155;
+
+  padding: 0 16px;
+
+  font-size: 13px;
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+.pla-filter-buttons button.active {
+  background: #0f766e;
+  border-color: #0f766e;
+  color: white;
 }
 
 .pla-card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
-  gap: 18px;
-  justify-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 22px;
 }
 
 .pla-card {
-  width: 100%;
-  max-width: 280px;
   background: white;
-  border: 1px solid #d1fae5;
-  border-radius: 22px;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 6px 18px rgba(15, 118, 110, 0.08);
-  transition: 0.25s;
+
+  border: 1px solid #e5e7eb;
+
+  box-shadow: 0 8px 26px rgba(15, 23, 42, 0.08);
+
+  display: flex;
+  flex-direction: column;
+
+  transition: 0.25s ease;
 }
 
 .pla-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 24px rgba(15, 118, 110, 0.12);
+  transform: translateY(-5px);
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.12);
 }
 
 .pla-card-img {
-  width: 100%;
-  height: 160px;
-  background: #ecfeff;
+  height: 220px;
+  background: #f8fafc;
+
+  display: grid;
+  place-items: center;
+
+  padding: 18px;
 }
 
 .pla-card-img img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .pla-card-body {
-  padding: 14px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
 }
 
 .pla-card-body h3 {
-  margin: 0 0 8px;
-  color: #0f172a;
-  font-size: 16px;
+  margin: 0;
+  color: #172337;
+  font-size: 18px;
   font-weight: 900;
-  line-height: 1.3;
+  line-height: 1.4;
+  min-height: 48px;
 }
 
 .pla-card-category {
-  display: inline-block;
-  margin: 0 0 8px;
-  background: #ccfbf1;
+  margin: 0;
   color: #0f766e;
-  padding: 5px 10px;
-  border-radius: 999px;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 900;
+  text-transform: uppercase;
 }
 
-.pla-card-brand,
-.pla-card-desc {
-  margin: 0 0 8px;
+.pla-card-brand {
+  margin: 0;
   color: #64748b;
-  font-size: 12px;
-  line-height: 1.4;
+  font-size: 13px;
+  font-weight: 700;
 }
 
 .pla-card-price {
-  margin: 0 0 12px;
-  color: #0f766e;
-  font-size: 18px;
+  margin: 0;
+  color: #172337;
+  font-size: 24px;
   font-weight: 900;
+}
+
+.pla-card-stock {
+  margin-top: 4px;
 }
 
 .pla-stock-top {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  color: #475569;
-  font-size: 12px;
+
+  margin-bottom: 8px;
+
+  color: #334155;
+  font-size: 13px;
   font-weight: 800;
-  margin-bottom: 7px;
 }
 
 .pla-product-stock-bar {
   width: 100%;
-  height: 7px;
+  height: 8px;
+
   background: #e2e8f0;
   border-radius: 999px;
+
   overflow: hidden;
 }
 
@@ -242,7 +294,7 @@
 }
 
 .pla-product-stock-fill.in {
-  background: #0f766e;
+  background: #22c55e;
 }
 
 .pla-product-stock-fill.low {
@@ -250,20 +302,22 @@
 }
 
 .pla-product-stock-fill.out {
-  background: #dc2626;
+  background: #ef4444;
 }
 
 .pla-stock-badge {
-  display: inline-block;
-  padding: 5px 10px;
+  display: inline-flex;
+
+  padding: 6px 12px;
   border-radius: 999px;
-  font-size: 11px;
+
+  font-size: 12px;
   font-weight: 900;
 }
 
 .pla-stock-badge.in {
-  background: #ccfbf1;
-  color: #0f766e;
+  background: #dcfce7;
+  color: #15803d;
 }
 
 .pla-stock-badge.low {
@@ -276,103 +330,131 @@
   color: #dc2626;
 }
 
-/* ACTIONS */
+.pla-card-desc {
+  margin: 0;
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.6;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+}
 
 .pla-card-actions {
-  display: flex;
-  gap: 10px;
-  padding: 0 14px 14px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  border-top: 1px solid #e5e7eb;
 }
 
 .pla-card-actions button {
-  flex: 1;
+  height: 52px;
+
   border: none;
-  border-radius: 13px;
-  padding: 10px;
+  background: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
   cursor: pointer;
-  background: #ecfeff;
+
+  font-size: 14px;
+  font-weight: 800;
+
+  transition: 0.2s ease;
+}
+
+.pla-card-actions button:first-child {
   color: #0f766e;
+  border-right: 1px solid #e5e7eb;
+}
+
+.pla-card-actions button:last-child {
+  color: #dc2626;
 }
 
 .pla-card-actions button:hover:first-child {
-  background: #0f766e;
-  color: white;
+  background: #ecfeff;
 }
 
 .pla-card-actions button:hover:last-child {
-  background: #dc2626;
-  color: white;
+  background: #fef2f2;
 }
 
-/* EMPTY */
-
 .pla-empty-state {
-  grid-column: 1 / -1;
-  width: 100%;
-  max-width: 850px;
-  min-height: 230px;
+  grid-column: 1/-1;
+
   background: white;
-  border: 1px dashed #99f6e4;
-  border-radius: 22px;
-  color: #64748b;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  border-radius: 20px;
+
+  padding: 70px 24px;
+
+  text-align: center;
+
+  border: 1px dashed #cbd5e1;
 }
 
 .pla-empty-state span {
-  color: #0f766e;
-  font-size: 44px;
+  font-size: 70px;
+  color: #94a3b8;
 }
 
 .pla-empty-state h3 {
-  margin: 8px 0 5px;
-  color: #0f766e;
+  margin: 14px 0 6px;
+  color: #172337;
+  font-size: 24px;
 }
 
-/* MOBILE */
+.pla-empty-state p {
+  margin: 0;
+  color: #64748b;
+  font-weight: 700;
+}
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
+  .pla-header {
+    grid-template-columns: 1fr;
+  }
+
+  .pla-header-center,
+  .pla-header-right {
+    width: 100%;
+  }
+
+  .pla-search-box {
+    max-width: unset;
+  }
+
+  .pla-header-right {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 700px) {
   .pla-container {
-    padding-bottom: 140px;
+    padding: 14px;
   }
 
   .pla-header {
+    padding: 18px;
+  }
+
+  .pla-header-left {
+    align-items: flex-start;
+  }
+
+  .pla-card-grid {
     grid-template-columns: 1fr;
-    padding: 16px 14px;
-  }
-
-  .pla-header-text h1 {
-    font-size: 21px;
-  }
-
-  .pla-header-right,
-  .pla-header-center {
-    width: 100%;
   }
 
   .pla-action-btn {
     width: 100%;
     justify-content: center;
-  }
-
-  .pla-product-list,
-  .pla-filters {
-    padding-left: 14px;
-    padding-right: 14px;
-  }
-
-  .pla-card-grid {
-    grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
-    gap: 14px;
-  }
-
-  .pla-card {
-    max-width: 100%;
-  }
-
-  .pla-card-img {
-    height: 135px;
   }
 }

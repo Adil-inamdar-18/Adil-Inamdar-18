@@ -1,13 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import "./UserHome.css";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../components/context/CartContext";
 
 function UserHomeScreen() {
   const navigate = useNavigate();
+
   const [product, setProduct] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const { addToCart, cartCount } = useCart();
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [maxPrice, setMaxPrice] = useState(10000);
+
+  const { addToCart } = useCart();
 
   const [favirote, setfavirote] = useState(() => {
     return JSON.parse(localStorage.getItem("favirote")) || [];
@@ -18,28 +22,51 @@ function UserHomeScreen() {
     setProduct(savedMedicines);
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem("favirote", JSON.stringify(favirote));
+  }, [favirote]);
+
   const getImageUrl = (url) => {
     if (!url) return "https://via.placeholder.com/300x300?text=No+Image";
+
     return url.startsWith("http") || url.startsWith("data:image")
       ? url
       : `https://batch-6-backend-production.up.railway.app${url}`;
   };
 
+  const formatINR = (price) => {
+    return new Intl.NumberFormat("en-IN", {
+      style: "currency",
+      currency: "INR",
+      maximumFractionDigits: 0,
+    }).format(Number(price) || 0);
+  };
+
+  const categories = useMemo(() => {
+    const allCategories = product.map((item) => item.category).filter(Boolean);
+    return ["all", ...new Set(allCategories)];
+  }, [product]);
+
+  const highestPrice = useMemo(() => {
+    if (product.length === 0) return 10000;
+    return Math.max(...product.map((item) => Number(item.price) || 0), 1000);
+  }, [product]);
+
   useEffect(() => {
-    localStorage.setItem("favirote", JSON.stringify(favirote));
-  }, [favirote]);
+    setMaxPrice(highestPrice);
+  }, [highestPrice]);
 
   const togglefavirote = (item) => {
     const existingItem = favirote.find((fav) => fav._id === item._id);
 
     if (existingItem) {
-      const updateditems = favirote.filter((fav) => fav._id !== item._id);
-      setfavirote(updateditems);
+      setfavirote(favirote.filter((fav) => fav._id !== item._id));
     } else {
       const faviroteitems = {
         ...item,
         imageUrl: getImageUrl(item.imageUrl),
       };
+
       setfavirote([...favirote, faviroteitems]);
     }
   };
@@ -50,29 +77,39 @@ function UserHomeScreen() {
 
   const filteredProducts = product.filter((item) => {
     const search = searchTerm.toLowerCase();
-    return (
+
+    const matchesSearch =
       item.name?.toLowerCase().includes(search) ||
-      item.category?.toLowerCase().includes(search)
-    );
+      item.category?.toLowerCase().includes(search);
+
+    const matchesCategory =
+      selectedCategory === "all" || item.category === selectedCategory;
+
+    const matchesPrice = Number(item.price) <= Number(maxPrice);
+
+    return matchesSearch && matchesCategory && matchesPrice;
   });
+
+  const resetFilters = () => {
+    setSearchTerm("");
+    setSelectedCategory("all");
+    setMaxPrice(highestPrice);
+  };
 
   return (
     <div className="uhs-container">
-      <header className="uhs-navbar">
-        <div className="uhs-navbar-top">
-          <div className="uhs-logo-section">
-            <div className="uhs-logo-text-wrap">
-              <h1 className="uhs-logo-text gradient-text">
-                Health<span className="uhs-text-span">Hub</span>
-              </h1>
-              <p className="uhs-logo-sub">Smart healthcare made simple</p>
-            </div>
+      <main className="uhs-main">
+      <div className="uhs-home-header">
+          <div>
+            <h2>Medicines Store</h2>
+            <p>Search medicines, compare prices and add items to cart</p>
           </div>
 
-          <div className="uhs-header-search">
-            <span className="material-symbols-outlined uhs-header-search-icon">
+         <div className="uhs-home-search">
+           <span className="material-symbols-outlined uhs-home-search-icon">
               search
             </span>
+
             <input
               type="text"
               placeholder="Search medicines..."
@@ -80,60 +117,47 @@ function UserHomeScreen() {
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
-
-          <div className="uhs-navbar-buttons">
-            <button
-              className="uhs-btn-icon"
-              onClick={() => navigate("/favirote")}
-            >
-              <span className="material-symbols-outlined">favorite</span>
-              {favirote.length > 0 && (
-                <span className="uhs-cart-count">{favirote.length}</span>
-              )}
-            </button>
-
-            <button
-              className="uhs-btn-icon uhs-cart-btn"
-              onClick={() => navigate("/cart")}
-            >
-              <span className="material-symbols-outlined">shopping_bag</span>
-              <span className="uhs-cart-count">{cartCount}</span>
-            </button>
-
-            <button
-              className="uhs-btn-icon"
-              onClick={() => navigate("/profile")}
-            >
-              <span className="material-symbols-outlined">person</span>
-            </button>
-            <button
-              className="uhs-btn-icon"
-              onClick={() => navigate("/priscription")}
-            >
-              <span className="material-symbols-outlined">upload_file</span>
-              <span>Upload Prescription</span>
-            </button>
-
-            <button
-              className="uhs-btn-icon"
-              onClick={() => navigate("/contact")}
-            >
-              <span className="material-symbols-outlined">support_agent</span>
-            </button>
-          </div>
         </div>
-      </header>
 
-      <main className="uhs-main">
         <section className="uhs-product-section">
           <div className="uhs-section-header">
-            {/* <h3>Available Medicines</h3> */}
-            {/* <button
-              className="uhs-view-all-btn"
-              onClick={() => setSearchTerm("")}
-            >
-              View All
-            </button> */}
+            <div>
+              <h3>Available Medicines</h3>
+              <p>{filteredProducts.length} medicines found</p>
+            </div>
+
+            <button className="uhs-view-all-btn" onClick={resetFilters}>
+              Reset Filters
+            </button>
+          </div>
+
+          <div className="uhs-filter-bar">
+            <div className="uhs-filter-group">
+              <label>Category</label>
+
+              <select
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+              >
+                {categories.map((cat) => (
+                  <option key={cat} value={cat}>
+                    {cat === "all" ? "All Categories" : cat}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="uhs-filter-group">
+              <label>Price Range: {formatINR(maxPrice)}</label>
+
+              <input
+                type="range"
+                min="0"
+                max={highestPrice}
+                value={maxPrice}
+                onChange={(e) => setMaxPrice(e.target.value)}
+              />
+            </div>
           </div>
 
           <div className="uhs-product-grid">
@@ -166,31 +190,34 @@ function UserHomeScreen() {
                     <p className="uhs-category">{item.category}</p>
                     <h4 className="uhs-title">{item.name}</h4>
 
-                    <div className="uhs-price-cart">
-                      <span className="uhs-price">${item.price}</span>
+                <div className="uhs-product-bottom">
+  <div className="uhs-price-row">
+    <span className="uhs-price">{formatINR(item.price)}</span>
 
-                      <button
-                        className="uhs-link-btn"
-                        onClick={() => navigate(`/productdetail/${item._id}`)}
-                      >
-                        See more
-                      </button>
+    <button
+      className="uhs-cart-btn-small"
+      onClick={() => addToCart(item)}
+    >
+      <span className="material-symbols-outlined">
+        add_shopping_cart
+      </span>
+    </button>
+  </div>
 
-                      <button
-                        className="uhs-cart-btn-small"
-                        onClick={() => addToCart(item)}
-                      >
-                        <span className="material-symbols-outlined">
-                          add_shopping_cart
-                        </span>
-                      </button>
-                    </div>
+  <button
+    className="uhs-link-btn"
+    onClick={() => navigate(`/productdetail/${item._id}`)}
+  >
+    See more
+  </button>
+</div>
                   </div>
                 </div>
               ))
             ) : (
               <p className="uhs-no-products">
-                No medicines added yet. Please add medicines from admin panel.
+                No medicines found. Try changing filters or add medicines from
+                admin panel.
               </p>
             )}
           </div>

@@ -7,7 +7,7 @@ function Updateproduct() {
   const { id } = useParams();
 
   const [previewImage, setPreviewImage] = useState("");
-  const [imageFile, setImageFile] = useState(null);
+  const [errors, setErrors] = useState({});
   const [product, setProduct] = useState({
     _id: "",
     name: "",
@@ -23,45 +23,59 @@ function Updateproduct() {
     const storedMedicines = JSON.parse(localStorage.getItem("medicines")) || [];
 
     const selectedMedicine = storedMedicines.find(
-      (item) => String(item._id) === String(id),
+      (item) => String(item._id) === String(id)
     );
 
     if (selectedMedicine) {
       setProduct(selectedMedicine);
-      setPreviewImage(selectedMedicine.imageUrl || "");
+      setPreviewImage(selectedMedicine.imageUrl || selectedMedicine.image || "");
     } else {
-      alert("Medicine not found");
       navigate("/productlist");
     }
   }, [id, navigate]);
+
+  const handleInputChange = (field, value) => {
+    setProduct((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+
+    setErrors((prev) => ({
+      ...prev,
+      [field]: "",
+    }));
+  };
 
   const updateCategoriesFromMedicines = (medicinesList) => {
     const updatedCategories = [
       ...new Set(
         medicinesList
           .map((item) => item.category)
-          .filter((category) => category && category.trim() !== ""),
+          .filter((category) => category && category.trim() !== "")
       ),
     ];
 
-    localStorage.setItem(
-      "medicineCategories",
-      JSON.stringify(updatedCategories),
-    );
+    localStorage.setItem("medicineCategories", JSON.stringify(updatedCategories));
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!product.name?.trim()) newErrors.name = "Medicine name is required";
+    if (!product.price?.toString().trim()) newErrors.price = "Price is required";
+    if (!product.stock?.toString().trim()) newErrors.stock = "Stock is required";
+    if (!product.category?.trim()) newErrors.category = "Category is required";
+    if (!product.brand?.trim()) newErrors.brand = "Brand is required";
+    if (!product.description?.trim())
+      newErrors.description = "Description is required";
+
+    setErrors(newErrors);
+
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleUpdate = () => {
-    if (
-      !product.name?.trim() ||
-      !product.price?.toString().trim() ||
-      !product.stock?.toString().trim() ||
-      !product.category?.trim() ||
-      !product.brand?.trim() ||
-      !product.description?.trim()
-    ) {
-      alert("Please fill all the fields");
-      return;
-    }
+    if (!validateForm()) return;
 
     const storedMedicines = JSON.parse(localStorage.getItem("medicines")) || [];
 
@@ -74,23 +88,22 @@ function Updateproduct() {
             price: Number(product.price),
             stock: Number(product.stock),
           }
-        : item,
+        : item
     );
 
     localStorage.setItem("medicines", JSON.stringify(updatedMedicines));
     updateCategoriesFromMedicines(updatedMedicines);
 
-    alert("Medicine updated successfully ✅");
     navigate("/productlist");
   };
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
+
     if (!file) return;
 
-    setImageFile(file);
-
     const reader = new FileReader();
+
     reader.onloadend = () => {
       setPreviewImage(reader.result);
       setProduct((prev) => ({
@@ -98,25 +111,20 @@ function Updateproduct() {
         imageUrl: reader.result,
       }));
     };
+
     reader.readAsDataURL(file);
   };
 
   const deleteItem = () => {
-    const confirmDelete = window.confirm(
-      "Are you sure you want to delete this medicine?",
-    );
-    if (!confirmDelete) return;
-
     const storedMedicines = JSON.parse(localStorage.getItem("medicines")) || [];
 
     const updatedMedicines = storedMedicines.filter(
-      (item) => String(item._id) !== String(id),
+      (item) => String(item._id) !== String(id)
     );
 
     localStorage.setItem("medicines", JSON.stringify(updatedMedicines));
     updateCategoriesFromMedicines(updatedMedicines);
 
-    alert("Medicine deleted successfully");
     navigate("/productlist");
   };
 
@@ -131,94 +139,73 @@ function Updateproduct() {
       brand: "",
       imageUrl: "",
     }));
-    setImageFile(null);
+
     setPreviewImage("");
+    setErrors({});
   };
 
   return (
-    <div className="up-page">
-      <header className="up-header">
+    <main className="up-page">
+      <section className="up-header">
         <div className="up-header-left">
-          <button
-            className="up-header-icon-btn"
-            onClick={() => navigate("/admindashboard")}
-          >
-            <span className="material-symbols-outlined">dashboard</span>
-          </button>
+          <div className="up-header-icon">
+            <span className="material-symbols-outlined">edit_square</span>
+          </div>
 
+          <div>
+            <h1>Update Medicine</h1>
+            <p>Edit medicine details, stock, price and product image</p>
+          </div>
+        </div>
+
+        <div className="up-header-actions">
           <button
-            className="up-header-icon-btn"
+            className="up-nav-btn"
             onClick={() => navigate("/productlist")}
           >
-            <span className="material-symbols-outlined">medication</span>
+            <span className="material-symbols-outlined">inventory_2</span>
+            Medicine List
           </button>
 
-          <div className="up-title-wrap">
-            <h2 className="up-title">Update Medicine</h2>
-            <p>Edit and manage medicine details</p>
-          </div>
-        </div>
-
-        <div className="up-header-center">
-          <div className="up-search-box">
-            <span className="material-symbols-outlined">search</span>
-            <input type="text" placeholder="Search medicines..." />
-          </div>
-        </div>
-
-        <div className="up-header-right">
           <button
-            className="up-header-action up-primary-header"
+            className="up-nav-btn primary"
             onClick={() => navigate("/addproduct")}
           >
             <span className="material-symbols-outlined">add</span>
-            <span>Add Medicine</span>
-          </button>
-
-          <button
-            className="up-header-icon-btn"
-            onClick={() => navigate("/productlist")}
-          >
-            <span className="material-symbols-outlined">arrow_back</span>
+            Add Medicine
           </button>
         </div>
-      </header>
+      </section>
 
-      <main className="up-container">
-        <section className="up-section up-media-card">
-          <div className="up-section-head">
-            <h3 className="up-section-title">Medicine Image</h3>
+      <section className="up-layout">
+        <aside className="up-media-card">
+          <div className="up-card-title">
+            <h2>Medicine Image</h2>
+            <p>Preview and update medicine image</p>
           </div>
 
           <div className="up-image-box">
             {previewImage ? (
-              <img
-                src={previewImage}
-                alt="Preview"
-                className="up-preview-image"
-              />
+              <img src={previewImage} alt="Preview" />
             ) : (
-              <div className="up-no-image">No Image</div>
+              <div className="up-no-image">
+                <span className="material-symbols-outlined">image</span>
+                <p>No image selected</p>
+              </div>
             )}
-
-            <div className="up-image-overlay">
-              <label className="up-edit-btn">
-                <span className="material-symbols-outlined">edit</span>
-                Change Image
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={handleImageChange}
-                  hidden
-                />
-              </label>
-            </div>
           </div>
-        </section>
 
-        <section className="up-section up-form-card">
-          <div className="up-section-head">
-            <h3 className="up-section-title">Medicine Information</h3>
+          <label className="up-upload-btn">
+            <input type="file" accept="image/*" onChange={handleImageChange} />
+            <span className="material-symbols-outlined">photo_camera</span>
+            Change Image
+          </label>
+        </aside>
+
+        <section className="up-form-card">
+          <div className="up-card-title">
+            <h2>Medicine Information</h2>
+            <p>Update all required medicine information</p>
           </div>
 
           <div className="up-form">
@@ -227,54 +214,60 @@ function Updateproduct() {
               <input
                 type="text"
                 value={product.name || ""}
-                onChange={(e) =>
-                  setProduct({ ...product, name: e.target.value })
-                }
+                onChange={(e) => handleInputChange("name", e.target.value)}
+                placeholder="Enter medicine name"
+                className={errors.name ? "up-input-error" : ""}
               />
+              {errors.name && <span>{errors.name}</span>}
             </div>
 
             <div className="up-grid-2">
               <div className="up-field">
                 <label>Price</label>
-                <div className="up-input-icon">
+                <div
+                  className={`up-input-icon ${
+                    errors.price ? "up-input-error" : ""
+                  }`}
+                >
                   <span>₹</span>
                   <input
-                    type="text"
+                    type="number"
                     value={product.price || ""}
                     onChange={(e) =>
-                      setProduct({ ...product, price: e.target.value })
+                      handleInputChange("price", e.target.value)
                     }
+                    placeholder="Enter price"
                   />
                 </div>
+                {errors.price && <span>{errors.price}</span>}
               </div>
 
               <div className="up-field">
                 <label>Stock Units</label>
                 <input
-                  type="text"
+                  type="number"
                   value={product.stock || ""}
-                  onChange={(e) =>
-                    setProduct({ ...product, stock: e.target.value })
-                  }
+                  onChange={(e) => handleInputChange("stock", e.target.value)}
+                  placeholder="Enter stock"
+                  className={errors.stock ? "up-input-error" : ""}
                 />
+                {errors.stock && <span>{errors.stock}</span>}
               </div>
             </div>
 
             <div className="up-grid-2">
               <div className="up-field">
                 <label>Category</label>
-                <div className="up-select-box">
-                  <input
-                    type="text"
-                    value={product.category || ""}
-                    onChange={(e) =>
-                      setProduct({ ...product, category: e.target.value })
-                    }
-                  />
-                  <span className="material-symbols-outlined up-arrow">
-                    expand_more
-                  </span>
-                </div>
+                <input
+                  type="text"
+                  value={product.category || ""}
+                  onChange={(e) =>
+                    handleInputChange("category", e.target.value)
+                  }
+                  placeholder="Tablet, Syrup, Capsule"
+                  className={errors.category ? "up-input-error" : ""}
+                />
+                {errors.category && <span>{errors.category}</span>}
               </div>
 
               <div className="up-field">
@@ -282,10 +275,11 @@ function Updateproduct() {
                 <input
                   type="text"
                   value={product.brand || ""}
-                  onChange={(e) =>
-                    setProduct({ ...product, brand: e.target.value })
-                  }
+                  onChange={(e) => handleInputChange("brand", e.target.value)}
+                  placeholder="Enter brand name"
+                  className={errors.brand ? "up-input-error" : ""}
                 />
+                {errors.brand && <span>{errors.brand}</span>}
               </div>
             </div>
 
@@ -295,9 +289,12 @@ function Updateproduct() {
                 rows="5"
                 value={product.description || ""}
                 onChange={(e) =>
-                  setProduct({ ...product, description: e.target.value })
+                  handleInputChange("description", e.target.value)
                 }
+                placeholder="Write medicine description"
+                className={errors.description ? "up-input-error" : ""}
               />
+              {errors.description && <span>{errors.description}</span>}
             </div>
 
             <div className="up-actions">
@@ -307,7 +304,7 @@ function Updateproduct() {
               </button>
 
               <button className="up-btn up-secondary" onClick={handleClear}>
-                <span className="material-symbols-outlined">close</span>
+                <span className="material-symbols-outlined">restart_alt</span>
                 Clear Form
               </button>
 
@@ -318,8 +315,8 @@ function Updateproduct() {
             </div>
           </div>
         </section>
-      </main>
-    </div>
+      </section>
+    </main>
   );
 }
 

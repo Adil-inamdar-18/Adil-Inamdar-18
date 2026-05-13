@@ -6,8 +6,7 @@ import { useCart } from "../components/context/CartContext";
 function ProductDetail() {
   const navigate = useNavigate();
   const { id } = useParams();
-
-  const { addToCart, cartCount } = useCart();
+  const { addToCart } = useCart();
 
   const [product, setProduct] = useState(null);
   const [selectedImage, setSelectedImage] = useState("");
@@ -15,38 +14,56 @@ function ProductDetail() {
 
   const getImageUrl = (url) => {
     if (!url) return "https://via.placeholder.com/500x500?text=No+Image";
-    return url.startsWith("http")
+
+    return url.startsWith("http") || url.startsWith("data:image")
       ? url
       : `https://batch-6-backend-production.up.railway.app${url}`;
   };
 
+  const formatINR = (price) => {
+    return new Intl.NumberFormat("en-IN", {
+      style: "currency",
+      currency: "INR",
+      maximumFractionDigits: 0,
+    }).format(Number(price) || 0);
+  };
+
   useEffect(() => {
     const medicines = JSON.parse(localStorage.getItem("medicines")) || [];
-    const foundProduct = medicines.find((item) => item._id === id);
+    const foundProduct = medicines.find(
+      (item) => String(item._id || item.id) === String(id)
+    );
 
     if (foundProduct) {
       setProduct(foundProduct);
-      setSelectedImage(getImageUrl(foundProduct.imageUrl));
+      setSelectedImage(getImageUrl(foundProduct.imageUrl || foundProduct.image));
     }
 
-    const savedFavorites =
-      JSON.parse(localStorage.getItem("favirote")) || [];
-    setFavorites(savedFavorites);
+    const savedFavorites = JSON.parse(localStorage.getItem("favirote")) || [];
+    setFavorites(Array.isArray(savedFavorites) ? savedFavorites : []);
   }, [id]);
 
   const isFavorite = (productId) => {
-    return favorites.some((item) => item._id === productId);
+    return favorites.some(
+      (item) => String(item._id || item.id) === String(productId)
+    );
   };
 
   const toggleFavorite = (item) => {
+    const itemId = item._id || item.id;
     let updatedFavorites;
 
-    if (isFavorite(item._id)) {
-      updatedFavorites = favorites.filter((fav) => fav._id !== item._id);
+    if (isFavorite(itemId)) {
+      updatedFavorites = favorites.filter(
+        (fav) => String(fav._id || fav.id) !== String(itemId)
+      );
     } else {
       updatedFavorites = [
         ...favorites,
-        { ...item, imageUrl: getImageUrl(item.imageUrl) },
+        {
+          ...item,
+          imageUrl: getImageUrl(item.imageUrl || item.image),
+        },
       ];
     }
 
@@ -56,59 +73,49 @@ function ProductDetail() {
 
   if (!product) {
     return (
-      <div className="pd-not-found">
-        <h2>Product not found</h2>
-        <button onClick={() => navigate("/userhome")}>Back to Home</button>
-      </div>
+      <main className="pd-page">
+        <div className="pd-not-found">
+          <span className="material-symbols-outlined">inventory_2</span>
+          <h2>Product not found</h2>
+          <p>This medicine is not available or removed from admin panel.</p>
+          <button onClick={() => navigate("/userhome")}>Back to Store</button>
+        </div>
+      </main>
     );
   }
 
+  const productId = product._id || product.id;
+  const price = Number(product.price || 0);
+  const oldPrice = price + Math.round(price * 0.15);
+
   return (
-    <div className="pd-page">
-      <header className="pd-header">
-        <div className="pd-header-left">
-          
-
-          <div className="pd-logo-wrap">
-            <h1>HealthHub</h1>
-            <p>Product Details</p>
-          </div>
+    <main className="pd-page">
+      <div className="pd-page-header">
+        <div>
+          <h1>Product Details</h1>
+          <p>View medicine details, price and add to cart</p>
         </div>
 
-        <div className="pd-search-wrap">
-          <span className="material-symbols-outlined pd-search-icon">search</span>
-          <input type="text" placeholder="Search medicines..." />
-        </div>
+        <button className="pd-back-btn" onClick={() => navigate("/userhome")}>
+          <span className="material-symbols-outlined">storefront</span>
+          Back to Store
+        </button>
+      </div>
 
-        <div className="pd-header-actions">
-          <button className="pd-icon-btn" onClick={() => navigate("/userhome")}>
-            <span className="material-symbols-outlined">home</span>
-          </button>
-
-          <button className="pd-icon-btn pd-badge-btn" onClick={() => navigate("/cart")}>
-            <span className="material-symbols-outlined">shopping_bag</span>
-            {cartCount > 0 && <span className="pd-count-badge">{cartCount}</span>}
-          </button>
-
-          <button
-            className="pd-icon-btn pd-badge-btn"
-            onClick={() => navigate("/favirote")}
-          >
-            <span className="material-symbols-outlined">favorite</span>
-            {favorites.length > 0 && (
-              <span className="pd-count-badge">{favorites.length}</span>
-            )}
-          </button>
-        </div>
-      </header>
-
-      <main className="pd-container">
-        <section className="pd-gallery-section">
+      <section className="pd-layout">
+        <div className="pd-gallery-card">
           <div className="pd-image-box">
-            <img src={selectedImage} alt={product.name} />
+            <img
+              src={selectedImage}
+              alt={product.name || "Medicine"}
+              onError={(e) => {
+                e.target.src =
+                  "https://via.placeholder.com/500x500?text=No+Image";
+              }}
+            />
 
             <button
-              className={`pd-fav-btn ${isFavorite(product._id) ? "active" : ""}`}
+              className={`pd-fav-btn ${isFavorite(productId) ? "active" : ""}`}
               onClick={() => toggleFavorite(product)}
             >
               <span className="material-symbols-outlined">favorite</span>
@@ -118,69 +125,111 @@ function ProductDetail() {
           <div className="pd-thumb-row">
             <button
               className={`pd-thumb ${
-                selectedImage === getImageUrl(product.imageUrl)
+                selectedImage === getImageUrl(product.imageUrl || product.image)
                   ? "pd-thumb-active"
                   : ""
               }`}
-              onClick={() => setSelectedImage(getImageUrl(product.imageUrl))}
+              onClick={() =>
+                setSelectedImage(getImageUrl(product.imageUrl || product.image))
+              }
             >
-              <img src={getImageUrl(product.imageUrl)} alt={product.name} />
+              <img
+                src={getImageUrl(product.imageUrl || product.image)}
+                alt={product.name || "Medicine"}
+              />
             </button>
           </div>
-        </section>
+        </div>
 
-        <section className="pd-content">
-          <div className="pd-top-row">
-            <div>
-              <p className="pd-brand">{product.brand || "HealthHub"}</p>
-              <h2>{product.name}</h2>
-            </div>
+        <div className="pd-content-card">
+          <div className="pd-main-info">
+            <p className="pd-brand">{product.brand || "HealthHub Medicine"}</p>
+            <h2>{product.name || "Medicine"}</h2>
 
-            <div className="pd-price">
-              <p className="pd-price-main">${product.price}</p>
-              <p className="pd-price-old">
-                ${(Number(product.price) + 5).toFixed(2)}
-              </p>
+            <div className="pd-rating-row">
+              <span className="pd-rating">4.8 ★</span>
+              <span>95 reviews</span>
+              <span>Free delivery</span>
             </div>
           </div>
 
-          <div className="pd-stats">
-            <div className="pd-stat-box">
-              <strong>4.8</strong>
-              <span>Rating</span>
-            </div>
-            <div className="pd-stat-box">
-              <strong>95</strong>
-              <span>Reviews</span>
-            </div>
-            <div className="pd-stat-box">
-              <strong>Free</strong>
-              <span>Shipping</span>
-            </div>
+          <div className="pd-price-box">
+            <h3>{formatINR(price)}</h3>
+            <span>{formatINR(oldPrice)}</span>
+            <p>Inclusive of all taxes</p>
           </div>
 
-          <div className="pd-section">
-            <h3>Category</h3>
-            <p>{product.category}</p>
+          <div className="pd-action-row">
+            <button className="pd-cart-btn" onClick={() => addToCart(product)}>
+              <span className="material-symbols-outlined">shopping_cart</span>
+              Add to Cart
+            </button>
+
+            <button
+              className="pd-buy-btn"
+              onClick={() => {
+                addToCart(product);
+                navigate("/cart");
+              }}
+            >
+              Buy Now
+            </button>
+          </div>
+
+          <div className="pd-info-grid">
+            <div className="pd-info-box">
+              <span className="material-symbols-outlined">category</span>
+              <div>
+                <p>Category</p>
+                <strong>{product.category || "Medicine"}</strong>
+              </div>
+            </div>
+
+            <div className="pd-info-box">
+              <span className="material-symbols-outlined">local_shipping</span>
+              <div>
+                <p>Delivery</p>
+                <strong>Free delivery</strong>
+              </div>
+            </div>
+
+            <div className="pd-info-box">
+              <span className="material-symbols-outlined">verified</span>
+              <div>
+                <p>Quality</p>
+                <strong>Verified product</strong>
+              </div>
+            </div>
+
+            <div className="pd-info-box">
+              <span className="material-symbols-outlined">payments</span>
+              <div>
+                <p>Payment</p>
+                <strong>UPI / Card / COD</strong>
+              </div>
+            </div>
           </div>
 
           <div className="pd-section">
             <h3>Description</h3>
             <p>
               {product.description ||
-                `${product.name} is a reliable healthcare product in the ${product.category} category. Carefully selected to support your daily wellness and medical needs.`}
+                `${product.name} is a reliable healthcare product in the ${
+                  product.category || "medicine"
+                } category. Carefully selected to support your daily wellness and medical needs.`}
             </p>
           </div>
 
-          <div className="pd-action-row">
-            <button className="pd-cart-btn" onClick={() => addToCart(product)}>
-              <span className="material-symbols-outlined">shopping_bag</span>
-              ADD TO CART
-            </button>
+          <div className="pd-section warning">
+            <h3>Medicine Safety</h3>
+            <p>
+              Check dosage, expiry date and consult a doctor before using any
+              medicine if you are unsure.
+            </p>
           </div>
-        </section>
-      </main>
-    </div>
+        </div>
+      </section>
+    </main>
   );
 }
 

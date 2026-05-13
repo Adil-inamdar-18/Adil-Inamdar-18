@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./appointmentpage.css";
-import { useNavigate } from "react-router-dom";
 
 function AppointmentPage() {
-  const navigate = useNavigate();
+  const [errors, setErrors] = useState({});
 
   const [formData, setFormData] = useState({
     name: "",
@@ -19,7 +18,7 @@ function AppointmentPage() {
 
   useEffect(() => {
     const savedAppointments = JSON.parse(localStorage.getItem("book")) || [];
-    setAppointments(savedAppointments);
+    setAppointments(Array.isArray(savedAppointments) ? savedAppointments : []);
   }, []);
 
   const handleChange = (e) => {
@@ -29,34 +28,44 @@ function AppointmentPage() {
       ...prev,
       [name]: value,
     }));
+
+    setErrors((prev) => ({
+      ...prev,
+      [name]: "",
+      general: "",
+    }));
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!formData.name.trim()) newErrors.name = "Patient name is required";
+    if (!formData.doctor.trim()) newErrors.doctor = "Doctor name is required";
+    if (!formData.date.trim()) newErrors.date = "Date is required";
+    if (!formData.time.trim()) newErrors.time = "Time is required";
+    if (!formData.phone.trim()) newErrors.phone = "Phone number is required";
+    if (!formData.email.trim()) newErrors.email = "Email is required";
+    if (!formData.problem.trim()) newErrors.problem = "Problem is required";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleBookAppointment = (e) => {
     e.preventDefault();
 
-    if (
-      !formData.name.trim() ||
-      !formData.doctor.trim() ||
-      !formData.date.trim() ||
-      !formData.time.trim() ||
-      !formData.phone.trim() ||
-      !formData.email.trim() ||
-      !formData.problem.trim()
-    ) {
-      alert("Please fill all appointment details");
-      return;
-    }
+    if (!validateForm()) return;
 
     const newAppointment = {
       id: Date.now(),
       ...formData,
       status: "Pending",
+      createdAt: new Date().toLocaleString(),
     };
 
     const updatedAppointments = [newAppointment, ...appointments];
 
     setAppointments(updatedAppointments);
-
     localStorage.setItem("book", JSON.stringify(updatedAppointments));
 
     setFormData({
@@ -69,128 +78,138 @@ function AppointmentPage() {
       problem: "",
     });
 
-    alert("Appointment booked successfully ✅");
+    setErrors({});
   };
 
   const cancelAppointment = (id) => {
     const updatedAppointments = appointments.map((item) =>
-      item.id === id ? { ...item, status: "Cancelled" } : item,
+      item.id === id ? { ...item, status: "Cancelled" } : item
     );
 
     setAppointments(updatedAppointments);
-
     localStorage.setItem("book", JSON.stringify(updatedAppointments));
   };
 
   const clearCancelledAppointments = () => {
     const activeAppointments = appointments.filter(
-      (item) => item.status !== "Cancelled",
+      (item) => item.status !== "Cancelled"
     );
 
     setAppointments(activeAppointments);
-
     localStorage.setItem("book", JSON.stringify(activeAppointments));
   };
 
   return (
-    <div className="appointment-page">
-      <header className="appointment-header">
-        <div className="appointment-header-left">
-          <div className="appointment-title-wrap">
-            <h1>Appointment</h1>
-            <p>Book and manage your medical appointments</p>
-          </div>
+    <main className="appointment-page">
+      <div className="appointment-page-header">
+        <div>
+          <h1>Appointments</h1>
+          <p>Book and manage your medical consultations</p>
         </div>
 
-        <div className="appointment-header-actions">
-          <button
-            className="appointment-icon-btn"
-            onClick={() => navigate("/userhome")}
-          >
-            <span className="material-symbols-outlined">home</span>
-          </button>
+        <span className="appointment-header-icon material-symbols-outlined">
+          event_available
+        </span>
+      </div>
 
-          <button
-            className="appointment-icon-btn"
-            onClick={() => navigate("/profile")}
-          >
-            <span className="material-symbols-outlined">person</span>
-          </button>
-
-          <button
-            className="appointment-icon-btn"
-            onClick={() => navigate("/invoice")}
-          >
-            <span className="material-symbols-outlined">receipt_long</span>
-          </button>
-        </div>
-      </header>
-
-      <div className="appointment-container">
-        {/* FORM */}
-
+      <section className="appointment-layout">
         <div className="appointment-form-card">
-          <div className="appointment-card-top">
+          <div className="appointment-card-title">
             <h2>Book Appointment</h2>
-            <p>Fill the form to schedule your consultation</p>
+            <p>Fill patient details and schedule your consultation</p>
           </div>
 
           <form className="appointment-form" onSubmit={handleBookAppointment}>
             <div className="appointment-grid">
-              <input
-                type="text"
-                name="name"
-                placeholder="Patient Name"
-                value={formData.name}
-                onChange={handleChange}
-              />
+              <div className="appointment-field">
+                <label>Patient Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Enter patient name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className={errors.name ? "appointment-input-error" : ""}
+                />
+                {errors.name && <span>{errors.name}</span>}
+              </div>
 
-              <input
-                type="text"
-                name="doctor"
-                placeholder="Doctor Name"
-                value={formData.doctor}
-                onChange={handleChange}
-              />
+              <div className="appointment-field">
+                <label>Doctor Name</label>
+                <input
+                  type="text"
+                  name="doctor"
+                  placeholder="Enter doctor name"
+                  value={formData.doctor}
+                  onChange={handleChange}
+                  className={errors.doctor ? "appointment-input-error" : ""}
+                />
+                {errors.doctor && <span>{errors.doctor}</span>}
+              </div>
 
-              <input
-                type="date"
-                name="date"
-                value={formData.date}
-                onChange={handleChange}
-              />
+              <div className="appointment-field">
+                <label>Date</label>
+                <input
+                  type="date"
+                  name="date"
+                  value={formData.date}
+                  onChange={handleChange}
+                  className={errors.date ? "appointment-input-error" : ""}
+                />
+                {errors.date && <span>{errors.date}</span>}
+              </div>
 
-              <input
-                type="time"
-                name="time"
-                value={formData.time}
-                onChange={handleChange}
-              />
+              <div className="appointment-field">
+                <label>Time</label>
+                <input
+                  type="time"
+                  name="time"
+                  value={formData.time}
+                  onChange={handleChange}
+                  className={errors.time ? "appointment-input-error" : ""}
+                />
+                {errors.time && <span>{errors.time}</span>}
+              </div>
 
-              <input
-                type="text"
-                name="phone"
-                placeholder="Phone Number"
-                value={formData.phone}
-                onChange={handleChange}
-              />
+              <div className="appointment-field">
+                <label>Phone Number</label>
+                <input
+                  type="text"
+                  name="phone"
+                  placeholder="Enter phone number"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className={errors.phone ? "appointment-input-error" : ""}
+                />
+                {errors.phone && <span>{errors.phone}</span>}
+              </div>
 
-              <input
-                type="email"
-                name="email"
-                placeholder="Email Address"
-                value={formData.email}
-                onChange={handleChange}
-              />
+              <div className="appointment-field">
+                <label>Email Address</label>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Enter email address"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className={errors.email ? "appointment-input-error" : ""}
+                />
+                {errors.email && <span>{errors.email}</span>}
+              </div>
             </div>
 
-            <textarea
-              name="problem"
-              placeholder="Describe your problem"
-              rows="5"
-              value={formData.problem}
-              onChange={handleChange}
-            ></textarea>
+            <div className="appointment-field appointment-full">
+              <label>Problem Description</label>
+              <textarea
+                name="problem"
+                placeholder="Describe your problem"
+                rows="5"
+                value={formData.problem}
+                onChange={handleChange}
+                className={errors.problem ? "appointment-input-error" : ""}
+              ></textarea>
+              {errors.problem && <span>{errors.problem}</span>}
+            </div>
 
             <button type="submit" className="appointment-book-btn">
               <span className="material-symbols-outlined">calendar_month</span>
@@ -199,10 +218,8 @@ function AppointmentPage() {
           </form>
         </div>
 
-        {/* APPOINTMENTS */}
-
         <div className="appointment-list-card">
-          <div className="appointment-card-top appointment-list-top">
+          <div className="appointment-list-top">
             <div>
               <h2>Booked Appointments</h2>
               <p>{appointments.length} appointments found</p>
@@ -222,38 +239,49 @@ function AppointmentPage() {
               {appointments.map((item) => (
                 <div className="appointment-item" key={item.id}>
                   <div className="appointment-item-top">
-                    <h3>{item.name}</h3>
+                    <div>
+                      <h3>{item.name}</h3>
+                      <p>{item.createdAt || "Recently booked"}</p>
+                    </div>
 
                     <span
-                      className={`appointment-status ${item.status.toLowerCase()}`}
+                      className={`appointment-status ${String(
+                        item.status || "pending"
+                      ).toLowerCase()}`}
                     >
-                      {item.status}
+                      {item.status || "Pending"}
                     </span>
                   </div>
 
                   <div className="appointment-item-info">
                     <p>
-                      <strong>Doctor:</strong> {item.doctor}
+                      <span>Doctor</span>
+                      <strong>{item.doctor}</strong>
                     </p>
 
                     <p>
-                      <strong>Date:</strong> {item.date}
+                      <span>Date</span>
+                      <strong>{item.date}</strong>
                     </p>
 
                     <p>
-                      <strong>Time:</strong> {item.time}
+                      <span>Time</span>
+                      <strong>{item.time}</strong>
                     </p>
 
                     <p>
-                      <strong>Phone:</strong> {item.phone}
+                      <span>Phone</span>
+                      <strong>{item.phone}</strong>
                     </p>
 
                     <p>
-                      <strong>Email:</strong> {item.email}
+                      <span>Email</span>
+                      <strong>{item.email}</strong>
                     </p>
 
-                    <p>
-                      <strong>Problem:</strong> {item.problem}
+                    <p className="full">
+                      <span>Problem</span>
+                      <strong>{item.problem}</strong>
                     </p>
                   </div>
 
@@ -270,13 +298,14 @@ function AppointmentPage() {
             </div>
           ) : (
             <div className="appointment-empty">
+              <span className="material-symbols-outlined">event_busy</span>
               <h3>No appointments booked yet</h3>
               <p>Your booked appointments will appear here.</p>
             </div>
           )}
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }
 

@@ -12,28 +12,37 @@ function AdminDashboard() {
   const [medicines, setMedicines] = useState([]);
   const [categories, setCategories] = useState([]);
   const [prescriptions, setPrescriptions] = useState([]);
+  const [orders, setOrders] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const storedMedicines = JSON.parse(localStorage.getItem("medicines")) || [];
     const storedPrescriptions =
       JSON.parse(localStorage.getItem("prescriptions")) || [];
+    const storedOrders = JSON.parse(localStorage.getItem("orders")) || [];
 
     const uniqueCategories = [
       ...new Set(storedMedicines.map((item) => item.category).filter(Boolean)),
     ];
 
-    setMedicines(storedMedicines);
+    setMedicines(Array.isArray(storedMedicines) ? storedMedicines : []);
     setCategories(uniqueCategories);
-    setPrescriptions(storedPrescriptions);
+    setPrescriptions(
+      Array.isArray(storedPrescriptions) ? storedPrescriptions : []
+    );
+    setOrders(Array.isArray(storedOrders) ? storedOrders : []);
   }, []);
 
-  const handleProfileNavigate = () => {
-    navigate("/adminprofile");
+  const formatINR = (price) => {
+    return new Intl.NumberFormat("en-IN", {
+      style: "currency",
+      currency: "INR",
+      maximumFractionDigits: 0,
+    }).format(Number(price) || 0);
   };
 
   const getImageUrl = (url) => {
-    if (!url) return "https://via.placeholder.com/60x60?text=Med";
+    if (!url) return "https://via.placeholder.com/80x80?text=Med";
 
     return url.startsWith("http") || url.startsWith("data:image")
       ? url
@@ -53,193 +62,240 @@ function AdminDashboard() {
     );
   }, [searchTerm, medicines]);
 
-  const totalCategories = categories.length;
-  const totalMedicines = medicines.length;
-  const totalPrescriptions = prescriptions.length;
+  const totalRevenue = orders.reduce(
+    (sum, order) => sum + Number(order.total || 0),
+    0
+  );
 
-  const recentPrescriptions = [...prescriptions].slice(0, 4);
+  const recentOrders = orders.slice(0, 5);
+  const recentMedicines = filteredMedicines.slice(0, 6);
 
   return (
-    <div className="ads-page">
-      <main className="ads-main">
-        <section className="ads-topbar">
-          <div className="ads-topbar-text">
-            <h2>Hello, {adminData.name}</h2>
-            <p>Here is a quick overview of your medicine store.</p>
-          </div>
+    <main className="admin-dash-page">
+      <section className="admin-dash-header">
+        <div>
+          <span className="admin-dash-label">Admin Dashboard</span>
+          <h1>Hello, {adminData.name}</h1>
+          <p>Manage medicines, categories, orders and store activity.</p>
+        </div>
 
-          <div className="ads-topbar-right">
-            <div className="ads-search-wrap">
-              <span className="material-symbols-outlined">search</span>
-              <input
-                type="text"
-                placeholder="Search medicines..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
+        <div className="admin-dash-search">
+          <span className="material-symbols-outlined">search</span>
+          <input
+            type="text"
+            placeholder="Search medicines, brands, categories..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
+      </section>
+
+      <section className="admin-stats-grid">
+        <div className="admin-stat-card">
+          <div className="admin-stat-icon">
+            <span className="material-symbols-outlined">medication</span>
+          </div>
+          <div>
+            <p>Total Medicines</p>
+            <h2>{medicines.length}</h2>
+          </div>
+        </div>
+
+        <div className="admin-stat-card">
+          <div className="admin-stat-icon">
+            <span className="material-symbols-outlined">category</span>
+          </div>
+          <div>
+            <p>Categories</p>
+            <h2>{categories.length}</h2>
+          </div>
+        </div>
+
+        <div className="admin-stat-card">
+          <div className="admin-stat-icon">
+            <span className="material-symbols-outlined">shopping_bag</span>
+          </div>
+          <div>
+            <p>Total Orders</p>
+            <h2>{orders.length}</h2>
+          </div>
+        </div>
+
+        <div className="admin-stat-card">
+          <div className="admin-stat-icon">
+            <span className="material-symbols-outlined">payments</span>
+          </div>
+          <div>
+            <p>Revenue</p>
+            <h2>{formatINR(totalRevenue)}</h2>
+          </div>
+        </div>
+      </section>
+
+      <section className="admin-action-grid">
+        <button onClick={() => navigate("/addproduct")}>
+          <span className="material-symbols-outlined">add_box</span>
+          <div>
+            <h3>Add Medicine</h3>
+            <p>Create new medicine listing</p>
+          </div>
+        </button>
+
+        <button onClick={() => navigate("/productlist")}>
+          <span className="material-symbols-outlined">inventory_2</span>
+          <div>
+            <h3>Manage Products</h3>
+            <p>Edit, update and remove medicines</p>
+          </div>
+        </button>
+
+        <button onClick={() => navigate("/userhome")}>
+          <span className="material-symbols-outlined">storefront</span>
+          <div>
+            <h3>Open Store</h3>
+            <p>Preview customer shopping page</p>
+          </div>
+        </button>
+
+        <button onClick={() => navigate("/adminprofile")}>
+          <span className="material-symbols-outlined">admin_panel_settings</span>
+          <div>
+            <h3>Admin Profile</h3>
+            <p>View admin account details</p>
+          </div>
+        </button>
+      </section>
+
+      <section className="admin-main-grid">
+        <div className="admin-panel admin-products-panel">
+          <div className="admin-panel-head">
+            <div>
+              <h2>Medicines Overview</h2>
+              <p>{filteredMedicines.length} medicines found</p>
             </div>
 
-            <button className="ads-icon-btn" aria-label="Notifications">
-              <span className="material-symbols-outlined">notifications</span>
-            </button>
-
-            <button
-              className="ads-icon-btn"
-              aria-label="Profile"
-              onClick={handleProfileNavigate}
-            >
-              <span className="material-symbols-outlined">person</span>
-            </button>
-          </div>
-        </section>
-
-        <section className="ads-stats-grid">
-          <div className="ads-stat-card">
-            <div className="ads-stat-icon">
-              <span className="material-symbols-outlined">medication</span>
-            </div>
-            <p className="ads-stat-title">Total Medicines</p>
-            <h3 className="ads-stat-value">{totalMedicines}</h3>
+            <button onClick={() => navigate("/productlist")}>View All</button>
           </div>
 
-          <div className="ads-stat-card">
-            <div className="ads-stat-icon">
-              <span className="material-symbols-outlined">category</span>
-            </div>
-            <p className="ads-stat-title">Categories</p>
-            <h3 className="ads-stat-value">{totalCategories}</h3>
-          </div>
+          {recentMedicines.length > 0 ? (
+            <div className="admin-product-list">
+              {recentMedicines.map((item, index) => (
+                <div className="admin-product-row" key={item._id || index}>
+                  <img
+                    src={getImageUrl(item.imageUrl || item.image)}
+                    alt={item.name}
+                    onError={(e) => {
+                      e.target.src =
+                        "https://via.placeholder.com/80x80?text=Med";
+                    }}
+                  />
 
-          <div className="ads-stat-card">
-            <div className="ads-stat-icon">
-              <span className="material-symbols-outlined">upload_file</span>
-            </div>
-            <p className="ads-stat-title">Prescriptions</p>
-            <h3 className="ads-stat-value">{totalPrescriptions}</h3>
-          </div>
-        </section>
-
-        <section className="ads-content-grid">
-          <div className="ads-panel">
-            <div className="ads-panel-head">
-              <h3>Medicine Categories</h3>
-              <button className="ads-text-btn">View</button>
-            </div>
-
-            <div className="ads-category-list">
-              {categories.length > 0 ? (
-                categories.map((cat, i) => (
-                  <div key={i} className="ads-category-item">
-                    <div className="ads-category-row">
-                      <span>{cat}</span>
-                    </div>
+                  <div>
+                    <h3>{item.name || "Medicine"}</h3>
+                    <p>{item.category || "No category"}</p>
                   </div>
-                ))
-              ) : (
-                <p className="ads-empty-text">No categories found.</p>
-              )}
+
+                  <strong>{formatINR(item.price)}</strong>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="admin-empty-box">
+              <span className="material-symbols-outlined">inventory</span>
+              <p>No medicines found.</p>
+            </div>
+          )}
+        </div>
+
+        <div className="admin-panel">
+          <div className="admin-panel-head">
+            <div>
+              <h2>Categories</h2>
+              <p>Medicine groups</p>
             </div>
           </div>
 
-          <div className="ads-panel">
-            <div className="ads-panel-head">
-              <h3>Quick Actions</h3>
+          {categories.length > 0 ? (
+            <div className="admin-category-list">
+              {categories.map((cat, index) => (
+                <div className="admin-category-pill" key={index}>
+                  <span className="material-symbols-outlined">label</span>
+                  {cat}
+                </div>
+              ))}
             </div>
+          ) : (
+            <div className="admin-empty-box">
+              <span className="material-symbols-outlined">category</span>
+              <p>No categories found.</p>
+            </div>
+          )}
+        </div>
+      </section>
 
-            <div className="ads-quick-actions">
-              <button onClick={() => navigate("/addproduct")}>
-                <span>Add Medicine</span>
-              </button>
-
-              <button onClick={() => navigate("/productlist")}>
-                <span>View Medicines</span>
-              </button>
-
-              <button onClick={() => navigate("/userhome")}>
-                <span>Open Store</span>
-              </button>
-
-              <button onClick={() => navigate("/adminprofile")}>
-                <span>Admin Profile</span>
-              </button>
+      <section className="admin-bottom-grid">
+        <div className="admin-panel">
+          <div className="admin-panel-head">
+            <div>
+              <h2>Recent Orders</h2>
+              <p>Latest customer purchases</p>
             </div>
           </div>
-        </section>
 
-        <section className="ads-panel ads-table-panel">
-          <div className="ads-panel-head">
-            <h3>Medicines Overview</h3>
-            <button
-              className="ads-text-btn"
-              onClick={() => navigate("/productlist")}
-            >
-              View All
-            </button>
+          {recentOrders.length > 0 ? (
+            <div className="admin-order-list">
+              {recentOrders.map((order) => (
+                <div className="admin-order-row" key={order.id}>
+                  <div>
+                    <h3>#{order.id}</h3>
+                    <p>{order.customer?.name || "Customer"}</p>
+                  </div>
+
+                  <div>
+                    <strong>{formatINR(order.total)}</strong>
+                    <span>{order.status || "Placed"}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="admin-empty-box">
+              <span className="material-symbols-outlined">shopping_bag</span>
+              <p>No orders available.</p>
+            </div>
+          )}
+        </div>
+
+        <div className="admin-panel">
+          <div className="admin-panel-head">
+            <div>
+              <h2>Recent Prescriptions</h2>
+              <p>Uploaded prescription files</p>
+            </div>
           </div>
 
-          <div className="ads-table-wrap">
-            {filteredMedicines.length > 0 ? (
-              <table className="ads-table">
-                <thead>
-                  <tr>
-                    <th>Medicine</th>
-                    <th>Category</th>
-                    <th>Price</th>
-                  </tr>
-                </thead>
+          {prescriptions.length > 0 ? (
+            <div className="admin-prescription-list">
+              {prescriptions.slice(0, 5).map((item, index) => (
+                <div className="admin-prescription-row" key={item.id || index}>
+                  <span className="material-symbols-outlined">description</span>
 
-                <tbody>
-                  {filteredMedicines.slice(0, 6).map((item, index) => (
-                    <tr key={item._id || index}>
-                      <td className="ads-product-cell">
-                        <img src={getImageUrl(item.imageUrl)} alt={item.name} />
-                        <span>{item.name}</span>
-                      </td>
-                      <td>{item.category}</td>
-                      <td>₹{item.price}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            ) : (
-              <p className="ads-empty-text">No medicines found.</p>
-            )}
-          </div>
-        </section>
-
-        <section className="ads-panel ads-table-panel">
-          <div className="ads-panel-head">
-            <h3>Recent Prescriptions</h3>
-          </div>
-
-          <div className="ads-table-wrap">
-            {recentPrescriptions.length > 0 ? (
-              <table className="ads-table">
-                <thead>
-                  <tr>
-                    <th>File Name</th>
-                    <th>Type</th>
-                    <th>Date</th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  {recentPrescriptions.map((item, index) => (
-                    <tr key={item.id || index}>
-                      <td>{item.name}</td>
-                      <td>{item.type || "Unknown"}</td>
-                      <td>{item.date}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            ) : (
-              <p className="ads-empty-text">No prescriptions uploaded yet.</p>
-            )}
-          </div>
-        </section>
-      </main>
-    </div>
+                  <div>
+                    <h3>{item.name || "Prescription"}</h3>
+                    <p>{item.date || "Recently uploaded"}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="admin-empty-box">
+              <span className="material-symbols-outlined">upload_file</span>
+              <p>No prescriptions uploaded yet.</p>
+            </div>
+          )}
+        </div>
+      </section>
+    </main>
   );
 }
 

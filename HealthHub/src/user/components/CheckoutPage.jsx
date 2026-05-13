@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 
 function CheckoutPage() {
   const [method, setMethod] = useState("upi");
+  const [errors, setErrors] = useState({});
+
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -22,46 +24,58 @@ function CheckoutPage() {
   const { cartItems, subtotal, tax, total, clearCart } = useCart();
   const navigate = useNavigate();
 
+  const formatINR = (price) => {
+    return new Intl.NumberFormat("en-IN", {
+      style: "currency",
+      currency: "INR",
+      maximumFractionDigits: 0,
+    }).format(Number(price) || 0);
+  };
+
   const handleChange = (e) => {
     setFormData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
     }));
+
+    setErrors((prev) => ({
+      ...prev,
+      [e.target.name]: "",
+      general: "",
+    }));
   };
 
-  const handlePlaceOrder = () => {
-    if (
-      !formData.name.trim() ||
-      !formData.phone.trim() ||
-      !formData.email.trim() ||
-      !formData.city.trim() ||
-      !formData.address.trim() ||
-      !formData.pincode.trim()
-    ) {
-      alert("Please fill address details");
-      return;
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!formData.name.trim()) newErrors.name = "Full name is required";
+    if (!formData.phone.trim()) newErrors.phone = "Phone number is required";
+    if (!formData.email.trim()) newErrors.email = "Email is required";
+    if (!formData.city.trim()) newErrors.city = "City is required";
+    if (!formData.address.trim()) newErrors.address = "Address is required";
+    if (!formData.pincode.trim()) newErrors.pincode = "Pincode is required";
+
+    if (method === "upi" && !formData.upiId.trim()) {
+      newErrors.upiId = "UPI ID is required";
+    }
+
+    if (method === "card") {
+      if (!formData.cardName.trim()) newErrors.cardName = "Card holder name is required";
+      if (!formData.cardNumber.trim()) newErrors.cardNumber = "Card number is required";
+      if (!formData.expiry.trim()) newErrors.expiry = "Expiry date is required";
+      if (!formData.cvv.trim()) newErrors.cvv = "CVV is required";
     }
 
     if (cartItems.length === 0) {
-      alert("Your cart is empty");
-      return;
+      newErrors.general = "Your cart is empty";
     }
 
-    if (method === "upi" && !formData.upiId.trim()) {
-      alert("Please enter UPI ID");
-      return;
-    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
-    if (
-      method === "card" &&
-      (!formData.cardName.trim() ||
-        !formData.cardNumber.trim() ||
-        !formData.expiry.trim() ||
-        !formData.cvv.trim())
-    ) {
-      alert("Please fill card details");
-      return;
-    }
+  const handlePlaceOrder = () => {
+    if (!validateForm()) return;
 
     const now = new Date();
     const existingOrders = JSON.parse(localStorage.getItem("orders")) || [];
@@ -88,114 +102,125 @@ function CheckoutPage() {
       subtotal: Number(subtotal) || 0,
       tax: Number(tax) || 0,
       total: Number(total) || 0,
-      status: "Pending",
+      status: "Placed",
       date: now.toLocaleDateString(),
       time: now.toLocaleTimeString(),
-      createdAt: now.toISOString(),
+      createdAt: now.toLocaleString(),
     };
 
     localStorage.setItem("orders", JSON.stringify([newOrder, ...existingOrders]));
-
     clearCart();
-    alert("Order placed successfully ✅");
     navigate("/orders");
   };
 
   return (
-    <div className="checkout-page">
-      <header className="checkout-header">
-        <div className="checkout-header-left">
-          <button
-            className="checkout-icon-btn"
-            onClick={() => navigate("/cart")}
-          >
-            <span className="material-symbols-outlined">arrow_back</span>
-          </button>
-
-          <div className="checkout-title-wrap">
-            <h1>Checkout</h1>
-            <p>Complete your medicine order safely</p>
-          </div>
+    <main className="checkout-page">
+      <div className="checkout-page-header">
+        <div>
+          <h1>Secure Checkout</h1>
+          <p>Complete your medicine order safely</p>
         </div>
 
-        <div className="checkout-header-actions">
-          <button
-            className="checkout-icon-btn"
-            onClick={() => navigate("/userhome")}
-          >
-            <span className="material-symbols-outlined">home</span>
-          </button>
+        <button className="checkout-back-btn" onClick={() => navigate("/cart")}>
+          <span className="material-symbols-outlined">shopping_cart</span>
+          Back to Cart
+        </button>
+      </div>
 
-          <button
-            className="checkout-icon-btn"
-            onClick={() => navigate("/cart")}
-          >
-            <span className="material-symbols-outlined">shopping_cart</span>
-          </button>
-
-          <div className="checkout-badge">{cartItems.length} Items</div>
-        </div>
-      </header>
-
-      <div className="checkout-wrapper">
+      <section className="checkout-layout">
         <div className="checkout-left">
           <div className="checkout-card">
-            <h2>Delivery Details</h2>
-            <p className="checkout-subtitle">
-              Enter your address and payment details
-            </p>
-
-            <div className="checkout-list">
-              <input
-                type="text"
-                name="name"
-                placeholder="Full Name"
-                value={formData.name}
-                onChange={handleChange}
-              />
-
-              <input
-                type="text"
-                name="phone"
-                placeholder="Phone Number"
-                value={formData.phone}
-                onChange={handleChange}
-              />
-
-              <input
-                type="email"
-                name="email"
-                placeholder="Email Address"
-                value={formData.email}
-                onChange={handleChange}
-              />
-
-              <input
-                type="text"
-                name="city"
-                placeholder="City"
-                value={formData.city}
-                onChange={handleChange}
-              />
-
-              <input
-                type="text"
-                name="address"
-                placeholder="Street Address"
-                value={formData.address}
-                onChange={handleChange}
-              />
-
-              <input
-                type="text"
-                name="pincode"
-                placeholder="Pincode"
-                value={formData.pincode}
-                onChange={handleChange}
-              />
+            <div className="checkout-card-title">
+              <h2>Delivery Details</h2>
+              <p>Enter your address and contact information</p>
             </div>
 
-            <h3>Payment Method</h3>
+            {errors.general && <div className="checkout-error-box">{errors.general}</div>}
+
+            <div className="checkout-form-grid">
+              <div className="checkout-field">
+                <label>Full Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Enter full name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className={errors.name ? "checkout-input-error" : ""}
+                />
+                {errors.name && <span>{errors.name}</span>}
+              </div>
+
+              <div className="checkout-field">
+                <label>Phone Number</label>
+                <input
+                  type="text"
+                  name="phone"
+                  placeholder="Enter phone number"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className={errors.phone ? "checkout-input-error" : ""}
+                />
+                {errors.phone && <span>{errors.phone}</span>}
+              </div>
+
+              <div className="checkout-field">
+                <label>Email Address</label>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Enter email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className={errors.email ? "checkout-input-error" : ""}
+                />
+                {errors.email && <span>{errors.email}</span>}
+              </div>
+
+              <div className="checkout-field">
+                <label>City</label>
+                <input
+                  type="text"
+                  name="city"
+                  placeholder="Enter city"
+                  value={formData.city}
+                  onChange={handleChange}
+                  className={errors.city ? "checkout-input-error" : ""}
+                />
+                {errors.city && <span>{errors.city}</span>}
+              </div>
+
+              <div className="checkout-field checkout-full">
+                <label>Street Address</label>
+                <input
+                  type="text"
+                  name="address"
+                  placeholder="Enter full address"
+                  value={formData.address}
+                  onChange={handleChange}
+                  className={errors.address ? "checkout-input-error" : ""}
+                />
+                {errors.address && <span>{errors.address}</span>}
+              </div>
+
+              <div className="checkout-field">
+                <label>Pincode</label>
+                <input
+                  type="text"
+                  name="pincode"
+                  placeholder="Enter pincode"
+                  value={formData.pincode}
+                  onChange={handleChange}
+                  className={errors.pincode ? "checkout-input-error" : ""}
+                />
+                {errors.pincode && <span>{errors.pincode}</span>}
+              </div>
+            </div>
+
+            <div className="checkout-card-title payment-title">
+              <h2>Payment Method</h2>
+              <p>Select your preferred payment option</p>
+            </div>
 
             <div className="payment-methods">
               <label className={method === "upi" ? "active-method" : ""}>
@@ -203,9 +228,13 @@ function CheckoutPage() {
                   type="radio"
                   name="payment"
                   checked={method === "upi"}
-                  onChange={() => setMethod("upi")}
+                  onChange={() => {
+                    setMethod("upi");
+                    setErrors({});
+                  }}
                 />
-                <span>UPI</span>
+                <span className="material-symbols-outlined">account_balance_wallet</span>
+                UPI
               </label>
 
               <label className={method === "card" ? "active-method" : ""}>
@@ -213,113 +242,155 @@ function CheckoutPage() {
                   type="radio"
                   name="payment"
                   checked={method === "card"}
-                  onChange={() => setMethod("card")}
+                  onChange={() => {
+                    setMethod("card");
+                    setErrors({});
+                  }}
                 />
-                <span>Card</span>
+                <span className="material-symbols-outlined">credit_card</span>
+                Card
               </label>
             </div>
 
             {method === "upi" ? (
               <div className="payment-box">
-                <input
-                  type="text"
-                  name="upiId"
-                  placeholder="Enter UPI ID"
-                  value={formData.upiId}
-                  onChange={handleChange}
-                />
+                <div className="checkout-field">
+                  <label>UPI ID</label>
+                  <input
+                    type="text"
+                    name="upiId"
+                    placeholder="example@upi"
+                    value={formData.upiId}
+                    onChange={handleChange}
+                    className={errors.upiId ? "checkout-input-error" : ""}
+                  />
+                  {errors.upiId && <span>{errors.upiId}</span>}
+                </div>
               </div>
             ) : (
-              <div className="payment-box checkout-list">
-                <input
-                  type="text"
-                  name="cardName"
-                  placeholder="Card Holder Name"
-                  value={formData.cardName}
-                  onChange={handleChange}
-                />
-                <input
-                  type="text"
-                  name="cardNumber"
-                  placeholder="Card Number"
-                  value={formData.cardNumber}
-                  onChange={handleChange}
-                />
-                <input
-                  type="text"
-                  name="expiry"
-                  placeholder="MM/YY"
-                  value={formData.expiry}
-                  onChange={handleChange}
-                />
-                <input
-                  type="text"
-                  name="cvv"
-                  placeholder="CVV"
-                  value={formData.cvv}
-                  onChange={handleChange}
-                />
+              <div className="payment-box checkout-form-grid">
+                <div className="checkout-field checkout-full">
+                  <label>Card Holder Name</label>
+                  <input
+                    type="text"
+                    name="cardName"
+                    placeholder="Name on card"
+                    value={formData.cardName}
+                    onChange={handleChange}
+                    className={errors.cardName ? "checkout-input-error" : ""}
+                  />
+                  {errors.cardName && <span>{errors.cardName}</span>}
+                </div>
+
+                <div className="checkout-field checkout-full">
+                  <label>Card Number</label>
+                  <input
+                    type="text"
+                    name="cardNumber"
+                    placeholder="0000 0000 0000 0000"
+                    value={formData.cardNumber}
+                    onChange={handleChange}
+                    className={errors.cardNumber ? "checkout-input-error" : ""}
+                  />
+                  {errors.cardNumber && <span>{errors.cardNumber}</span>}
+                </div>
+
+                <div className="checkout-field">
+                  <label>Expiry</label>
+                  <input
+                    type="text"
+                    name="expiry"
+                    placeholder="MM/YY"
+                    value={formData.expiry}
+                    onChange={handleChange}
+                    className={errors.expiry ? "checkout-input-error" : ""}
+                  />
+                  {errors.expiry && <span>{errors.expiry}</span>}
+                </div>
+
+                <div className="checkout-field">
+                  <label>CVV</label>
+                  <input
+                    type="password"
+                    name="cvv"
+                    placeholder="***"
+                    value={formData.cvv}
+                    onChange={handleChange}
+                    className={errors.cvv ? "checkout-input-error" : ""}
+                  />
+                  {errors.cvv && <span>{errors.cvv}</span>}
+                </div>
               </div>
             )}
-
-            <button
-              className="checkout-btn"
-              onClick={handlePlaceOrder}
-              disabled={cartItems.length === 0}
-            >
-              Place Order
-            </button>
           </div>
         </div>
 
-        <div className="checkout-right">
+        <aside className="checkout-right">
           <div className="summary-card">
             <h3>Order Summary</h3>
 
             {cartItems.length > 0 ? (
               <>
-                {cartItems.map((item, index) => (
-                  <div className="summary-item" key={item._id || item.id || index}>
-                    <span>
-                      {item.name} {item.qty ? `x${item.qty}` : ""}
-                    </span>
-                    <span>
-                      ${((Number(item.price) || 0) * (Number(item.qty) || 1)).toFixed(2)}
-                    </span>
-                  </div>
-                ))}
+                <div className="summary-items">
+                  {cartItems.map((item, index) => (
+                    <div className="summary-item" key={item._id || item.id || index}>
+                      <div>
+                        <strong>{item.name || "Medicine"}</strong>
+                        <span>Qty: {item.qty || 1}</span>
+                      </div>
+
+                      <b>
+                        {formatINR(
+                          (Number(item.price) || 0) * (Number(item.qty) || 1)
+                        )}
+                      </b>
+                    </div>
+                  ))}
+                </div>
 
                 <div className="summary-line"></div>
 
-                <div className="summary-item">
+                <div className="summary-row">
                   <span>Subtotal</span>
-                  <span>${Number(subtotal).toFixed(2)}</span>
+                  <strong>{formatINR(subtotal)}</strong>
                 </div>
 
-                <div className="summary-item">
+                <div className="summary-row">
                   <span>Tax</span>
-                  <span>${Number(tax).toFixed(2)}</span>
+                  <strong>{formatINR(tax)}</strong>
                 </div>
 
-                <div className="summary-item">
+                <div className="summary-row">
                   <span>Shipping</span>
-                  <span className="free-text">Free</span>
+                  <strong className="free-text">Free</strong>
                 </div>
 
                 <div className="summary-line"></div>
 
                 <div className="summary-total">
                   <span>Total</span>
-                  <span>${Number(total).toFixed(2)}</span>
+                  <strong>{formatINR(total)}</strong>
                 </div>
+
+                <button
+                  className="checkout-btn"
+                  onClick={handlePlaceOrder}
+                  disabled={cartItems.length === 0}
+                >
+                  Place Order
+                </button>
               </>
             ) : (
-              <p className="checkout-empty">Your cart is empty.</p>
+              <div className="checkout-empty">
+                <span className="material-symbols-outlined">shopping_cart</span>
+                <p>Your cart is empty.</p>
+                <button onClick={() => navigate("/userhome")}>Shop Now</button>
+              </div>
             )}
           </div>
-        </div>
-      </div>
-    </div>
+        </aside>
+      </section>
+    </main>
   );
 }
 

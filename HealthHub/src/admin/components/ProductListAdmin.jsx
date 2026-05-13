@@ -109,12 +109,7 @@ function ProductListAdmin() {
     <div className="pla-container">
       <div className="pla-header">
         <div className="pla-header-left">
-          <button
-            className="pla-header-icon-btn"
-            onClick={() => navigate("/admindashboard")}
-          >
-            <span className="material-symbols-outlined">arrow_back</span>
-          </button>
+          
 
           <div className="pla-icon">
             <span className="material-symbols-outlined">inventory_2</span>

@@ -30,10 +30,31 @@ function AdminProfile() {
     const { name, value } = e.target;
     setAdminData((prev) => ({ ...prev, [name]: value }));
   };
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+
+    if (!file) return;
+
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      setAdminData((prev) => ({
+        ...prev,
+        image: reader.result,
+      }));
+    };
+
+    reader.readAsDataURL(file);
+  };
 
   const handleSave = () => {
     localStorage.setItem("loggedInUser", JSON.stringify(adminData));
     localStorage.setItem("admin", JSON.stringify(adminData));
+    setIsEditing(false);
+  };
+
+  const handleCancel = () => {
+    setAdminData(storedAdmin || defaultAdmin);
     setIsEditing(false);
   };
 
@@ -43,162 +64,243 @@ function AdminProfile() {
   };
 
   return (
-    <div className="admin-profile-page">
-      <header className="admin-profile-header">
+    <main className="admin-profile-page">
+      <section className="admin-profile-header">
         <div>
+          <span className="admin-profile-label">Admin Account</span>
           <h1>Admin Profile</h1>
-          <p>Manage your HealthHub admin account</p>
+          <p>Manage your HealthHub admin account and store controls.</p>
         </div>
 
         <button
-          className="admin-profile-icon-btn"
+          className="admin-profile-dashboard-btn"
           onClick={() => navigate("/admindashboard")}
         >
           <span className="material-symbols-outlined">dashboard</span>
+          Dashboard
         </button>
-      </header>
+      </section>
 
-      <div className="admin-profile-content">
-        <div className="admin-profile-card">
-          <img
-            src={adminData.image}
-            alt={adminData.name}
-            className="admin-profile-avatar"
-          />
+      <section className="admin-profile-layout">
+        <aside className="admin-profile-sidebar-card">
+       <div className="admin-profile-avatar-box">
 
-          {isEditing ? (
-            <input
-              name="name"
-              value={adminData.name || ""}
-              onChange={handleChange}
-              className="admin-profile-input center"
-            />
-          ) : (
-            <h2>{adminData.name}</h2>
-          )}
+  <div className="admin-profile-image-wrap">
+    <img
+      src={adminData.image || defaultAdmin.image}
+      alt={adminData.name || "Admin"}
+      className="admin-profile-avatar"
+    />
 
-          {isEditing ? (
-            <input
-              name="email"
-              value={adminData.email || ""}
-              onChange={handleChange}
-              className="admin-profile-input center"
-            />
-          ) : (
-            <p>{adminData.email}</p>
-          )}
+    {isEditing && (
+      <label className="admin-profile-image-btn">
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleImageChange}
+        />
+        <span className="material-symbols-outlined">
+          photo_camera
+        </span>
+      </label>
+    )}
+  </div>
 
-          <span className="admin-profile-badge">{adminData.role || "Admin"}</span>
-        </div>
+  {!isEditing ? (
+    <>
+      <h2>{adminData.name || "Admin"}</h2>
+      <p>{adminData.email || "admin@healthhub.com"}</p>
+    </>
+  ) : (
+    <>
+      <input
+        name="name"
+        value={adminData.name || ""}
+        onChange={handleChange}
+        className="admin-profile-input center"
+        placeholder="Admin name"
+      />
 
-        <div className="admin-profile-stats">
-          <div className="admin-profile-stat">
-            <h3>{products.length}</h3>
-            <p>Products</p>
-          </div>
+      <input
+        name="email"
+        value={adminData.email || ""}
+        onChange={handleChange}
+        className="admin-profile-input center"
+        placeholder="Admin email"
+      />
+    </>
+  )}
 
-          <div className="admin-profile-stat">
-            <h3>{users.length}</h3>
-            <p>Users</p>
-          </div>
+  <span className="admin-profile-badge">
+    {adminData.role || "Admin"}
+  </span>
+</div>
 
-          <div className="admin-profile-stat">
-            <h3>{orders.length}</h3>
-            <p>Orders</p>
-          </div>
-        </div>
-
-        <div className="admin-profile-info">
-          <h3>Admin Information</h3>
-
-          <div className="admin-profile-row">
-            <span>Full Name</span>
+          <div className="admin-profile-quick-actions">
             {isEditing ? (
-              <input
-                name="name"
-                value={adminData.name || ""}
-                onChange={handleChange}
-              />
+              <div className="admin-profile-edit-actions">
+                <button className="save" onClick={handleSave}>
+                  <span className="material-symbols-outlined">save</span>
+                  Save
+                </button>
+
+                <button className="cancel" onClick={handleCancel}>
+                  Cancel
+                </button>
+              </div>
             ) : (
-              <strong>{adminData.name}</strong>
+              <button onClick={() => setIsEditing(true)}>
+                <span className="material-symbols-outlined">edit</span>
+                Edit Profile
+              </button>
             )}
-          </div>
 
-          <div className="admin-profile-row">
-            <span>Email</span>
-            {isEditing ? (
-              <input
-                name="email"
-                value={adminData.email || ""}
-                onChange={handleChange}
-              />
-            ) : (
-              <strong>{adminData.email}</strong>
-            )}
-          </div>
-
-          <div className="admin-profile-row">
-            <span>Phone</span>
-            {isEditing ? (
-              <input
-                name="phone"
-                value={adminData.phone || ""}
-                onChange={handleChange}
-              />
-            ) : (
-              <strong>{adminData.phone}</strong>
-            )}
-          </div>
-
-          <div className="admin-profile-row">
-            <span>Address</span>
-            {isEditing ? (
-              <input
-                name="address"
-                value={adminData.address || ""}
-                onChange={handleChange}
-              />
-            ) : (
-              <strong>{adminData.address}</strong>
-            )}
-          </div>
-
-          <div className="admin-profile-row">
-            <span>Joined</span>
-            <strong>{adminData.joined || "2026"}</strong>
-          </div>
-        </div>
-
-        <div className="admin-profile-actions">
-          {isEditing ? (
-            <button onClick={handleSave}>
-              <span className="material-symbols-outlined">save</span>
-              Save Profile
+            <button onClick={() => navigate("/addproduct")}>
+              <span className="material-symbols-outlined">add_box</span>
+              Add Medicine
             </button>
-          ) : (
-            <button onClick={() => setIsEditing(true)}>
-              <span className="material-symbols-outlined">edit</span>
-              Edit Profile
+
+            <button onClick={() => navigate("/productlist")}>
+              <span className="material-symbols-outlined">inventory_2</span>
+              Medicine List
             </button>
-          )}
 
-          <button onClick={() => navigate("/addproduct")}>
-            <span className="material-symbols-outlined">add_box</span>
-            Add Product
-          </button>
+            <button className="logout" onClick={handleLogout}>
+              <span className="material-symbols-outlined">logout</span>
+              Logout
+            </button>
+          </div>
+        </aside>
 
-          <button onClick={() => navigate("/productlist")}>
-            <span className="material-symbols-outlined">inventory_2</span>
-            Product List
-          </button>
+        <section className="admin-profile-main">
+          <div className="admin-profile-stats">
+            <div className="admin-profile-stat">
+              <span className="material-symbols-outlined">medication</span>
+              <div>
+                <h3>{products.length}</h3>
+                <p>Products</p>
+              </div>
+            </div>
 
-          <button className="logout" onClick={handleLogout}>
-            <span className="material-symbols-outlined">logout</span>
-            Logout
-          </button>
-        </div>
-      </div>
-    </div>
+            <div className="admin-profile-stat">
+              <span className="material-symbols-outlined">groups</span>
+              <div>
+                <h3>{users.length}</h3>
+                <p>Users</p>
+              </div>
+            </div>
+
+            <div className="admin-profile-stat">
+              <span className="material-symbols-outlined">shopping_bag</span>
+              <div>
+                <h3>{orders.length}</h3>
+                <p>Orders</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="admin-profile-info-card">
+            <div className="admin-profile-card-title">
+              <h3>Admin Information</h3>
+              <p>Basic account and contact details</p>
+            </div>
+
+            <div className="admin-profile-info-grid">
+              <div className="admin-profile-field">
+                <label>Full Name</label>
+                {isEditing ? (
+                  <input
+                    name="name"
+                    value={adminData.name || ""}
+                    onChange={handleChange}
+                  />
+                ) : (
+                  <strong>{adminData.name || "Admin"}</strong>
+                )}
+              </div>
+
+              <div className="admin-profile-field">
+                <label>Email Address</label>
+                {isEditing ? (
+                  <input
+                    name="email"
+                    value={adminData.email || ""}
+                    onChange={handleChange}
+                  />
+                ) : (
+                  <strong>{adminData.email || "N/A"}</strong>
+                )}
+              </div>
+
+              <div className="admin-profile-field">
+                <label>Phone Number</label>
+                {isEditing ? (
+                  <input
+                    name="phone"
+                    value={adminData.phone || ""}
+                    onChange={handleChange}
+                  />
+                ) : (
+                  <strong>{adminData.phone || "N/A"}</strong>
+                )}
+              </div>
+
+              <div className="admin-profile-field">
+                <label>Role</label>
+                <strong>{adminData.role || "Admin"}</strong>
+              </div>
+
+              <div className="admin-profile-field full">
+                <label>Address</label>
+                {isEditing ? (
+                  <input
+                    name="address"
+                    value={adminData.address || ""}
+                    onChange={handleChange}
+                  />
+                ) : (
+                  <strong>{adminData.address || "N/A"}</strong>
+                )}
+              </div>
+
+              <div className="admin-profile-field">
+                <label>Joined</label>
+                <strong>{adminData.joined || "2026"}</strong>
+              </div>
+            </div>
+          </div>
+
+          <div className="admin-profile-control-card">
+            <div className="admin-profile-card-title">
+              <h3>Store Controls</h3>
+              <p>Quick admin management shortcuts</p>
+            </div>
+
+            <div className="admin-profile-control-grid">
+              <button onClick={() => navigate("/addproduct")}>
+                <span className="material-symbols-outlined">add_box</span>
+                Add Product
+              </button>
+
+              <button onClick={() => navigate("/productlist")}>
+                <span className="material-symbols-outlined">inventory_2</span>
+                Product List
+              </button>
+
+              <button onClick={() => navigate("/admindashboard")}>
+                <span className="material-symbols-outlined">dashboard</span>
+                Dashboard
+              </button>
+
+              <button onClick={() => navigate("/userhome")}>
+                <span className="material-symbols-outlined">storefront</span>
+                Store Preview
+              </button>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
   );
 }
 

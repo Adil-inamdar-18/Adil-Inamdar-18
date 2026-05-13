@@ -3,12 +3,19 @@ import "./invoice.css";
 
 function InvoicePage() {
   const [orders, setOrders] = useState([]);
-  const user = JSON.parse(localStorage.getItem("loggedInUser")) || {};
 
   useEffect(() => {
     const savedOrders = JSON.parse(localStorage.getItem("orders")) || [];
-    setOrders(savedOrders);
+    setOrders(Array.isArray(savedOrders) ? [...savedOrders].reverse() : []);
   }, []);
+
+  const formatINR = (price) => {
+    return new Intl.NumberFormat("en-IN", {
+      style: "currency",
+      currency: "INR",
+      maximumFractionDigits: 0,
+    }).format(Number(price) || 0);
+  };
 
   const cancelOrder = (id) => {
     const updatedOrders = orders.map((item) =>
@@ -16,7 +23,11 @@ function InvoicePage() {
     );
 
     setOrders(updatedOrders);
-    localStorage.setItem("orders", JSON.stringify(updatedOrders));
+
+    localStorage.setItem(
+      "orders",
+      JSON.stringify([...updatedOrders].reverse())
+    );
   };
 
   const clearCancelledOrders = () => {
@@ -25,7 +36,11 @@ function InvoicePage() {
     );
 
     setOrders(filteredOrders);
-    localStorage.setItem("orders", JSON.stringify(filteredOrders));
+
+    localStorage.setItem(
+      "orders",
+      JSON.stringify([...filteredOrders].reverse())
+    );
   };
 
   const getOrderTotal = (order) => {
@@ -36,7 +51,10 @@ function InvoicePage() {
     if (Array.isArray(order.items)) {
       return order.items.reduce((sum, item) => {
         if (typeof item === "string") return sum;
-        return sum + Number(item.price || 0) * Number(item.qty || 1);
+
+        return (
+          sum + Number(item.price || 0) * Number(item.qty || 1)
+        );
       }, 0);
     }
 
@@ -44,75 +62,99 @@ function InvoicePage() {
   };
 
   const handlePrintInvoice = (order) => {
+    const customer = order.customer || {};
+
     const printWindow = window.open("", "_blank");
 
     printWindow.document.write(`
       <html>
         <head>
           <title>Invoice ${order.id}</title>
+
           <style>
-            body {
-              font-family: Arial, sans-serif;
-              padding: 30px;
-              color: #0f172a;
+            body{
+              font-family:Arial,sans-serif;
+              padding:30px;
+              background:#f1f5f9;
+              color:#172337;
             }
 
-            .invoice-box {
-              max-width: 800px;
-              margin: auto;
-              border: 1px solid #ddd;
-              padding: 30px;
-              border-radius: 12px;
+            .invoice-box{
+              max-width:850px;
+              margin:auto;
+              background:white;
+              border-radius:18px;
+              padding:32px;
             }
 
-            .header {
-              display: flex;
-              justify-content: space-between;
-              border-bottom: 2px solid #0f766e;
-              padding-bottom: 15px;
-              margin-bottom: 20px;
+            .header{
+              display:flex;
+              justify-content:space-between;
+              border-bottom:3px solid #0f766e;
+              padding-bottom:18px;
+              margin-bottom:24px;
             }
 
-            h1 {
-              color: #0f766e;
-              margin: 0;
+            h1{
+              margin:0;
+              color:#0f766e;
             }
 
-            table {
-              width: 100%;
-              border-collapse: collapse;
-              margin-top: 20px;
+            .badge{
+              display:inline-block;
+              padding:6px 12px;
+              border-radius:999px;
+              background:#dcfce7;
+              color:#15803d;
+              font-weight:bold;
             }
 
-            th,
-            td {
-              border: 1px solid #ddd;
-              padding: 12px;
-              text-align: left;
+            .cancelled{
+              background:#fee2e2;
+              color:#dc2626;
             }
 
-            th {
-              background: #f0fdfa;
-              color: #0f766e;
+            table{
+              width:100%;
+              border-collapse:collapse;
+              margin-top:20px;
             }
 
-            .total {
-              text-align: right;
-              margin-top: 20px;
-              font-size: 20px;
-              font-weight: bold;
-              color: #0f766e;
+            th,td{
+              border:1px solid #e5e7eb;
+              padding:12px;
+              text-align:left;
             }
 
-            .cancelled {
-              color: #dc2626;
-              font-weight: bold;
+            th{
+              background:#ecfeff;
+              color:#0f766e;
             }
 
-            .footer {
-              margin-top: 30px;
-              text-align: center;
-              color: #64748b;
+            .summary{
+              margin-top:24px;
+              margin-left:auto;
+              width:320px;
+            }
+
+            .row{
+              display:flex;
+              justify-content:space-between;
+              margin-bottom:10px;
+            }
+
+            .total{
+              padding-top:12px;
+              border-top:1px dashed #94a3b8;
+              font-size:20px;
+              font-weight:bold;
+              color:#0f766e;
+            }
+
+            .footer{
+              margin-top:30px;
+              text-align:center;
+              color:#64748b;
             }
           </style>
         </head>
@@ -127,28 +169,49 @@ function InvoicePage() {
 
               <div>
                 <p><strong>Invoice ID:</strong> ${order.id}</p>
-                <p><strong>Date:</strong> ${order.date || "N/A"}</p>
-                <p><strong>Time:</strong> ${order.time || "N/A"}</p>
-                <p><strong>Status:</strong> 
-                  <span class="${order.status === "Cancelled" ? "cancelled" : ""}">
-                    ${order.status || "Pending"}
+                <p><strong>Date:</strong> ${
+                  order.createdAt || order.date || "N/A"
+                }</p>
+
+                <p>
+                  <strong>Status:</strong>
+
+                  <span class="${
+                    order.status === "Cancelled"
+                      ? "badge cancelled"
+                      : "badge"
+                  }">
+                    ${order.status || "Placed"}
                   </span>
                 </p>
               </div>
             </div>
 
-            <p><strong>Customer Name:</strong> ${user.name || "Customer"}</p>
-            <p><strong>Email:</strong> ${user.email || "N/A"}</p>
-            <p><strong>Phone:</strong> ${user.phone || "N/A"}</p>
-            <p><strong>Address:</strong> ${user.address || "N/A"}</p>
+            <h3>Customer Details</h3>
+
+            <p><strong>Name:</strong> ${
+              customer.name || "Customer"
+            }</p>
+
+            <p><strong>Email:</strong> ${
+              customer.email || "N/A"
+            }</p>
+
+            <p><strong>Phone:</strong> ${
+              customer.phone || "N/A"
+            }</p>
+
+            <p><strong>Address:</strong> ${
+              customer.address || "N/A"
+            }</p>
 
             <table>
               <thead>
                 <tr>
-                  <th>Product</th>
+                  <th>Medicine</th>
                   <th>Qty</th>
                   <th>Price</th>
-                  <th>Amount</th>
+                  <th>Total</th>
                 </tr>
               </thead>
 
@@ -158,29 +221,52 @@ function InvoicePage() {
                     ? order.items
                         .map((item) => {
                           const name =
-                            typeof item === "string" ? item : item.name;
-                          const qty = typeof item === "string" ? 1 : item.qty || 1;
+                            typeof item === "string"
+                              ? item
+                              : item.name;
+
+                          const qty =
+                            typeof item === "string"
+                              ? 1
+                              : item.qty || 1;
+
                           const price =
-                            typeof item === "string" ? 0 : Number(item.price || 0);
-                          const amount = price * qty;
+                            typeof item === "string"
+                              ? 0
+                              : Number(item.price || 0);
 
                           return `
                             <tr>
-                              <td>${name || "Medicine"}</td>
+                              <td>${name}</td>
                               <td>${qty}</td>
-                              <td>₹${price.toFixed(2)}</td>
-                              <td>₹${amount.toFixed(2)}</td>
+                              <td>${formatINR(price)}</td>
+                              <td>${formatINR(price * qty)}</td>
                             </tr>
                           `;
                         })
                         .join("")
-                    : `<tr><td colspan="4">No product details</td></tr>`
+                    : ""
                 }
               </tbody>
             </table>
 
-            <div class="total">
-              Total: ₹${getOrderTotal(order).toFixed(2)}
+            <div class="summary">
+              <div class="row">
+                <span>Subtotal</span>
+                <strong>${formatINR(
+                  Number(order.subtotal || getOrderTotal(order))
+                )}</strong>
+              </div>
+
+              <div class="row">
+                <span>Tax</span>
+                <strong>${formatINR(Number(order.tax || 0))}</strong>
+              </div>
+
+              <div class="row total">
+                <span>Total</span>
+                <strong>${formatINR(getOrderTotal(order))}</strong>
+              </div>
             </div>
 
             <div class="footer">
@@ -200,14 +286,17 @@ function InvoicePage() {
   };
 
   return (
-    <div className="invoice-page">
+    <main className="invoice-page">
       <div className="invoice-header">
         <div>
           <h1>Download Invoices</h1>
           <p>Your HealthHub order invoices and bills</p>
         </div>
 
-        <button className="clear-orders-btn" onClick={clearCancelledOrders}>
+        <button
+          className="clear-orders-btn"
+          onClick={clearCancelledOrders}
+        >
           Clear Cancelled
         </button>
       </div>
@@ -217,7 +306,16 @@ function InvoicePage() {
           orders.map((item, index) => (
             <div className="invoice-card" key={item.id || index}>
               <div className="invoice-card-top">
-                <h3>{item.id}</h3>
+                <div>
+                  <h3>{item.id}</h3>
+
+                  <p>
+                    {item.createdAt ||
+                      item.date ||
+                      "Recently placed"}
+                  </p>
+                </div>
+
                 <span
                   className={
                     item.status === "Cancelled"
@@ -225,31 +323,45 @@ function InvoicePage() {
                       : "invoice-status"
                   }
                 >
-                  {item.status || "Pending"}
+                  {item.status || "Placed"}
                 </span>
               </div>
 
               <div className="invoice-details">
                 <p>
-                  <strong>Customer:</strong> {user.name || "Customer"}
+                  <strong>Customer</strong>
+
+                  <span>
+                    {item.customer?.name || "Customer"}
+                  </span>
                 </p>
 
                 <p>
-                  <strong>Date:</strong> {item.date || "N/A"}
+                  <strong>Payment</strong>
+
+                  <span>
+                    {String(
+                      item.paymentMethod || "COD"
+                    ).toUpperCase()}
+                  </span>
                 </p>
 
                 <p>
-                  <strong>Time:</strong> {item.time || "N/A"}
+                  <strong>Items</strong>
+
+                  <span>
+                    {Array.isArray(item.items)
+                      ? item.items.length
+                      : 0}
+                  </span>
                 </p>
 
                 <p>
-                  <strong>Products:</strong>{" "}
-                  {Array.isArray(item.items) ? item.items.length : 0}
-                </p>
+                  <strong>Total</strong>
 
-                <p>
-                  <strong>Total Amount:</strong> ₹
-                  {getOrderTotal(item).toFixed(2)}
+                  <span>
+                    {formatINR(getOrderTotal(item))}
+                  </span>
                 </p>
               </div>
 
@@ -258,7 +370,7 @@ function InvoicePage() {
                   onClick={() => handlePrintInvoice(item)}
                   className="download-btn"
                 >
-                  Download
+                  Download Invoice
                 </button>
 
                 {item.status !== "Cancelled" && (
@@ -266,17 +378,27 @@ function InvoicePage() {
                     onClick={() => cancelOrder(item.id)}
                     className="cancel-order-btn"
                   >
-                    Cancel
+                    Cancel Order
                   </button>
                 )}
               </div>
             </div>
           ))
         ) : (
-          <div className="empty-invoice">No invoices available</div>
+          <div className="empty-invoice">
+            <span className="material-symbols-outlined">
+              receipt_long
+            </span>
+
+            <h2>No invoices available</h2>
+
+            <p>
+              Your medicine order invoices will appear here.
+            </p>
+          </div>
         )}
       </div>
-    </div>
+    </main>
   );
 }
 

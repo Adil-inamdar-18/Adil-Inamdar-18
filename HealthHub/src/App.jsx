@@ -17,7 +17,7 @@ import AppointmentPage from "./user/components/AppointmentPage";
 import UserLayout from "./user/components/UserLayout";
 import InvoicePage from "./user/components/InvoicePage";
 import ProductDetail from "./user/components/ProductDetail";
-import Searchresult from "./user/components/Searchresult";
+import OrdersPage from "./user/components/OrdersPage";
 
 /* ADMIN */
 import AdminLayout from "./admin/components/AdminLayout";
@@ -47,8 +47,8 @@ function App() {
             <Route path="/doctorinfo" element={<DoctorInfoPage />} />
             <Route path="/appointment" element={<AppointmentPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />
+            <Route path="/orders" element={<OrdersPage />} />
             <Route path="/productdetail/:id" element={<ProductDetail />} />
-            <Route path="/searchresult" element={<Searchresult />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/favirote" element={<Favirotescreen />} />
             <Route path="/cart" element={<ShoppingCart />} />

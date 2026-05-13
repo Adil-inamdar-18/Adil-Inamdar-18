@@ -4,18 +4,17 @@ import { useNavigate } from "react-router-dom";
 
 function Favirotescreen() {
   const navigate = useNavigate();
+
   const [items, setItems] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const saveditems = JSON.parse(localStorage.getItem("favirote")) || [];
-    setItems(saveditems);
+    setItems(Array.isArray(saveditems) ? saveditems : []);
   }, []);
 
   const getImageUrl = (url) => {
-    if (!url) {
-      return "https://via.placeholder.com/300x300?text=No+Image";
-    }
+    if (!url) return "https://via.placeholder.com/300x300?text=No+Image";
 
     if (url.startsWith("http") || url.startsWith("data:image")) {
       return url;
@@ -24,10 +23,61 @@ function Favirotescreen() {
     return `https://batch-6-backend-production.up.railway.app${url}`;
   };
 
+  const formatINR = (price) => {
+    return new Intl.NumberFormat("en-IN", {
+      style: "currency",
+      currency: "INR",
+      maximumFractionDigits: 0,
+    }).format(Number(price) || 0);
+  };
+
   const removeItem = (id) => {
-    const updateditems = items.filter((i) => (i._id || i.id) !== id);
+    const updateditems = items.filter(
+      (item, index) => String(item._id || item.id || index) !== String(id)
+    );
+
     setItems(updateditems);
     localStorage.setItem("favirote", JSON.stringify(updateditems));
+    window.dispatchEvent(new Event("faviroteUpdated"));
+  };
+
+  const addToCart = (item) => {
+    const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
+    const itemId = item._id || item.id || item.name;
+
+    const existing = savedCart.find(
+      (cartItem, index) =>
+        String(cartItem._id || cartItem.id || index) === String(itemId)
+    );
+
+    let updatedCart;
+
+    if (existing) {
+      updatedCart = savedCart.map((cartItem, index) => {
+        const cartId = cartItem._id || cartItem.id || index;
+
+        if (String(cartId) === String(itemId)) {
+          return {
+            ...cartItem,
+            qty: Number(cartItem.qty || 1) + 1,
+          };
+        }
+
+        return cartItem;
+      });
+    } else {
+      updatedCart = [
+        ...savedCart,
+        {
+          ...item,
+          qty: 1,
+          imageUrl: getImageUrl(item.imageUrl || item.image),
+        },
+      ];
+    }
+
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    window.dispatchEvent(new Event("cartUpdated"));
   };
 
   const filteredItems = useMemo(() => {
@@ -39,144 +89,117 @@ function Favirotescreen() {
       (item) =>
         item.name?.toLowerCase().includes(search) ||
         item.brand?.toLowerCase().includes(search) ||
-        item.category?.toLowerCase().includes(search),
+        item.category?.toLowerCase().includes(search)
     );
   }, [items, searchTerm]);
 
   return (
-    <div className="fav-page">
-      <header className="fav-header">
-        <div className="fav-header-left">
-       
-
-          <div className="fav-title-wrap">
-            <h1>My Favorites</h1>
-            <p>{items.length} ITEMS SAVED</p>
-          </div>
+    <main className="fav-page">
+      <div className="fav-page-header">
+        <div>
+          <h1>My Wishlist</h1>
+          <p>View and manage your saved medicines</p>
         </div>
 
-        <div className="fav-header-actions">
-          <button
-            className="fav-icon-btn fav-desktop-icon"
-            onClick={() => navigate("/userhome")}
-          >
-            <span className="material-symbols-outlined">home</span>
-          </button>
+        <button className="fav-continue-btn" onClick={() => navigate("/userhome")}>
+          <span className="material-symbols-outlined">storefront</span>
+          Continue Shopping
+        </button>
+      </div>
 
-          <button
-            className="fav-icon-btn cart-btn"
-            onClick={() => navigate("/cart")}
-          >
-            <span className="material-symbols-outlined">shopping_cart</span>
+      <div className="fav-toolbar">
+        <div className="fav-search-wrap">
+          <span className="material-symbols-outlined fav-search-icon">
+            search
+          </span>
 
-            {JSON.parse(localStorage.getItem("cart"))?.length > 0 && (
-              <span className="cart-count">
-                {JSON.parse(localStorage.getItem("cart")).length}
-              </span>
-            )}
-          </button>
-
-          <button
-            className="fav-icon-btn fav-desktop-icon"
-            onClick={() => navigate("/profile")}
-          >
-            <span className="material-symbols-outlined">person</span>
-          </button>
+          <input
+            className="fav-search"
+            type="search"
+            placeholder="Search wishlist medicines..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
         </div>
-      </header>
 
-      {/* <div className="fav-search-wrap">
-        <span className="material-symbols-outlined fav-search-icon">
-          search
-        </span>
-        <input
-          className="fav-search"
-          type="search"
-          placeholder="Search here..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-      </div> */}
+        <div className="fav-count-pill">
+          <span className="material-symbols-outlined">favorite</span>
+          {filteredItems.length} saved items
+        </div>
+      </div>
 
-      <main className="fav-container">
-        <div className="fav-grid">
-          {filteredItems.length > 0 ? (
-            filteredItems.map((item, index) => {
+      <section className="fav-container">
+        {filteredItems.length > 0 ? (
+          <div className="fav-grid">
+            {filteredItems.map((item, index) => {
               const itemId = item._id || item.id || index;
 
               return (
                 <div className="fav-card" key={itemId}>
-                  <div
-                    className="fav-card-img"
-                    style={{
-                      backgroundImage: `url("${getImageUrl(
-                        item.imageUrl || item.image,
-                      )}")`,
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                      backgroundRepeat: "no-repeat",
-                    }}
-                  >
+                  <div className="fav-card-img">
+                    <img
+                      src={getImageUrl(item.imageUrl || item.image)}
+                      alt={item.name || "Medicine"}
+                      onError={(e) => {
+                        e.target.src =
+                          "https://via.placeholder.com/300x300?text=No+Image";
+                      }}
+                    />
+
                     <button
                       className="fav-fav-btn"
                       onClick={() => removeItem(itemId)}
+                      title="Remove from wishlist"
                     >
-                      ❤
+                      <span className="material-symbols-outlined">favorite</span>
                     </button>
                   </div>
 
                   <div className="fav-card-body">
-                    <h3>{item.name}</h3>
-                    <p>{item.brand || item.category || "Medicine"}</p>
+                    <p className="fav-category">
+                      {item.brand || item.category || "Medicine"}
+                    </p>
 
-                    <div className="fav-card-bottom">
-                      <span>${Number(item.price || 0).toFixed(2)}</span>
-                      <button onClick={() => removeItem(itemId)}>Remove</button>
+                    <h3>{item.name || "Medicine"}</h3>
+
+                    <div className="fav-price-row">
+                      <strong>{formatINR(item.price)}</strong>
+                      <span>Free delivery</span>
+                    </div>
+
+                    <div className="fav-card-actions">
+                      <button
+                        className="fav-add-cart"
+                        onClick={() => addToCart(item)}
+                      >
+                        <span className="material-symbols-outlined">
+                          add_shopping_cart
+                        </span>
+                        Add to Cart
+                      </button>
+
+                      <button
+                        className="fav-remove"
+                        onClick={() => removeItem(itemId)}
+                      >
+                        Remove
+                      </button>
                     </div>
                   </div>
                 </div>
               );
-            })
-          ) : (
-            <div className="fav-empty">
-              <h3>No favorites found</h3>
-              <p>Add medicines to favorites from the user home page.</p>
-            </div>
-          )}
-        </div>
-      </main>
-
-      <nav className="fav-mobile-nav">
-        <button onClick={() => navigate("/userhome")}>
-          <span className="material-symbols-outlined">home</span>
-          <small>Home</small>
-        </button>
-
-        <button onClick={() => navigate("/cart")}>
-          <span className="material-symbols-outlined">shopping_cart</span>
-          <small>Cart</small>
-        </button>
-
-        <button onClick={() => navigate("/profile")}>
-          <span className="material-symbols-outlined">person</span>
-          <small>Profile</small>
-        </button>
-
-        <button
-          onClick={() => {
-            if (navigator.share) {
-              navigator.share({
-                title: "My Favorite Medicines",
-                text: "Check out my saved favorite medicines.",
-              });
-            }
-          }}
-        >
-          <span className="material-symbols-outlined">share</span>
-          <small>Share</small>
-        </button>
-      </nav>
-    </div>
+            })}
+          </div>
+        ) : (
+          <div className="fav-empty">
+            <span className="material-symbols-outlined">favorite</span>
+            <h3>No favorites found</h3>
+            <p>Add medicines to wishlist from the store page.</p>
+            <button onClick={() => navigate("/userhome")}>Shop Medicines</button>
+          </div>
+        )}
+      </section>
+    </main>
   );
 }
 

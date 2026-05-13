@@ -1,15 +1,32 @@
 import React, { useEffect, useState } from "react";
-import "./orders.css";
+import "./orderspage.css";
 import { useNavigate } from "react-router-dom";
 
 function OrdersPage() {
   const [orders, setOrders] = useState([]);
   const navigate = useNavigate();
 
-useEffect(() => {
-  const savedOrders = JSON.parse(localStorage.getItem("orders")) || [];
-  setOrders([...savedOrders].reverse());
-}, []);
+  useEffect(() => {
+    const savedOrders = JSON.parse(localStorage.getItem("orders")) || [];
+    setOrders(Array.isArray(savedOrders) ? savedOrders : []);
+  }, []);
+
+  const formatINR = (price) => {
+    return new Intl.NumberFormat("en-IN", {
+      style: "currency",
+      currency: "INR",
+      maximumFractionDigits: 0,
+    }).format(Number(price) || 0);
+  };
+
+  const getOrderTotal = (order) => {
+    if (order.total || order.amount) return Number(order.total || order.amount);
+
+    return (order.items || []).reduce(
+      (sum, item) => sum + Number(item.price || 0) * Number(item.qty || 1),
+      0
+    );
+  };
 
   const removeOrder = (id) => {
     const updatedOrders = orders.filter((order) => order.id !== id);
@@ -17,91 +34,273 @@ useEffect(() => {
     localStorage.setItem("orders", JSON.stringify(updatedOrders));
   };
 
-  return (
-    <div className="orders-page">
-      <div className="orders-wrapper">
-        <div className="orders-header">
-          <div>
-            <h1>My Orders</h1>
-            <p>Track your recent medicine orders</p>
+  const downloadInvoice = (order) => {
+    const customer = order.customer || {};
+    const printWindow = window.open("", "_blank");
+
+    printWindow.document.write(`
+      <html>
+        <head>
+          <title>Invoice ${order.id}</title>
+          <style>
+            body {
+              font-family: Arial, sans-serif;
+              padding: 30px;
+              background: #f1f3f6;
+              color: #172337;
+            }
+            .invoice-box {
+              max-width: 850px;
+              margin: auto;
+              background: white;
+              padding: 32px;
+              border-radius: 16px;
+            }
+            .header {
+              display: flex;
+              justify-content: space-between;
+              border-bottom: 3px solid #0f766e;
+              padding-bottom: 18px;
+              margin-bottom: 24px;
+            }
+            h1 {
+              margin: 0;
+              color: #0f766e;
+            }
+            table {
+              width: 100%;
+              border-collapse: collapse;
+              margin-top: 20px;
+            }
+            th, td {
+              border: 1px solid #e5e7eb;
+              padding: 12px;
+              text-align: left;
+            }
+            th {
+              background: #ecfeff;
+              color: #0f766e;
+            }
+            .summary {
+              width: 320px;
+              margin-left: auto;
+              margin-top: 22px;
+            }
+            .row {
+              display: flex;
+              justify-content: space-between;
+              margin-bottom: 10px;
+            }
+            .total {
+              border-top: 1px dashed #94a3b8;
+              padding-top: 12px;
+              font-size: 20px;
+              font-weight: bold;
+              color: #0f766e;
+            }
+            .badge {
+              display: inline-block;
+              padding: 6px 12px;
+              border-radius: 999px;
+              background: #dcfce7;
+              color: #15803d;
+              font-weight: bold;
+            }
+            .footer {
+              margin-top: 30px;
+              text-align: center;
+              color: #64748b;
+            }
+          </style>
+        </head>
+        <body>
+          <div class="invoice-box">
+            <div class="header">
+              <div>
+                <h1>HealthHub</h1>
+                <p>Medical Store Invoice</p>
+              </div>
+              <div>
+                <p><strong>Invoice ID:</strong> ${order.id}</p>
+                <p><strong>Date:</strong> ${order.createdAt || order.date || "N/A"}</p>
+                <p><strong>Status:</strong> <span class="badge">${order.status || "Placed"}</span></p>
+              </div>
+            </div>
+
+            <h3>Customer Details</h3>
+            <p><strong>Name:</strong> ${customer.name || "Customer"}</p>
+            <p><strong>Email:</strong> ${customer.email || "N/A"}</p>
+            <p><strong>Phone:</strong> ${customer.phone || "N/A"}</p>
+            <p><strong>Address:</strong> ${customer.address || "N/A"}</p>
+            <p><strong>Payment:</strong> ${String(order.paymentMethod || "COD").toUpperCase()}</p>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>Medicine</th>
+                  <th>Qty</th>
+                  <th>Price</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${(order.items || [])
+                  .map((item) => {
+                    const qty = Number(item.qty || 1);
+                    const price = Number(item.price || 0);
+                    return `
+                      <tr>
+                        <td>${item.name || "Medicine"}</td>
+                        <td>${qty}</td>
+                        <td>${formatINR(price)}</td>
+                        <td>${formatINR(price * qty)}</td>
+                      </tr>
+                    `;
+                  })
+                  .join("")}
+              </tbody>
+            </table>
+
+            <div class="summary">
+              <div class="row">
+                <span>Subtotal</span>
+                <strong>${formatINR(order.subtotal)}</strong>
+              </div>
+              <div class="row">
+                <span>Tax</span>
+                <strong>${formatINR(order.tax)}</strong>
+              </div>
+              <div class="row total">
+                <span>Total</span>
+                <strong>${formatINR(getOrderTotal(order))}</strong>
+              </div>
+            </div>
+
+            <div class="footer">
+              <p>Thank you for shopping with HealthHub.</p>
+              <p>This is a computer generated invoice.</p>
+            </div>
           </div>
 
-          <button className="orders-home-btn" onClick={() => navigate("/userhome")}>
-            Back Home
-          </button>
+          <script>
+            window.print();
+          </script>
+        </body>
+      </html>
+    `);
+
+    printWindow.document.close();
+  };
+
+  return (
+    <main className="orders-page">
+      <div className="orders-page-header">
+        <div>
+          <h1>My Orders</h1>
+          <p>Track orders and download medicine invoices</p>
         </div>
 
-        {orders.length > 0 ? (
-          <div className="orders-list">
-            {orders.map((order) => (
-              <div className="order-card" key={order.id}>
-                <div className="order-top">
-                  <div>
-                    <h3>Order #{order.id}</h3>
-                    <p>{order.createdAt}</p>
-                  </div>
+        <button className="orders-shop-btn" onClick={() => navigate("/userhome")}>
+          <span className="material-symbols-outlined">storefront</span>
+          Continue Shopping
+        </button>
+      </div>
 
-                  <span className={`order-status ${order.status.toLowerCase()}`}>
-                    {order.status}
-                  </span>
+      {orders.length > 0 ? (
+        <section className="orders-list">
+          {orders.map((order) => (
+            <article className="order-card" key={order.id}>
+              <div className="order-top">
+                <div>
+                  <p className="order-label">Order ID</p>
+                  <h3>#{order.id}</h3>
+                  <span>{order.createdAt || order.date || "Recently placed"}</span>
                 </div>
 
+                <span className={`order-status ${String(order.status || "placed").toLowerCase()}`}>
+                  {order.status || "Placed"}
+                </span>
+              </div>
+
+              <div className="order-content">
                 <div className="order-customer">
-                  <h4>Customer Details</h4>
-                  <p><strong>Name:</strong> {order.customer.name}</p>
-                  <p><strong>Phone:</strong> {order.customer.phone}</p>
-                  <p><strong>Email:</strong> {order.customer.email}</p>
-                  <p><strong>City:</strong> {order.customer.city}</p>
-                  <p><strong>Address:</strong> {order.customer.address}</p>
-                  <p><strong>Pincode:</strong> {order.customer.pincode}</p>
-                  <p><strong>Payment:</strong> {order.paymentMethod.toUpperCase()}</p>
+                  <h4>Delivery Details</h4>
+
+                  <div className="order-info-grid">
+                    <p><span>Name</span><strong>{order.customer?.name || "N/A"}</strong></p>
+                    <p><span>Phone</span><strong>{order.customer?.phone || "N/A"}</strong></p>
+                    <p><span>Email</span><strong>{order.customer?.email || "N/A"}</strong></p>
+                    <p><span>City</span><strong>{order.customer?.city || "N/A"}</strong></p>
+                    <p className="full"><span>Address</span><strong>{order.customer?.address || "N/A"}</strong></p>
+                    <p><span>Pincode</span><strong>{order.customer?.pincode || "N/A"}</strong></p>
+                    <p><span>Payment</span><strong>{String(order.paymentMethod || "COD").toUpperCase()}</strong></p>
+                  </div>
                 </div>
 
                 <div className="order-items">
                   <h4>Ordered Items</h4>
-                  {order.items.map((item) => (
-                    <div className="order-item-row" key={item._id}>
-                      <span>
-                        {item.name} {item.qty ? `x${item.qty}` : ""}
-                      </span>
-                      <span>${((item.price || 0) * (item.qty || 1)).toFixed(2)}</span>
+
+                  {(order.items || []).map((item, index) => (
+                    <div className="order-item-row" key={item._id || item.id || index}>
+                      <div>
+                        <strong>{item.name || "Medicine"}</strong>
+                        <span>Qty: {item.qty || 1}</span>
+                      </div>
+
+                      <b>{formatINR((item.price || 0) * (item.qty || 1))}</b>
                     </div>
                   ))}
                 </div>
+              </div>
 
+              <div className="order-bottom">
                 <div className="order-summary">
                   <div className="order-summary-row">
                     <span>Subtotal</span>
-                    <span>${order.subtotal.toFixed(2)}</span>
+                    <strong>{formatINR(order.subtotal)}</strong>
                   </div>
+
                   <div className="order-summary-row">
                     <span>Tax</span>
-                    <span>${order.tax.toFixed(2)}</span>
+                    <strong>{formatINR(order.tax)}</strong>
                   </div>
+
                   <div className="order-summary-row total-row">
                     <span>Total</span>
-                    <span>${order.total.toFixed(2)}</span>
+                    <strong>{formatINR(getOrderTotal(order))}</strong>
                   </div>
                 </div>
 
-                <button
-                  className="order-delete-btn"
-                  onClick={() => removeOrder(order.id)}
-                >
-                  Remove Order
-                </button>
+                <div className="order-actions">
+                  <button
+                    className="order-download-btn"
+                    onClick={() => downloadInvoice(order)}
+                  >
+                    <span className="material-symbols-outlined">download</span>
+                    Download Invoice
+                  </button>
+
+                  <button
+                    className="order-delete-btn"
+                    onClick={() => removeOrder(order.id)}
+                  >
+                    <span className="material-symbols-outlined">delete</span>
+                    Remove
+                  </button>
+                </div>
               </div>
-            ))}
-          </div>
-        ) : (
-          <div className="orders-empty">
-            <h3>No orders found</h3>
-            <p>You have not placed any order yet.</p>
-            <button onClick={() => navigate("/userhome")}>Shop Now</button>
-          </div>
-        )}
-      </div>
-    </div>
+            </article>
+          ))}
+        </section>
+      ) : (
+        <div className="orders-empty">
+          <span className="material-symbols-outlined">inventory_2</span>
+          <h3>No orders found</h3>
+          <p>You have not placed any medicine order yet.</p>
+          <button onClick={() => navigate("/userhome")}>Shop Now</button>
+        </div>
+      )}
+    </main>
   );
 }
 
