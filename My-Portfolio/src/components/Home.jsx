@@ -15,7 +15,7 @@ function Home() {
             Hi, I'm <span>Adil</span>
           </h1>
 
-          <h3 className="hero-subtitle">Front-End Developer & Video Editor</h3>
+          <h3 className="hero-subtitle">Mern-Stack Developer & Video Editor</h3>
 
           <p className="hero-text">
             I create modern responsive websites and engaging videos.

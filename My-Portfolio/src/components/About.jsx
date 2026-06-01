@@ -19,6 +19,7 @@ function About() {
                 alt="Adil"
                 className="img-fluid about-image"
               />
+
               <a
                 href="/images/FRONTEND_DEVLOPER.pdf"
                 className="btn btn-danger mt-4 px-4 py-2"
@@ -32,12 +33,16 @@ function About() {
 
           <div className="col-lg-7">
             <div className="about-content-card">
-              <h3 className="about-heading">Front-End Developer & Video Editor</h3>
+              <h3 className="about-heading">
+                Mern-Stack Developer & Video Editor
+              </h3>
+
               <p className="about-text">
-                Hello! My name is Adil, and I am a Front-End Developer and Video
+                Hello! My name is Adil, and I am a Mern-Stack Developer and Video
                 Editor from India. I enjoy building websites as well as creating
                 visually engaging videos.
               </p>
+
               <p className="about-text">
                 My goal is to grow as a full-stack developer and professional
                 content creator while building projects that look modern, clean,
@@ -46,23 +51,32 @@ function About() {
 
               <div className="about-tabs">
                 <button
-                  className={activeTab === "skills" ? "tab-btn active" : "tab-btn"}
+                  className={
+                    activeTab === "skills" ? "tab-btn active" : "tab-btn"
+                  }
                   onClick={() => setActiveTab("skills")}
                 >
                   My Skills
                 </button>
+
                 <button
-                  className={activeTab === "experience" ? "tab-btn active" : "tab-btn"}
-                  onClick={() => setActiveTab("experience")}
-                >
-                  Experience
-                </button>
-                <button
-                  className={activeTab === "education" ? "tab-btn active" : "tab-btn"}
+                  className={
+                    activeTab === "education" ? "tab-btn active" : "tab-btn"
+                  }
                   onClick={() => setActiveTab("education")}
                 >
                   Education
                 </button>
+
+                <button
+                  className={
+                    activeTab === "projects" ? "tab-btn active" : "tab-btn"
+                  }
+                  onClick={() => setActiveTab("projects")}
+                >
+                  Projects
+                </button>
+
                 <button
                   className={
                     activeTab === "video-editing" ? "tab-btn active" : "tab-btn"
@@ -79,38 +93,23 @@ function About() {
                     <h4>
                       <span>Web</span> Development
                     </h4>
+
                     <ul className="custom-list">
                       <li>HTML5</li>
                       <li>CSS3</li>
                       <li>JavaScript</li>
-                      <li>DOM Manipulation</li>
+                      <li>React.js</li>
                       <li>Bootstrap</li>
+                      <li>Tailwind CSS</li>
                       <li>Responsive Design</li>
                       <li>Git & GitHub</li>
-                    </ul>
-                  </div>
-                )}
-
-                {activeTab === "experience" && (
-                  <div className="tab-content-box">
-                    <ul className="custom-list">
-                      <li>
-                        <span>2018</span>
-                        <br />
-                        Essential Store Manager & Cashier
-                      </li>
-                      <li>
-                        <span>2024</span>
-                        <br />
-                        Video Editing for YouTube & Instagram using CapCut and
-                        DaVinci Resolve
-                      </li>
-                      <li>
-                        <span>2024</span>
-                        <br />
-                        Canva, PicsArt, Pixlab, Photoshop for thumbnails and
-                        photo editing
-                      </li>
+                      <li>Node.js</li>
+                      <li>Express.js</li>
+                      <li>MongoDB</li>
+                      <li>Mongoose</li>
+                      <li>Firebase</li>
+                      <li>VsCode</li>
+                      <li>JWT Authentication</li>
                     </ul>
                   </div>
                 )}
@@ -123,15 +122,80 @@ function About() {
                         <br />
                         MERN Stack Training at Codempower
                       </li>
+
                       <li>
                         <span>2025</span>
                         <br />
                         BCA From Sandip University Nashik
                       </li>
+
                       <li>
                         <span>2027</span>
                         <br />
                         MCA From Sandip University Nashik
+                      </li>
+                    </ul>
+                  </div>
+                )}
+
+                {activeTab === "projects" && (
+                  <div className="tab-content-box">
+                    <ul className="custom-list">
+                      <li>
+                        <span>🚀 AI Website Builder</span>
+                        <br />
+                        AI-powered website generator that creates responsive
+                        websites from user prompts with dynamic content and
+                        real-time preview functionality.
+                        <br />
+                        <strong>Tech Stack:</strong> React, JavaScript,
+                        Bootstrap, AI Integration
+                        <br />
+                        <a
+                          href="https://genweb-ai-client.onrender.com/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Live Demo
+                        </a>
+                      </li>
+
+                      <br />
+
+                      <li>
+                        <span>👨‍💼 Employee Management System</span>
+                        <br />
+                        Full-stack MERN application with role-based
+                        authentication, employee management, attendance
+                        tracking, leave requests, salary records, and admin
+                        dashboard.
+                        <br />
+                        <strong>Tech Stack:</strong> React, Node.js, Express.js,
+                        MongoDB, JWT
+                        <br />
+                        <a
+                          href="https://ems-frontend-8tz1.onrender.com"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Live Demo
+                        </a>
+                        <div className="mt-2">
+                          <small>
+                            <strong>Admin Login</strong>
+                            <br />
+                            Email: admin@example.com
+                            <br />
+                            Password: admin123
+                            <br />
+                            <br />
+                            <strong>User Login</strong>
+                            <br />
+                            Email: brad@example.com
+                            <br />
+                            Password: brad1234
+                          </small>
+                        </div>
                       </li>
                     </ul>
                   </div>
@@ -142,6 +206,7 @@ function About() {
                     <h4>
                       <span>Video</span> Editing
                     </h4>
+
                     <ul className="custom-list">
                       <li>CapCut</li>
                       <li>Basic After Effects</li>
