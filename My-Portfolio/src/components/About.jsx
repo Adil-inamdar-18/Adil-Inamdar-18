@@ -21,7 +21,7 @@ function About() {
               />
 
               <a
-                href="/images/FRONTEND_DEVLOPER.pdf"
+                href="\public\images\Adil_Inamdar_MERN_Stack_Developer_ATS_pdf (1).pdf"
                 className="btn btn-danger mt-4 px-4 py-2"
                 target="_blank"
                 rel="noreferrer"
