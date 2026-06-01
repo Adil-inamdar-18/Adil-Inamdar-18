@@ -15,16 +15,16 @@ function About() {
           <div className="col-lg-5">
             <div className="about-image-card text-center">
               <img
-                src="./images/about-workspace.jpg"
+                src="/images/about-workspace.jpg"
                 alt="Adil"
                 className="img-fluid about-image"
               />
 
               <a
-                href="\public\images\Adil_Inamdar_MERN_Stack_Developer_ATS_pdf (1).pdf"
+                href="/images/Adil_Inamdar_MERN_Stack_Developer_ATS.pdf"
                 className="btn btn-danger mt-4 px-4 py-2"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
               >
                 Download CV
               </a>
@@ -38,9 +38,9 @@ function About() {
               </h3>
 
               <p className="about-text">
-                Hello! My name is Adil, and I am a Mern-Stack Developer and Video
-                Editor from India. I enjoy building websites as well as creating
-                visually engaging videos.
+                Hello! My name is Adil, and I am a Mern-Stack Developer and
+                Video Editor from India. I enjoy building websites as well as
+                creating visually engaging videos.
               </p>
 
               <p className="about-text">
