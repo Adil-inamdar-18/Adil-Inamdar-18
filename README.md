@@ -153,26 +153,17 @@ A modern pharmacy web app designed for medicine browsing, prescription handling,
 ## 📊 GitHub Stats
 
 <p align="center">
-  <img
-    src="https://github-readme-stats.vercel.app/api?username=Adil-Inamdar-FSD&show_icons=true&theme=radical&hide_border=true&include_all_commits=true&count_private=true"
-    alt="Adil's GitHub stats"
-  />
+  <img src="https://github-readme-stats.vercel.app/api?username=Adil-Inamdar-FSD&show_icons=true&theme=tokyonight&hide_border=true&include_all_commits=true&count_private=true" />
 </p>
 
 <p align="center">
-  <img
-    src="https://github-readme-streak-stats-eight.vercel.app/?user=Adil-Inamdar-FSD&theme=radical&hide_border=true"
-    alt="Adil's GitHub streak"
-  />
+  <img src="https://streak-stats.demolab.com?user=Adil-Inamdar-FSD&theme=tokyonight&hide_border=true" />
 </p>
 
 <p align="center">
-  <img
-    src="https://github-readme-stats.vercel.app/api/top-langs/?username=Adil-Inamdar-FSD&layout=compact&theme=radical&hide_border=true"
-    alt="Top languages"
-  />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Adil-Inamdar-FSD&layout=compact&theme=tokyonight&hide_border=true" />
 </p>
----
+
 
 ## 🔥 Contribution Snake
 
