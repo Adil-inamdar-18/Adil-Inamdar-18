@@ -1,41 +1,35 @@
 <h1 align="center">Hi 👋, I'm Adil Inamdar</h1>
-<h3 align="center">MERN Stack Developer | Backend-Focused Full Stack Builder | UI Enthusiast</h3>
+<h3 align="center">Backend-Focused MERN Stack Developer | Building Scalable Full-Stack Web Applications</h3>
 
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?color=FF004F&size=25&center=true&vCenter=true&width=700&lines=MERN+Stack+Developer;Frontend-Focused+Full+Stack+Developer;React+%7C+Node+%7C+Express+%7C+MongoDB;Building+Modern+Web+Apps;Code+%2B+Creativity" />
+  <img src="https://readme-typing-svg.herokuapp.com?color=FF004F&size=25&center=true&vCenter=true&width=850&lines=Backend-Focused+MERN+Stack+Developer;Node.js+%7C+Express.js+%7C+MongoDB;REST+API+Development+%26+Authentication;Building+Scalable+Full-Stack+Applications;Clean+UI+Powered+by+Strong+Backend+Logic" />
 </p>
 
 ---
 
 ## 💫 About Me
 
-* 💻 MERN Stack Developer focused on building responsive, scalable, and user-friendly web applications
-* ⚛️ Strong in modern frontend development with React, reusable components, and clean UI design
-* 🛠️ Expanding full-stack skills with **Node.js, Express.js, MongoDB, authentication, REST APIs, and deployment**
-* 📊 Interested in real-world projects like **expense trackers, e-commerce apps, dashboards, and business tools**
-* 🎨 I also enjoy design, video editing, and creating polished digital experiences
-* 🚀 Currently working on improving backend architecture, API integration, and production-ready MERN projects
+* 💻 Backend-focused **MERN Stack Developer** passionate about building practical and scalable web applications
+* ⚙️ Interested in backend architecture, REST APIs, authentication systems, reporting modules, and database-driven applications
+* 🛠️ Building full-stack apps using **MongoDB, Express.js, React, and Node.js**
+* 📊 I enjoy working on real-world systems such as **expense trackers, dashboards, food ordering platforms, AI tools, and management systems**
+* 🎯 Focused on writing clean backend logic, structuring maintainable APIs, and delivering smooth user experiences through well-built full-stack applications
+* 🚀 Currently improving backend development with better API design, advanced MongoDB usage, authentication workflows, and production-ready project structure
 
 ---
 
 ## 🧠 Tech Stack
 
-### 💻 Frontend
-
-<p>
-  <img src="https://skillicons.dev/icons?i=html,css,js,react,tailwind,bootstrap,nextjs" />
-</p>
-
 ### ⚙️ Backend
 
 <p>
-  <img src="https://skillicons.dev/icons?i=nodejs,express" />
+  <img src="https://skillicons.dev/icons?i=nodejs,express,mongodb" />
 </p>
 
-### 🗄️ Database
+### 💻 Frontend
 
 <p>
-  <img src="https://skillicons.dev/icons?i=mongodb" />
+  <img src="https://skillicons.dev/icons?i=react,js,html,css,tailwind,bootstrap,nextjs" />
 </p>
 
 ### 🛠️ Tools & Platforms
@@ -58,76 +52,102 @@
 
 ---
 
-## 🚀 Featured MERN Projects
+## 🚀 Featured Projects
 
 ### 🔹 Expense Management System (MERN)
 
-A full-stack expense tracking web app to manage budgets, bills, categories, analytics, and reports.
+A backend-heavy full-stack expense management platform designed for tracking expenses, managing budgets, organizing bills, and generating reports.
 
-**Highlights:**
+**Key Features:**
 
-* Secure authentication with OTP / JWT flow
-* Dashboard with expense summaries and category-based insights
-* Bill management with CRUD operations
-* Monthly reports with PDF / CSV / Excel export
-* Budget alert system and profile management
-* Responsive UI for desktop and mobile
+* User authentication and protected routes
+* Expense, bill, and category management with CRUD operations
+* Budget planning and monthly expense tracking
+* Dashboard analytics with category-based insights
+* PDF, CSV, and Excel report generation
+* Profile management and user-specific data handling
 
-**Tech Used:** React, Node.js, Express.js, MongoDB, JWT, Chart libraries
+**Backend-Focused Highlights:**
+
+* RESTful API architecture with modular controllers and routes
+* MongoDB-based schema design for users, bills, budgets, and categories
+* Report generation workflow for monthly exports and bill reports
+* Authentication, validation, and structured server-side business logic
+* Scalable full-stack project structure for handling multiple business modules
+
+**Tech Used:** MongoDB, Express.js, React, Node.js, JWT, Chart Integration
 
 ---
 
-### 🔹 E-Commerce Web App
+### 🔹 AI Website Builder
 
-A MERN-based e-commerce platform with user and admin features.
+A full-stack web application designed to simplify website creation with AI-assisted workflows and dynamic content generation.
 
-**Highlights:**
+**Key Features:**
 
-* Product browsing, cart, wishlist, and authentication
-* Admin dashboard for product and order management
-* Reusable frontend components and clean UI structure
-* API integration with backend deployment
+* AI-assisted website/content generation flow
+* Dynamic prompt-based form handling
+* Reusable frontend layout system for generated sections
+* Backend integration for request handling and generated output processing
+* Expandable architecture for future project saving and template support
 
-**Tech Used:** React, Node.js, Express.js, MongoDB, Context API
+**Backend-Focused Highlights:**
+
+* API-driven architecture for AI request handling
+* Server-side processing flow for prompts and generated data
+* Structured backend logic connecting user input, processing, and output delivery
+* Built with scalability in mind for future feature expansion
+
+**Tech Used:** React, Node.js, Express.js, MongoDB / API Integration
+
+---
+
+### 🔹 QuickBite – Food Ordering Web App
+
+A Zomato-inspired food ordering web application focused on restaurant browsing, menu exploration, cart management, and smooth ordering flow.
+
+**Key Features:**
+
+* Restaurant listing and food item browsing
+* Category-based filtering and search experience
+* Cart and order flow for users
+* Responsive modern UI inspired by real food delivery platforms
+* Designed for a smooth food ordering and discovery experience
+
+**Backend-Focused Highlights:**
+
+* Structured backend routes for restaurants, menu items, and order flow
+* API-based data handling for dynamic food listings and cart operations
+* Scalable database structure for restaurants, categories, menu items, and user activity
+* Designed as a strong base for future features like auth, order history, and payment integration
+
+**Tech Used:** React, Node.js, Express.js, MongoDB
 
 ---
 
 ### 🔹 Medical Store / Pharmacy Website
 
-A modern pharmacy web app focused on usability and practical features.
+A modern pharmacy web app designed for medicine browsing, prescription handling, and user-friendly online ordering experiences.
 
-**Highlights:**
+**Key Features:**
 
 * Prescription OCR integration
-* Shopping cart flow with state management
-* Responsive and clean interface
-* Optimized UX for browsing and ordering
+* Product browsing and cart functionality
+* Responsive UI with practical shopping flow
+* Clean design focused on usability and healthcare product access
 
 **Tech Used:** React, Context API, LocalStorage, API Integration
 
 ---
 
-### 🔹 Portfolio Website
+## 📈 What I’m Currently Working On
 
-A personal portfolio to showcase projects, skills, and creative work.
-
-**Highlights:**
-
-* Modern responsive UI
-* Smooth animations and glassmorphism-inspired sections
-* Project showcase and contact integration
-
-**Tech Used:** React, CSS, JavaScript
-
----
-
-## 📈 What I’m Currently Learning
-
-* Advanced backend development with **Node.js + Express**
-* Better MongoDB schema design and query optimization
-* Authentication, authorization, and secure API practices
-* File uploads, reporting systems, and deployment workflows
-* Building production-ready full-stack MERN applications
+* Building more backend-driven MERN applications
+* Improving API architecture and server-side code structure
+* Strengthening authentication, authorization, and protected route workflows
+* Writing cleaner MongoDB models and improving query handling
+* Developing report/export systems for real-world business applications
+* Moving projects toward more production-ready architecture and deployment practices
 
 ---
 
@@ -175,4 +195,4 @@ A personal portfolio to showcase projects, skills, and creative work.
 
 ## ⚡ Developer Note
 
-> I enjoy building full-stack web applications that combine clean UI, practical backend logic, and a polished user experience. I like projects where design, functionality, and problem-solving all come together.
+> I enjoy building backend-driven MERN applications where APIs, authentication, database design, and business logic come together with a clean frontend to create practical, scalable, and polished products.
