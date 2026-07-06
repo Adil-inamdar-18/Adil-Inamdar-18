@@ -10,9 +10,9 @@
 ## 💫 About Me
 
 * 💻 Backend-focused **MERN Stack Developer** passionate about building practical and scalable web applications
-* ⚙️ Interested in backend architecture, REST APIs, authentication systems, reporting modules, and database-driven applications
+* ⚙️ Interested in backend architecture, REST APIs, authentication systems, dashboards, reporting modules, and database-driven applications
 * 🛠️ Building full-stack apps using **MongoDB, Express.js, React, and Node.js**
-* 📊 I enjoy working on real-world systems such as **expense trackers, dashboards, food ordering platforms, AI tools, and management systems**
+* 📊 I enjoy working on real-world systems such as **employee management systems, food ordering platforms, AI tools, dashboards, and admin panels**
 * 🎯 Focused on writing clean backend logic, structuring maintainable APIs, and delivering smooth user experiences through well-built full-stack applications
 * 🚀 Currently improving backend development with better API design, advanced MongoDB usage, authentication workflows, and production-ready project structure
 
@@ -54,28 +54,28 @@
 
 ## 🚀 Featured Projects
 
-### 🔹 Expense Management System (MERN)
+### 🔹 Employee Management System (MERN)
 
-A backend-heavy full-stack expense management platform designed for tracking expenses, managing budgets, organizing bills, and generating reports.
+A backend-driven full-stack employee management platform designed to manage employee records, departments, salaries, attendance, and administrative workflows.
 
 **Key Features:**
 
-* User authentication and protected routes
-* Expense, bill, and category management with CRUD operations
-* Budget planning and monthly expense tracking
-* Dashboard analytics with category-based insights
-* PDF, CSV, and Excel report generation
-* Profile management and user-specific data handling
+* Employee record management with create, update, delete, and profile handling
+* Department and role-based organization of employee data
+* Attendance / salary / admin workflow modules
+* Dashboard for employee-related insights and management operations
+* Secure login system with protected routes and user-specific access
+* Responsive UI for managing business and employee operations efficiently
 
 **Backend-Focused Highlights:**
 
-* RESTful API architecture with modular controllers and routes
-* MongoDB-based schema design for users, bills, budgets, and categories
-* Report generation workflow for monthly exports and bill reports
-* Authentication, validation, and structured server-side business logic
-* Scalable full-stack project structure for handling multiple business modules
+* RESTful API architecture with modular routes and controllers
+* MongoDB schema design for employees, departments, attendance, and admin data
+* Structured backend logic for employee operations and management workflows
+* Authentication, validation, and protected server-side routes
+* Scalable full-stack architecture suitable for admin dashboards and business systems
 
-**Tech Used:** MongoDB, Express.js, React, Node.js, JWT, Chart Integration
+**Tech Used:** MongoDB, Express.js, React, Node.js, JWT
 
 ---
 
@@ -146,7 +146,7 @@ A modern pharmacy web app designed for medicine browsing, prescription handling,
 * Improving API architecture and server-side code structure
 * Strengthening authentication, authorization, and protected route workflows
 * Writing cleaner MongoDB models and improving query handling
-* Developing report/export systems for real-world business applications
+* Developing scalable admin and dashboard systems
 * Moving projects toward more production-ready architecture and deployment practices
 
 ---
