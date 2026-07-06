@@ -154,17 +154,16 @@ A modern pharmacy web app designed for medicine browsing, prescription handling,
 ## 📊 GitHub Stats
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=Adil-Inamdar-FSD&show_icons=true&theme=radical&hide_border=true" />
+  <img src="https://github-readme-stats.vercel.app/api?username=Adil-Inamdar-FSD&show_icons=true&theme=radical&hide_border=true&cache_seconds=1800" />
 </p>
 
 <p align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=Adil-Inamdar-FSD&theme=radical&hide_border=true" />
+  <img src="https://streak-stats.demolab.com?user=Adil-Inamdar-FSD&theme=radical&hide_border=true" />
 </p>
 
 <p align="center">
   <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Adil-Inamdar-FSD&layout=compact&theme=radical&hide_border=true" />
 </p>
-
 ---
 
 ## 🔥 Contribution Snake
