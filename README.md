@@ -1,31 +1,53 @@
-<h1 align="center">Hi 👋, I'm Adil</h1>
-<h3 align="center">Front-End Developer & Video Editor</h3>
+<h1 align="center">Hi 👋, I'm Adil Inamdar</h1>
+<h3 align="center">MERN Stack Developer | Frontend-Focused Full Stack Builder | UI Enthusiast</h3>
 
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?color=FF004F&size=25&center=true&vCenter=true&width=600&lines=Frontend+Developer;React+Developer;MERN+Stack+Learner;Video+Editor;Creative+Designer" />
+  <img src="https://readme-typing-svg.herokuapp.com?color=FF004F&size=25&center=true&vCenter=true&width=700&lines=MERN+Stack+Developer;Frontend-Focused+Full+Stack+Developer;React+%7C+Node+%7C+Express+%7C+MongoDB;Building+Modern+Web+Apps;Code+%2B+Creativity" />
 </p>
 
 ---
 
 ## 💫 About Me
-- 💻 Front-End Developer passionate about modern UI
-- 🎬 Video Editor creating reels, shorts & YouTube content
-- 🎨 Love clean, responsive & user-friendly design
-- 🚀 Currently learning MERN Stack (Node.js, Express, MongoDB)
-- 📍 India
+
+* 💻 MERN Stack Developer focused on building responsive, scalable, and user-friendly web applications
+* ⚛️ Strong in modern frontend development with React, reusable components, and clean UI design
+* 🛠️ Expanding full-stack skills with **Node.js, Express.js, MongoDB, authentication, REST APIs, and deployment**
+* 📊 Interested in real-world projects like **expense trackers, e-commerce apps, dashboards, and business tools**
+* 🎨 I also enjoy design, video editing, and creating polished digital experiences
+* 🚀 Currently working on improving backend architecture, API integration, and production-ready MERN projects
 
 ---
 
-## 🧠 Skills & Technologies
+## 🧠 Tech Stack
 
-### 💻 Development
+### 💻 Frontend
+
 <p>
-  <img src="https://skillicons.dev/icons?i=html,css,js,react,bootstrap,tailwind,nodejs,express,nextjs" />
+  <img src="https://skillicons.dev/icons?i=html,css,js,react,tailwind,bootstrap,nextjs" />
 </p>
 
-### 🎨 Design & Editing Tools
+### ⚙️ Backend
+
 <p>
-  <img src="https://skillicons.dev/icons?i=figma,photoshop" />
+  <img src="https://skillicons.dev/icons?i=nodejs,express" />
+</p>
+
+### 🗄️ Database
+
+<p>
+  <img src="https://skillicons.dev/icons?i=mongodb" />
+</p>
+
+### 🛠️ Tools & Platforms
+
+<p>
+  <img src="https://skillicons.dev/icons?i=git,github,vscode,postman,figma" />
+</p>
+
+### 🎨 Creative Tools
+
+<p>
+  <img src="https://skillicons.dev/icons?i=photoshop" />
 </p>
 
 <p>
@@ -36,29 +58,76 @@
 
 ---
 
-## 🛠️ Tools
-<p>
-  <img src="https://skillicons.dev/icons?i=git,github,vscode" />
-</p>
+## 🚀 Featured MERN Projects
+
+### 🔹 Expense Management System (MERN)
+
+A full-stack expense tracking web app to manage budgets, bills, categories, analytics, and reports.
+
+**Highlights:**
+
+* Secure authentication with OTP / JWT flow
+* Dashboard with expense summaries and category-based insights
+* Bill management with CRUD operations
+* Monthly reports with PDF / CSV / Excel export
+* Budget alert system and profile management
+* Responsive UI for desktop and mobile
+
+**Tech Used:** React, Node.js, Express.js, MongoDB, JWT, Chart libraries
 
 ---
 
-## 🚀 Featured Projects
+### 🔹 E-Commerce Web App
 
-🔹 **E-Commerce Web App (MERN)**
-- User & Admin Dashboard
-- Cart, Favorites, Authentication
-- API Integration (Railway Backend)
+A MERN-based e-commerce platform with user and admin features.
 
-🔹 **Medical Store Website**
-- Prescription OCR Feature
-- Cart System (LocalStorage + Context API)
-- Responsive UI with modern design
+**Highlights:**
 
-🔹 **Portfolio Website**
-- Clean UI with animations
-- Responsive design
-- Glassmorphism effects
+* Product browsing, cart, wishlist, and authentication
+* Admin dashboard for product and order management
+* Reusable frontend components and clean UI structure
+* API integration with backend deployment
+
+**Tech Used:** React, Node.js, Express.js, MongoDB, Context API
+
+---
+
+### 🔹 Medical Store / Pharmacy Website
+
+A modern pharmacy web app focused on usability and practical features.
+
+**Highlights:**
+
+* Prescription OCR integration
+* Shopping cart flow with state management
+* Responsive and clean interface
+* Optimized UX for browsing and ordering
+
+**Tech Used:** React, Context API, LocalStorage, API Integration
+
+---
+
+### 🔹 Portfolio Website
+
+A personal portfolio to showcase projects, skills, and creative work.
+
+**Highlights:**
+
+* Modern responsive UI
+* Smooth animations and glassmorphism-inspired sections
+* Project showcase and contact integration
+
+**Tech Used:** React, CSS, JavaScript
+
+---
+
+## 📈 What I’m Currently Learning
+
+* Advanced backend development with **Node.js + Express**
+* Better MongoDB schema design and query optimization
+* Authentication, authorization, and secure API practices
+* File uploads, reporting systems, and deployment workflows
+* Building production-ready full-stack MERN applications
 
 ---
 
@@ -70,6 +139,10 @@
 
 <p align="center">
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=Adil-Inamdar-FSD&theme=radical&hide_border=true" />
+</p>
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Adil-Inamdar-FSD&layout=compact&theme=radical&hide_border=true" />
 </p>
 
 ---
@@ -88,7 +161,7 @@
   <a href="https://www.linkedin.com/in/adil-inamdar/">
     <img src="https://img.shields.io/badge/LinkedIn-FF004F?style=for-the-badge&logo=linkedin&logoColor=white"/>
   </a>
-  
+
   <a href="mailto:adilinamdar617@gmail.com">
     <img src="https://img.shields.io/badge/Email-FF004F?style=for-the-badge&logo=gmail&logoColor=white"/>
   </a>
@@ -100,13 +173,6 @@
 
 ---
 
-## 👀 Visitor Count
+## ⚡ Developer Note
 
-<p align="center">
-  <img src="https://komarev.com/ghpvc/?username=Adil-Inamdar-FSD&label=Profile%20Views&color=ff004f&style=flat" />
-</p>
-
----
-
-## ⚡ Fun Fact
-> I build modern web apps and create engaging videos — combining code & creativity 💻🎬✨
+> I enjoy building full-stack web applications that combine clean UI, practical backend logic, and a polished user experience. I like projects where design, functionality, and problem-solving all come together.
