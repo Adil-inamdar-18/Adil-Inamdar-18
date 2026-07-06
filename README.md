@@ -1,5 +1,5 @@
 <h1 align="center">Hi 👋, I'm Adil Inamdar</h1>
-<h3 align="center">MERN Stack Developer | Frontend-Focused Full Stack Builder | UI Enthusiast</h3>
+<h3 align="center">MERN Stack Developer | Backend-Focused Full Stack Builder | UI Enthusiast</h3>
 
 <p align="center">
   <img src="https://readme-typing-svg.herokuapp.com?color=FF004F&size=25&center=true&vCenter=true&width=700&lines=MERN+Stack+Developer;Frontend-Focused+Full+Stack+Developer;React+%7C+Node+%7C+Express+%7C+MongoDB;Building+Modern+Web+Apps;Code+%2B+Creativity" />
