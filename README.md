@@ -266,11 +266,11 @@ An AI-powered platform designed to generate website layouts and content from use
 
 </div>
 
-## 🌌 CONTRIBUTION MAP
+## 🐍 CONTRIBUTION MAP
 
 <div align="center">
 
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=Adil-inamdar-18&bg_color=0D1022&color=9DECF5&line=8B7CFF&point=F7C96B&area=true&hide_border=true" width="100%" />
+<img src="https://raw.githubusercontent.com/Adil-inamdar-18/Adil-inamdar-18/output/github-contribution-grid-snake-dark.svg" alt="GitHub contribution snake animation" width="100%" />
 
 </div>
 
