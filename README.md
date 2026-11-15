@@ -1,133 +1,295 @@
-# Adil Inamdar
-### Full-Stack Developer | React.js | Next.js | Node.js
 
-<p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&color=0D0D0D&height=160&section=header&text=ADIL%20INAMDAR&fontSize=42&fontColor=FFFFFF&fontAlignY=42&desc=FULL-STACK%20DEVELOPER&descSize=15&descAlignY=68" width="100%" />
+<!--
+  ADIL INAMDAR | GITHUB PROFILE
+  Theme: Midnight Tokyo / Anime Cyberpunk
+  Style: Professional Developer Portfolio
+-->
+
+<div align="center">
+
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&height=220&color=0:080810,45:17132B,100:30245A&text=ADIL%20INAMDAR&fontSize=52&fontColor=FFFFFF&fontAlignY=38&desc=FULL-STACK%20DEVELOPER%20%7C%20BUILDING%20DIGITAL%20EXPERIENCES&descSize=13&descAlignY=60&animation=fadeIn" />
+
+<br/>
+
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=500&size=18&duration=2500&pause=1000&color=B9A5FF&center=true&vCenter=true&width=650&lines=Full-Stack+Developer;React.js+%7C+Next.js+%7C+Node.js;Building+Modern+Web+Applications;Turning+Ideas+Into+Reality" />
+
+<br/><br/>
+
+<a href="https://adil-inamdar-portfolio.vercel.app/">
+<img src="https://img.shields.io/badge/PORTFOLIO-Visit-17132B?style=for-the-badge&logo=vercel&logoColor=white"/>
+</a>
+<a href="https://www.linkedin.com/in/adil-inamdar/">
+<img src="https://img.shields.io/badge/LINKEDIN-Connect-17132B?style=for-the-badge&logo=linkedin&logoColor=white"/>
+</a>
+<a href="https://github.com/Adil-Inamdar-FSD">
+<img src="https://img.shields.io/badge/GITHUB-Follow-17132B?style=for-the-badge&logo=github&logoColor=white"/>
+</a>
+
+<br/><br/>
+
+<img src="https://komarev.com/ghpvc/?username=Adil-Inamdar-FSD&style=flat-square&color=6C5CE7&label=PROFILE+VIEWS" />
+
+</div>
+
+---
+
+<div align="center">
+
+## 01 / ABOUT ME
+
+*「 Creativity meets technology 」*
+
+</div>
+
+I'm **Adil Inamdar**, a Full-Stack Developer and MCA student from India, passionate about building modern, responsive and scalable web applications.
+
+I enjoy turning ideas into functional products, developing clean user interfaces and creating backend systems that solve real-world problems.
+
+- Currently pursuing MCA (Expected 2027).
+- BCA graduate from Sandip University (2025).
+- Focused on React.js, Next.js and Node.js development.
+- Interested in frontend engineering, backend architecture and databases.
+- Continuously exploring new technologies and improving my problem-solving skills.
+
+```javascript
+const adil = {
+    name: "Adil Inamdar",
+    role: "Full-Stack Developer",
+    location: "India",
+
+    education: [
+        "BCA - Sandip University (2025)",
+        "MCA - Expected 2027"
+    ],
+
+    primaryStack: [
+        "React.js",
+        "Next.js",
+        "JavaScript",
+        "Node.js",
+        "Express.js",
+        "MongoDB"
+    ],
+
+    currentlyLearning: [
+        "TypeScript",
+        "AWS",
+        "Docker",
+        "Data Structures & Algorithms"
+    ],
+
+    mindset: "Learn. Build. Improve. Repeat."
+};
+```
+
+---
+
+<div align="center">
+
+## 02 / TECHNICAL ARSENAL
+
+*Technologies I work with*
+
+</div>
+
+### Frontend Development
+
+<p>
+<img src="https://skillicons.dev/icons?i=html,css,js,ts,react,nextjs,redux,tailwind,bootstrap"/>
 </p>
 
-<p align="center">
-  <a href="https://adil-inamdar-portfolio.vercel.app/">Portfolio</a> &nbsp;•&nbsp;
-  <a href="https://www.linkedin.com/in/adil-inamdar/">LinkedIn</a> &nbsp;•&nbsp;
-  <a href="https://github.com/Adil-Inamdar-FSD">GitHub</a>
+### Backend Development
+
+<p>
+<img src="https://skillicons.dev/icons?i=nodejs,express"/>
 </p>
 
-<p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=17&duration=3000&pause=1000&color=999999&center=true&vCenter=true&width=600&lines=Building+Modern+Web+Applications;Frontend+%7C+Backend+%7C+Full+Stack;Focused+on+Clean+Code+and+Scalable+Solutions" />
+### Databases
+
+<p>
+<img src="https://skillicons.dev/icons?i=mongodb,postgres,supabase"/>
+</p>
+
+### Tools & Platforms
+
+<p>
+<img src="https://skillicons.dev/icons?i=git,github,vscode,postman,vercel,aws,docker"/>
 </p>
 
 ---
 
-## ABOUT
+<div align="center">
 
-I'm a Full-Stack Developer and MCA student interested in building modern, scalable and user-focused web applications.
+## 03 / SELECTED PROJECTS
 
-My primary focus is JavaScript-based development, with hands-on experience building frontend interfaces, backend APIs and database-driven applications.
+*Things I've built and worked on*
 
-I enjoy understanding real-world problems, designing practical solutions and continuously improving my development skills.
+</div>
 
-- **Education:** BCA, Sandip University (2025)
-- **Currently pursuing:** MCA (Expected 2027)
-- **Primary focus:** Full-Stack Web Development
-- **Based in:** India
-- **Portfolio:** [adil-inamdar-portfolio.vercel.app](https://adil-inamdar-portfolio.vercel.app/)
+<!-- Replace the placeholders below with actual projects -->
 
----
+<table>
+<tr>
+<td width="50%" valign="top">
 
-## TECHNICAL SKILLS
+### ◈ PROJECT 01
 
-| Category | Technologies |
-|---|---|
-| Frontend | HTML5, CSS3, JavaScript, React.js, Next.js |
-| Styling | Tailwind CSS, Bootstrap |
-| State Management | Redux Toolkit |
-| Backend | Node.js, Express.js, REST APIs |
-| Databases | MongoDB, PostgreSQL, Supabase |
-| Programming | JavaScript, TypeScript |
-| Tools | Git, GitHub, VS Code, Postman |
-| Deployment | Vercel, Render |
+**[Project Name](REPOSITORY_URL)**
 
----
+Describe the real-world problem your application solves.
 
-## SELECTED PROJECTS
+**Tech Stack**
 
-Projects are the most important section of my development portfolio.
+`Next.js` `TypeScript` `Tailwind CSS`
 
-### 01. [Project Name]
-**[One-line explanation of the actual problem this project solves.]**
+[Repository ↗](REPOSITORY_URL) · [Live Demo ↗](LIVE_DEMO_URL)
 
-- Developed using [actual technologies].
-- Implemented [real feature].
-- Focused on responsive design and maintainable code.
+</td>
+<td width="50%" valign="top">
 
-[Repository](REPOSITORY_URL) · [Live Demo](LIVE_DEMO_URL)
+### ◈ PROJECT 02
 
-### 02. [Project Name]
-**[One-line project description.]**
+**[Project Name](REPOSITORY_URL)**
 
-- Built using [actual technologies].
-- Implemented [real functionality].
-- Designed with a focus on usability and performance.
+Describe the main functionality and features of your application.
 
-[Repository](REPOSITORY_URL) · [Live Demo](LIVE_DEMO_URL)
+**Tech Stack**
 
-### 03. [Project Name]
-**[One-line project description.]**
+`React` `Node.js` `MongoDB`
 
-- Developed [actual functionality].
-- Integrated [actual API/database].
-- Focused on practical application architecture.
+[Repository ↗](REPOSITORY_URL) · [Live Demo ↗](LIVE_DEMO_URL)
 
-[Repository](REPOSITORY_URL) · [Live Demo](LIVE_DEMO_URL)
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
 
----
+### ◈ PROJECT 03
 
-## CURRENT FOCUS
+**[Project Name](REPOSITORY_URL)**
 
-- Building full-stack applications using Next.js and TypeScript.
-- Improving backend development with Node.js and Express.
-- Working with MongoDB and PostgreSQL.
-- Learning cloud deployment using AWS.
-- Strengthening problem-solving and Data Structures & Algorithms.
+Explain the actual technical implementation and problem solved.
 
----
+**Tech Stack**
 
-## GITHUB STATISTICS
+`Express.js` `MongoDB` `REST API`
 
-<p align="center">
-  <img height="165" src="https://github-readme-stats.vercel.app/api?username=Adil-Inamdar-FSD&show_icons=true&hide_border=true&theme=transparent&title_color=FFFFFF&text_color=999999&icon_color=FFFFFF" />
-  <img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Adil-Inamdar-FSD&layout=compact&hide_border=true&theme=transparent&title_color=FFFFFF&text_color=999999" />
-</p>
+[Repository ↗](REPOSITORY_URL) · [Live Demo ↗](LIVE_DEMO_URL)
 
-<p align="center">
-  <img src="https://streak-stats.demolab.com?user=Adil-Inamdar-FSD&theme=transparent&hide_border=true&ring=FFFFFF&fire=AAAAAA&currStreakLabel=FFFFFF&sideLabels=999999&dates=777777" width="70%" />
-</p>
+</td>
+<td width="50%" valign="top">
+
+### ◈ PROJECT 04
+
+**[Project Name](REPOSITORY_URL)**
+
+Showcase another real application or technical experiment.
+
+**Tech Stack**
+
+`React` `JavaScript` `Tailwind CSS`
+
+[Repository ↗](REPOSITORY_URL) · [Live Demo ↗](LIVE_DEMO_URL)
+
+</td>
+</tr>
+</table>
 
 ---
 
-## CONTRIBUTION ACTIVITY
+<div align="center">
 
-<p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=Adil-Inamdar-FSD&bg_color=00000000&color=999999&line=FFFFFF&point=FFFFFF&area=true&hide_border=true" width="100%" />
-</p>
+## 04 / GITHUB ANALYTICS
+
+*Every contribution tells a story.*
+
+<br/>
+
+<img width="49%" src="https://github-readme-stats.vercel.app/api?username=Adil-Inamdar-FSD&show_icons=true&hide_border=true&bg_color=080810&title_color=B9A5FF&text_color=FFFFFF&icon_color=8B7BFF&rank_icon=github"/>
+
+<img width="49%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Adil-Inamdar-FSD&layout=compact&hide_border=true&bg_color=080810&title_color=B9A5FF&text_color=FFFFFF"/>
+
+<br/><br/>
+
+<img width="75%" src="https://streak-stats.demolab.com?user=Adil-Inamdar-FSD&theme=transparent&hide_border=true&ring=B9A5FF&fire=8B7BFF&currStreakLabel=FFFFFF&sideLabels=B9A5FF&dates=999999"/>
+
+</div>
 
 ---
 
-## CONNECT
+<div align="center">
 
-I'm interested in connecting with developers, collaborating on meaningful projects and exploring Full-Stack Developer opportunities.
+## 05 / CONTRIBUTION ACTIVITY
 
-<p align="center">
-  <a href="https://www.linkedin.com/in/adil-inamdar/">
-    <img src="https://img.shields.io/badge/LinkedIn-Connect-111111?style=for-the-badge&logo=linkedin&logoColor=white" />
-  </a>
-  <a href="https://adil-inamdar-portfolio.vercel.app/">
-    <img src="https://img.shields.io/badge/Portfolio-Visit-111111?style=for-the-badge&logo=vercel&logoColor=white" />
-  </a>
-  <a href="https://github.com/Adil-Inamdar-FSD">
-    <img src="https://img.shields.io/badge/GitHub-Follow-111111?style=for-the-badge&logo=github&logoColor=white" />
-  </a>
-</p>
+*The journey continues.*
 
-<p align="center">
-  <sub>Building. Learning. Improving.</sub>
-</p>
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=Adil-Inamdar-FSD&bg_color=080810&color=B9A5FF&line=8B7BFF&point=FFFFFF&area=true&hide_border=true" width="100%"/>
+
+</div>
+
+---
+
+<div align="center">
+
+## 06 / CURRENTLY LEVELING UP
+
+*The next stage of my development journey*
+
+</div>
+
+```text
+DEVELOPER ROADMAP
+
+01. FULL-STACK ENGINEERING
+    ├── Advanced Next.js
+    ├── TypeScript
+    ├── Backend Architecture
+    └── API Development
+
+02. DATABASE ENGINEERING
+    ├── MongoDB
+    └── PostgreSQL
+
+03. CLOUD & DEVOPS
+    ├── AWS
+    ├── Docker
+    └── CI/CD
+
+04. COMPUTER SCIENCE
+    ├── Data Structures & Algorithms
+    └── System Design Fundamentals
+```
+
+---
+
+<div align="center">
+
+## 07 / LET'S CONNECT
+
+*Every great project starts with a connection.*
+
+Open to Full-Stack / Frontend Developer opportunities and meaningful collaborations.
+
+<br/>
+
+<a href="https://www.linkedin.com/in/adil-inamdar/">
+<img src="https://img.shields.io/badge/LINKEDIN-Connect-17132B?style=for-the-badge&logo=linkedin&logoColor=white"/>
+</a>
+
+<a href="https://adil-inamdar-portfolio.vercel.app/">
+<img src="https://img.shields.io/badge/PORTFOLIO-Explore-17132B?style=for-the-badge&logo=vercel&logoColor=white"/>
+</a>
+
+<a href="https://github.com/Adil-Inamdar-FSD">
+<img src="https://img.shields.io/badge/GITHUB-Follow-17132B?style=for-the-badge&logo=github&logoColor=white"/>
+</a>
+
+<br/><br/>
+
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:30245A,100:080810&height=130&section=footer"/>
+
+<sub>Designed with code, creativity and a little anime inspiration.</sub>
+
+</div>
+
+<!-- END OF README -->
