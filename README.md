@@ -1,186 +1,222 @@
-<h1 align="center">Hi 👋, I'm Adil Inamdar</h1>
-<h3 align="center">Backend-Focused MERN Stack Developer | Building Scalable Full-Stack Web Applications</h3>
+# Adil Inamdar | Full-Stack Developer
 
-<p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?color=FF004F&size=25&center=true&vCenter=true&width=850&lines=Backend-Focused+MERN+Stack+Developer;Node.js+%7C+Express.js+%7C+MongoDB;REST+API+Development+%26+Authentication;Building+Scalable+Full-Stack+Applications;Clean+UI+Powered+by+Strong+Backend+Logic" />
-</p>
+<!-- ANIMATED HEADER -->
+<div align="center">
 
----
+<img src="https://capsule-render.vercel.app/api?type=waving&height=180&color=0:111111,100:444444&text=ADIL%20INAMDAR&fontColor=FFFFFF&fontSize=48&fontAlignY=38&desc=Building%20Digital%20Experiences&descAlignY=58&descSize=16&animation=fadeIn" width="100%" />
 
-## 💫 About Me
+<br/>
 
-* 💻 Backend-focused **MERN Stack Developer** passionate about building practical and scalable web applications
-* ⚙️ Interested in backend architecture, REST APIs, authentication systems, dashboards, reporting modules, and database-driven applications
-* 🛠️ Building full-stack apps using **MongoDB, Express.js, React, and Node.js**
-* 📊 I enjoy working on real-world systems such as **employee management systems, food ordering platforms, AI tools, dashboards, and admin panels**
-* 🎯 Focused on writing clean backend logic, structuring maintainable APIs, and delivering smooth user experiences through well-built full-stack applications
-* 🚀 Currently improving backend development with better API design, advanced MongoDB usage, authentication workflows, and production-ready project structure
+<a href="https://git.io/typing-svg">
+  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=500&size=19&duration=2500&pause=900&color=999999&center=true&vCenter=true&width=650&lines=Full-Stack+Developer;MERN+Stack+Developer;Next.js+%7C+React+Developer;Turning+Ideas+Into+Web+Applications;Always+Learning.+Always+Building." alt="Typing SVG" />
+</a>
 
----
+<br/><br/>
 
-## 🧠 Tech Stack
+[![Portfolio](https://img.shields.io/badge/PORTFOLIO-111111?style=for-the-badge&logo=vercel&logoColor=white)](https://adil-inamdar-portfolio.vercel.app/)
+[![LinkedIn](https://img.shields.io/badge/LINKEDIN-111111?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/adil-inamdar/)
+[![GitHub](https://img.shields.io/badge/GITHUB-111111?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Adil-Inamdar-FSD)
 
-### ⚙️ Backend
-
-<p>
-  <img src="https://skillicons.dev/icons?i=nodejs,express,mongodb" />
-</p>
-
-### 💻 Frontend
-
-<p>
-  <img src="https://skillicons.dev/icons?i=react,js,html,css,tailwind,bootstrap,nextjs" />
-</p>
-
-### 🛠️ Tools & Platforms
-
-<p>
-  <img src="https://skillicons.dev/icons?i=git,github,vscode,postman,figma" />
-</p>
-
-### 🎨 Creative Tools
-
-<p>
-  <img src="https://skillicons.dev/icons?i=photoshop" />
-</p>
-
-<p>
-  <img src="https://img.shields.io/badge/Canva-FF004F?style=for-the-badge&logo=canva&logoColor=white"/>
-  <img src="https://img.shields.io/badge/CapCut-FF004F?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/PicsArt-FF004F?style=for-the-badge"/>
-</p>
+</div>
 
 ---
 
-## 🚀 Featured Projects
+## `01` / ABOUT ME
 
-### 🔹 Employee Management System (MERN)
+```bash
+$ whoami
+```
 
-A backend-driven full-stack employee management platform designed to manage employee records, departments, salaries, attendance, and administrative workflows.
+I'm **Adil Inamdar**, a Full-Stack Developer and MCA student from India.
 
-**Key Features:**
+I enjoy building modern, responsive and scalable web applications, exploring new technologies and solving real-world problems through code.
 
-* Employee record management with create, update, delete, and profile handling
-* Department and role-based organization of employee data
-* Attendance / salary / admin workflow modules
-* Dashboard for employee-related insights and management operations
-* Secure login system with protected routes and user-specific access
-* Responsive UI for managing business and employee operations efficiently
+Currently focused on the JavaScript ecosystem, full-stack development and modern web architecture.
 
-**Backend-Focused Highlights:**
+```javascript
+const adil = {
+    education: {
+        graduation: "BCA - Sandip University (2025)",
+        current: "MCA - Expected 2027"
+    },
 
-* RESTful API architecture with modular routes and controllers
-* MongoDB schema design for employees, departments, attendance, and admin data
-* Structured backend logic for employee operations and management workflows
-* Authentication, validation, and protected server-side routes
-* Scalable full-stack architecture suitable for admin dashboards and business systems
+    role: "Full-Stack Developer",
 
-**Tech Used:** MongoDB, Express.js, React, Node.js, JWT
+    interests: [
+        "Web Development",
+        "Frontend Engineering",
+        "Backend Development",
+        "Problem Solving"
+    ],
 
----
+    currentlyLearning: [
+        "Advanced Next.js",
+        "TypeScript",
+        "AWS & Cloud",
+        "Data Structures & Algorithms"
+    ],
 
-### 🔹 AI Website Builder
-
-A full-stack web application designed to simplify website creation with AI-assisted workflows and dynamic content generation.
-
-**Key Features:**
-
-* AI-assisted website/content generation flow
-* Dynamic prompt-based form handling
-* Reusable frontend layout system for generated sections
-* Backend integration for request handling and generated output processing
-* Expandable architecture for future project saving and template support
-
-**Backend-Focused Highlights:**
-
-* API-driven architecture for AI request handling
-* Server-side processing flow for prompts and generated data
-* Structured backend logic connecting user input, processing, and output delivery
-* Built with scalability in mind for future feature expansion
-
-**Tech Used:** React, Node.js, Express.js, MongoDB / API Integration
+    philosophy: "Learn. Build. Improve. Repeat."
+};
+```
 
 ---
 
-### 🔹 QuickBite – Food Ordering Web App
+## `02` / TECH STACK
 
-A Zomato-inspired food ordering web application focused on restaurant browsing, menu exploration, cart management, and smooth ordering flow.
+<div align="center">
 
-**Key Features:**
+### FRONTEND
 
-* Restaurant listing and food item browsing
-* Category-based filtering and search experience
-* Cart and order flow for users
-* Responsive modern UI inspired by real food delivery platforms
-* Designed for a smooth food ordering and discovery experience
+<img src="https://skillicons.dev/icons?i=html,css,js,ts,react,nextjs,redux,bootstrap,tailwind" />
 
-**Backend-Focused Highlights:**
+### BACKEND & DATABASE
 
-* Structured backend routes for restaurants, menu items, and order flow
-* API-based data handling for dynamic food listings and cart operations
-* Scalable database structure for restaurants, categories, menu items, and user activity
-* Designed as a strong base for future features like auth, order history, and payment integration
+<img src="https://skillicons.dev/icons?i=nodejs,express,mongodb,postgres,supabase" />
 
-**Tech Used:** React, Node.js, Express.js, MongoDB
+### TOOLS & PLATFORMS
+
+<img src="https://skillicons.dev/icons?i=git,github,vscode,postman,vercel,aws,docker" />
+
+</div>
 
 ---
 
-### 🔹 Medical Store / Pharmacy Website
+## `03` / FEATURED PROJECTS
 
-A modern pharmacy web app designed for medicine browsing, prescription handling, and user-friendly online ordering experiences.
+<div align="center">
 
-**Key Features:**
+### Selected Works
 
-* Prescription OCR integration
-* Product browsing and cart functionality
-* Responsive UI with practical shopping flow
-* Clean design focused on usability and healthcare product access
+</div>
 
-**Tech Used:** React, Context API, LocalStorage, API Integration
+> Replace these example slots with your actual public repositories. Don't showcase placeholder projects as completed work.
+
+<table>
+<tr>
+<td width="50%">
+
+### Project 01
+
+**[Project Name](https://github.com/Adil-Inamdar-FSD)**
+
+A full-stack web application focused on solving a real-world problem.
+
+`React` `Node.js` `MongoDB`
+
+[View Repository](https://github.com/Adil-Inamdar-FSD)
+
+</td>
+<td width="50%">
+
+### Project 02
+
+**[Project Name](https://github.com/Adil-Inamdar-FSD)**
+
+A modern web application with responsive UI and scalable architecture.
+
+`Next.js` `TypeScript` `Tailwind`
+
+[View Repository](https://github.com/Adil-Inamdar-FSD)
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### Project 03
+
+**[Project Name](https://github.com/Adil-Inamdar-FSD)**
+
+A database-driven application with authentication and API integration.
+
+`Express` `MongoDB` `REST API`
+
+[View Repository](https://github.com/Adil-Inamdar-FSD)
+
+</td>
+<td width="50%">
+
+### Project 04
+
+**[Project Name](https://github.com/Adil-Inamdar-FSD)**
+
+An experimental project exploring modern development techniques.
+
+`Next.js` `React` `JavaScript`
+
+[View Repository](https://github.com/Adil-Inamdar-FSD)
+
+</td>
+</tr>
+</table>
 
 ---
 
-## 📈 What I’m Currently Working On
+## `04` / GITHUB ANALYTICS
 
-* Building more backend-driven MERN applications
-* Improving API architecture and server-side code structure
-* Strengthening authentication, authorization, and protected route workflows
-* Writing cleaner MongoDB models and improving query handling
-* Developing scalable admin and dashboard systems
-* Moving projects toward more production-ready architecture and deployment practices
+<div align="center">
 
----
-## 📊 GitHub Stats
+### Contribution Statistics
 
-<p align="center">
-  <img src="https://streak-stats.demolab.com?user=Adil-Inamdar-FSD&theme=radical&hide_border=true" />
-</p>
-## 🔥 Contribution Snake
+<img width="49%" src="https://github-readme-stats.vercel.app/api?username=Adil-Inamdar-FSD&show_icons=true&hide_border=true&bg_color=00000000&title_color=FFFFFF&text_color=999999&icon_color=FFFFFF&rank_icon=github" />
 
-<p align="center">
-  <img src="https://github.com/platane/snk/raw/output/github-contribution-grid-snake.svg" />
-</p>
+<img width="49%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Adil-Inamdar-FSD&layout=compact&hide_border=true&bg_color=00000000&title_color=FFFFFF&text_color=999999" />
 
----
+<br/><br/>
 
-## 🌐 Connect With Me
+<img width="70%" src="https://streak-stats.demolab.com?user=Adil-Inamdar-FSD&theme=transparent&hide_border=true&ring=FFFFFF&fire=AAAAAA&currStreakLabel=FFFFFF&sideLabels=999999&dates=777777" />
 
-<p align="center">
-  <a href="https://www.linkedin.com/in/adil-inamdar/">
-    <img src="https://img.shields.io/badge/LinkedIn-FF004F?style=for-the-badge&logo=linkedin&logoColor=white"/>
-  </a>
+<br/><br/>
 
-  <a href="mailto:adilinamdar617@gmail.com">
-    <img src="https://img.shields.io/badge/Email-FF004F?style=for-the-badge&logo=gmail&logoColor=white"/>
-  </a>
+### Contribution Graph
 
-  <a href="https://youtube.com/@ai.edits15">
-    <img src="https://img.shields.io/badge/YouTube-FF004F?style=for-the-badge&logo=youtube&logoColor=white"/>
-  </a>
-</p>
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=Adil-Inamdar-FSD&bg_color=00000000&color=999999&line=FFFFFF&point=FFFFFF&area=true&hide_border=true" width="100%" />
+
+</div>
 
 ---
 
-## ⚡ Developer Note
+## `05` / CURRENTLY EXPLORING
 
-> I enjoy building backend-driven MERN applications where APIs, authentication, database design, and business logic come together with a clean frontend to create practical, scalable, and polished products.
+```text
+LEARNING ROADMAP
+│
+├── FULL-STACK DEVELOPMENT
+│   ├── Advanced React & Next.js
+│   ├── Node.js & Express
+│   └── TypeScript
+│
+├── DATABASE ENGINEERING
+│   ├── MongoDB
+│   └── PostgreSQL
+│
+├── CLOUD & DEVOPS
+│   ├── AWS
+│   ├── Docker
+│   └── CI/CD
+│
+└── COMPUTER SCIENCE
+    ├── Data Structures & Algorithms
+    └── System Design Fundamentals
+```
+
+---
+
+## `06` / DEVELOPER MINDSET
+
+<div align="center">
+
+> "First, solve the problem. Then, write the code."
+
+<br/>
+
+**BUILDING TODAY. IMPROVING TOMORROW.**
+
+<br/>
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:444444,100:111111&height=100&section=footer" width="100%" />
+
+</div>
+
+<!-- END OF PROFILE README -->
