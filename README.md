@@ -1,11 +1,9 @@
-```{=html}
 <!--
 ADIL INAMDAR | DEVELOPER RPG PROFILE
 Theme: Pixel-art RPG / Retro game HUD
 Single-file GitHub profile README
 Replace only clearly marked repository links when you have the URLs.
 -->
-```
 ::: {align="center"}
 `<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&height=210&color=0:090B1A,35:171A3B,70:34245E,100:11152C&text=ADIL%20INAMDAR&fontSize=48&fontColor=FFFFFF&fontAlignY=38&desc=FULL-STACK%20DEVELOPER%20%7C%20PLAYER%20ONE%20READY&descSize=13&descAlignY=61&animation=fadeIn" />`{=html}
 
