@@ -1,222 +1,133 @@
-# Adil Inamdar | Full-Stack Developer
+# Adil Inamdar
+### Full-Stack Developer | React.js | Next.js | Node.js
 
-<!-- ANIMATED HEADER -->
-<div align="center">
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&color=0D0D0D&height=160&section=header&text=ADIL%20INAMDAR&fontSize=42&fontColor=FFFFFF&fontAlignY=42&desc=FULL-STACK%20DEVELOPER&descSize=15&descAlignY=68" width="100%" />
+</p>
 
-<img src="https://capsule-render.vercel.app/api?type=waving&height=180&color=0:111111,100:444444&text=ADIL%20INAMDAR&fontColor=FFFFFF&fontSize=48&fontAlignY=38&desc=Building%20Digital%20Experiences&descAlignY=58&descSize=16&animation=fadeIn" width="100%" />
+<p align="center">
+  <a href="https://adil-inamdar-portfolio.vercel.app/">Portfolio</a> &nbsp;•&nbsp;
+  <a href="https://www.linkedin.com/in/adil-inamdar/">LinkedIn</a> &nbsp;•&nbsp;
+  <a href="https://github.com/Adil-Inamdar-FSD">GitHub</a>
+</p>
 
-<br/>
-
-<a href="https://git.io/typing-svg">
-  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=500&size=19&duration=2500&pause=900&color=999999&center=true&vCenter=true&width=650&lines=Full-Stack+Developer;MERN+Stack+Developer;Next.js+%7C+React+Developer;Turning+Ideas+Into+Web+Applications;Always+Learning.+Always+Building." alt="Typing SVG" />
-</a>
-
-<br/><br/>
-
-[![Portfolio](https://img.shields.io/badge/PORTFOLIO-111111?style=for-the-badge&logo=vercel&logoColor=white)](https://adil-inamdar-portfolio.vercel.app/)
-[![LinkedIn](https://img.shields.io/badge/LINKEDIN-111111?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/adil-inamdar/)
-[![GitHub](https://img.shields.io/badge/GITHUB-111111?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Adil-Inamdar-FSD)
-
-</div>
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=17&duration=3000&pause=1000&color=999999&center=true&vCenter=true&width=600&lines=Building+Modern+Web+Applications;Frontend+%7C+Backend+%7C+Full+Stack;Focused+on+Clean+Code+and+Scalable+Solutions" />
+</p>
 
 ---
 
-## `01` / ABOUT ME
+## ABOUT
 
-```bash
-$ whoami
-```
+I'm a Full-Stack Developer and MCA student interested in building modern, scalable and user-focused web applications.
 
-I'm **Adil Inamdar**, a Full-Stack Developer and MCA student from India.
+My primary focus is JavaScript-based development, with hands-on experience building frontend interfaces, backend APIs and database-driven applications.
 
-I enjoy building modern, responsive and scalable web applications, exploring new technologies and solving real-world problems through code.
+I enjoy understanding real-world problems, designing practical solutions and continuously improving my development skills.
 
-Currently focused on the JavaScript ecosystem, full-stack development and modern web architecture.
-
-```javascript
-const adil = {
-    education: {
-        graduation: "BCA - Sandip University (2025)",
-        current: "MCA - Expected 2027"
-    },
-
-    role: "Full-Stack Developer",
-
-    interests: [
-        "Web Development",
-        "Frontend Engineering",
-        "Backend Development",
-        "Problem Solving"
-    ],
-
-    currentlyLearning: [
-        "Advanced Next.js",
-        "TypeScript",
-        "AWS & Cloud",
-        "Data Structures & Algorithms"
-    ],
-
-    philosophy: "Learn. Build. Improve. Repeat."
-};
-```
+- **Education:** BCA, Sandip University (2025)
+- **Currently pursuing:** MCA (Expected 2027)
+- **Primary focus:** Full-Stack Web Development
+- **Based in:** India
+- **Portfolio:** [adil-inamdar-portfolio.vercel.app](https://adil-inamdar-portfolio.vercel.app/)
 
 ---
 
-## `02` / TECH STACK
+## TECHNICAL SKILLS
 
-<div align="center">
-
-### FRONTEND
-
-<img src="https://skillicons.dev/icons?i=html,css,js,ts,react,nextjs,redux,bootstrap,tailwind" />
-
-### BACKEND & DATABASE
-
-<img src="https://skillicons.dev/icons?i=nodejs,express,mongodb,postgres,supabase" />
-
-### TOOLS & PLATFORMS
-
-<img src="https://skillicons.dev/icons?i=git,github,vscode,postman,vercel,aws,docker" />
-
-</div>
+| Category | Technologies |
+|---|---|
+| Frontend | HTML5, CSS3, JavaScript, React.js, Next.js |
+| Styling | Tailwind CSS, Bootstrap |
+| State Management | Redux Toolkit |
+| Backend | Node.js, Express.js, REST APIs |
+| Databases | MongoDB, PostgreSQL, Supabase |
+| Programming | JavaScript, TypeScript |
+| Tools | Git, GitHub, VS Code, Postman |
+| Deployment | Vercel, Render |
 
 ---
 
-## `03` / FEATURED PROJECTS
+## SELECTED PROJECTS
 
-<div align="center">
+Projects are the most important section of my development portfolio.
 
-### Selected Works
+### 01. [Project Name]
+**[One-line explanation of the actual problem this project solves.]**
 
-</div>
+- Developed using [actual technologies].
+- Implemented [real feature].
+- Focused on responsive design and maintainable code.
 
-> Replace these example slots with your actual public repositories. Don't showcase placeholder projects as completed work.
+[Repository](REPOSITORY_URL) · [Live Demo](LIVE_DEMO_URL)
 
-<table>
-<tr>
-<td width="50%">
+### 02. [Project Name]
+**[One-line project description.]**
 
-### Project 01
+- Built using [actual technologies].
+- Implemented [real functionality].
+- Designed with a focus on usability and performance.
 
-**[Project Name](https://github.com/Adil-Inamdar-FSD)**
+[Repository](REPOSITORY_URL) · [Live Demo](LIVE_DEMO_URL)
 
-A full-stack web application focused on solving a real-world problem.
+### 03. [Project Name]
+**[One-line project description.]**
 
-`React` `Node.js` `MongoDB`
+- Developed [actual functionality].
+- Integrated [actual API/database].
+- Focused on practical application architecture.
 
-[View Repository](https://github.com/Adil-Inamdar-FSD)
-
-</td>
-<td width="50%">
-
-### Project 02
-
-**[Project Name](https://github.com/Adil-Inamdar-FSD)**
-
-A modern web application with responsive UI and scalable architecture.
-
-`Next.js` `TypeScript` `Tailwind`
-
-[View Repository](https://github.com/Adil-Inamdar-FSD)
-
-</td>
-</tr>
-<tr>
-<td width="50%">
-
-### Project 03
-
-**[Project Name](https://github.com/Adil-Inamdar-FSD)**
-
-A database-driven application with authentication and API integration.
-
-`Express` `MongoDB` `REST API`
-
-[View Repository](https://github.com/Adil-Inamdar-FSD)
-
-</td>
-<td width="50%">
-
-### Project 04
-
-**[Project Name](https://github.com/Adil-Inamdar-FSD)**
-
-An experimental project exploring modern development techniques.
-
-`Next.js` `React` `JavaScript`
-
-[View Repository](https://github.com/Adil-Inamdar-FSD)
-
-</td>
-</tr>
-</table>
+[Repository](REPOSITORY_URL) · [Live Demo](LIVE_DEMO_URL)
 
 ---
 
-## `04` / GITHUB ANALYTICS
+## CURRENT FOCUS
 
-<div align="center">
-
-### Contribution Statistics
-
-<img width="49%" src="https://github-readme-stats.vercel.app/api?username=Adil-Inamdar-FSD&show_icons=true&hide_border=true&bg_color=00000000&title_color=FFFFFF&text_color=999999&icon_color=FFFFFF&rank_icon=github" />
-
-<img width="49%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Adil-Inamdar-FSD&layout=compact&hide_border=true&bg_color=00000000&title_color=FFFFFF&text_color=999999" />
-
-<br/><br/>
-
-<img width="70%" src="https://streak-stats.demolab.com?user=Adil-Inamdar-FSD&theme=transparent&hide_border=true&ring=FFFFFF&fire=AAAAAA&currStreakLabel=FFFFFF&sideLabels=999999&dates=777777" />
-
-<br/><br/>
-
-### Contribution Graph
-
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=Adil-Inamdar-FSD&bg_color=00000000&color=999999&line=FFFFFF&point=FFFFFF&area=true&hide_border=true" width="100%" />
-
-</div>
+- Building full-stack applications using Next.js and TypeScript.
+- Improving backend development with Node.js and Express.
+- Working with MongoDB and PostgreSQL.
+- Learning cloud deployment using AWS.
+- Strengthening problem-solving and Data Structures & Algorithms.
 
 ---
 
-## `05` / CURRENTLY EXPLORING
+## GITHUB STATISTICS
 
-```text
-LEARNING ROADMAP
-│
-├── FULL-STACK DEVELOPMENT
-│   ├── Advanced React & Next.js
-│   ├── Node.js & Express
-│   └── TypeScript
-│
-├── DATABASE ENGINEERING
-│   ├── MongoDB
-│   └── PostgreSQL
-│
-├── CLOUD & DEVOPS
-│   ├── AWS
-│   ├── Docker
-│   └── CI/CD
-│
-└── COMPUTER SCIENCE
-    ├── Data Structures & Algorithms
-    └── System Design Fundamentals
-```
+<p align="center">
+  <img height="165" src="https://github-readme-stats.vercel.app/api?username=Adil-Inamdar-FSD&show_icons=true&hide_border=true&theme=transparent&title_color=FFFFFF&text_color=999999&icon_color=FFFFFF" />
+  <img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Adil-Inamdar-FSD&layout=compact&hide_border=true&theme=transparent&title_color=FFFFFF&text_color=999999" />
+</p>
+
+<p align="center">
+  <img src="https://streak-stats.demolab.com?user=Adil-Inamdar-FSD&theme=transparent&hide_border=true&ring=FFFFFF&fire=AAAAAA&currStreakLabel=FFFFFF&sideLabels=999999&dates=777777" width="70%" />
+</p>
 
 ---
 
-## `06` / DEVELOPER MINDSET
+## CONTRIBUTION ACTIVITY
 
-<div align="center">
+<p align="center">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=Adil-Inamdar-FSD&bg_color=00000000&color=999999&line=FFFFFF&point=FFFFFF&area=true&hide_border=true" width="100%" />
+</p>
 
-> "First, solve the problem. Then, write the code."
+---
 
-<br/>
+## CONNECT
 
-**BUILDING TODAY. IMPROVING TOMORROW.**
+I'm interested in connecting with developers, collaborating on meaningful projects and exploring Full-Stack Developer opportunities.
 
-<br/>
+<p align="center">
+  <a href="https://www.linkedin.com/in/adil-inamdar/">
+    <img src="https://img.shields.io/badge/LinkedIn-Connect-111111?style=for-the-badge&logo=linkedin&logoColor=white" />
+  </a>
+  <a href="https://adil-inamdar-portfolio.vercel.app/">
+    <img src="https://img.shields.io/badge/Portfolio-Visit-111111?style=for-the-badge&logo=vercel&logoColor=white" />
+  </a>
+  <a href="https://github.com/Adil-Inamdar-FSD">
+    <img src="https://img.shields.io/badge/GitHub-Follow-111111?style=for-the-badge&logo=github&logoColor=white" />
+  </a>
+</p>
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:444444,100:111111&height=100&section=footer" width="100%" />
-
-</div>
-
-<!-- END OF PROFILE README -->
+<p align="center">
+  <sub>Building. Learning. Improving.</sub>
+</p>
