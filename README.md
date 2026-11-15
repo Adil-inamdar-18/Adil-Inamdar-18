@@ -1,295 +1,407 @@
-
+```{=html}
 <!--
-  ADIL INAMDAR | GITHUB PROFILE
-  Theme: Midnight Tokyo / Anime Cyberpunk
-  Style: Professional Developer Portfolio
+ADIL INAMDAR | DEVELOPER RPG PROFILE
+Theme: Pixel-art RPG / Retro game HUD
+Single-file GitHub profile README
+Replace only clearly marked repository links when you have the URLs.
 -->
-
-<div align="center">
-
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&height=220&color=0:080810,45:17132B,100:30245A&text=ADIL%20INAMDAR&fontSize=52&fontColor=FFFFFF&fontAlignY=38&desc=FULL-STACK%20DEVELOPER%20%7C%20BUILDING%20DIGITAL%20EXPERIENCES&descSize=13&descAlignY=60&animation=fadeIn" />
-
-<br/>
-
-<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=500&size=18&duration=2500&pause=1000&color=B9A5FF&center=true&vCenter=true&width=650&lines=Full-Stack+Developer;React.js+%7C+Next.js+%7C+Node.js;Building+Modern+Web+Applications;Turning+Ideas+Into+Reality" />
-
-<br/><br/>
-
-<a href="https://adil-inamdar-portfolio.vercel.app/">
-<img src="https://img.shields.io/badge/PORTFOLIO-Visit-17132B?style=for-the-badge&logo=vercel&logoColor=white"/>
-</a>
-<a href="https://www.linkedin.com/in/adil-inamdar/">
-<img src="https://img.shields.io/badge/LINKEDIN-Connect-17132B?style=for-the-badge&logo=linkedin&logoColor=white"/>
-</a>
-<a href="https://github.com/Adil-Inamdar-FSD">
-<img src="https://img.shields.io/badge/GITHUB-Follow-17132B?style=for-the-badge&logo=github&logoColor=white"/>
-</a>
-
-<br/><br/>
-
-<img src="https://komarev.com/ghpvc/?username=Adil-Inamdar-FSD&style=flat-square&color=6C5CE7&label=PROFILE+VIEWS" />
-
-</div>
-
----
-
-<div align="center">
-
-## 01 / ABOUT ME
-
-*「 Creativity meets technology 」*
-
-</div>
-
-I'm **Adil Inamdar**, a Full-Stack Developer and MCA student from India, passionate about building modern, responsive and scalable web applications.
-
-I enjoy turning ideas into functional products, developing clean user interfaces and creating backend systems that solve real-world problems.
-
-- Currently pursuing MCA (Expected 2027).
-- BCA graduate from Sandip University (2025).
-- Focused on React.js, Next.js and Node.js development.
-- Interested in frontend engineering, backend architecture and databases.
-- Continuously exploring new technologies and improving my problem-solving skills.
-
-```javascript
-const adil = {
-    name: "Adil Inamdar",
-    role: "Full-Stack Developer",
-    location: "India",
-
-    education: [
-        "BCA - Sandip University (2025)",
-        "MCA - Expected 2027"
-    ],
-
-    primaryStack: [
-        "React.js",
-        "Next.js",
-        "JavaScript",
-        "Node.js",
-        "Express.js",
-        "MongoDB"
-    ],
-
-    currentlyLearning: [
-        "TypeScript",
-        "AWS",
-        "Docker",
-        "Data Structures & Algorithms"
-    ],
-
-    mindset: "Learn. Build. Improve. Repeat."
-};
 ```
+::: {align="center"}
+`<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&height=210&color=0:090B1A,35:171A3B,70:34245E,100:11152C&text=ADIL%20INAMDAR&fontSize=48&fontColor=FFFFFF&fontAlignY=38&desc=FULL-STACK%20DEVELOPER%20%7C%20PLAYER%20ONE%20READY&descSize=13&descAlignY=61&animation=fadeIn" />`{=html}
 
----
+`<img src="https://readme-typing-svg.demolab.com?font=Press+Start+2P&size=11&duration=2600&pause=900&color=9DECF5&center=true&vCenter=true&width=720&height=55&lines=BUILDING+WEB+APPLICATIONS;MERN+%7C+NEXT.JS+%7C+TYPESCRIPT;TURNING+IDEAS+INTO+REAL+PRODUCTS" alt="Animated developer tagline" />`{=html}
 
-<div align="center">
+`<br/>`{=html}
 
-## 02 / TECHNICAL ARSENAL
+`<a href="https://adil-inamdar-portfolio.vercel.app/">`{=html}`<img src="https://img.shields.io/badge/PORTFOLIO-PLAY-171A3B?style=for-the-badge&logo=vercel&logoColor=white" />`{=html}`</a>`{=html}
+`<a href="https://www.linkedin.com/in/adil-inamdar/">`{=html}`<img src="https://img.shields.io/badge/LINKEDIN-CONNECT-171A3B?style=for-the-badge&logo=linkedin&logoColor=white" />`{=html}`</a>`{=html}
+`<a href="https://github.com/Adil-Inamdar-FSD">`{=html}`<img src="https://img.shields.io/badge/GITHUB-REPOSITORIES-171A3B?style=for-the-badge&logo=github&logoColor=white" />`{=html}`</a>`{=html}
+:::
 
-*Technologies I work with*
+------------------------------------------------------------------------
 
-</div>
+::: {align="center"}
+# 🎮 DEVELOPER CHARACTER PROFILE
 
-### Frontend Development
+**PLAYER:** Adil Inamdar   \|   **CLASS:** Full-Stack Developer   \|  
+**REGION:** India
 
-<p>
-<img src="https://skillicons.dev/icons?i=html,css,js,ts,react,nextjs,redux,tailwind,bootstrap"/>
-</p>
+*Turning real-world problems into useful web applications, one commit at
+a time.*
+:::
 
-### Backend Development
-
-<p>
-<img src="https://skillicons.dev/icons?i=nodejs,express"/>
-</p>
-
-### Databases
-
-<p>
-<img src="https://skillicons.dev/icons?i=mongodb,postgres,supabase"/>
-</p>
-
-### Tools & Platforms
-
-<p>
-<img src="https://skillicons.dev/icons?i=git,github,vscode,postman,vercel,aws,docker"/>
-</p>
-
----
-
-<div align="center">
-
-## 03 / SELECTED PROJECTS
-
-*Things I've built and worked on*
-
-</div>
-
-<!-- Replace the placeholders below with actual projects -->
-
+```{=html}
 <table>
+```
+```{=html}
 <tr>
+```
+```{=html}
 <td width="50%" valign="top">
+```
+### 🧑‍💻 CHARACTER INFO
 
-### ◈ PROJECT 01
+-   **Education:** MCA, expected 2027
+-   **Previous degree:** BCA, 2025
+-   **Training:** MERN Stack Development, 2026
+-   **Current focus:** Full-stack web development
+-   **Work:** Web application development at NerdTech Softwares LLC
 
-**[Project Name](REPOSITORY_URL)**
-
-Describe the real-world problem your application solves.
-
-**Tech Stack**
-
-`Next.js` `TypeScript` `Tailwind CSS`
-
-[Repository ↗](REPOSITORY_URL) · [Live Demo ↗](LIVE_DEMO_URL)
-
+```{=html}
 </td>
+```
+```{=html}
 <td width="50%" valign="top">
+```
+### 🧭 CURRENT STATUS
 
-### ◈ PROJECT 02
+-   Building and improving web applications
+-   Working across frontend and backend components
+-   Practising API development and database integration
+-   Exploring cloud deployment and CI/CD
+-   Learning TypeScript, AWS and DSA further
 
-**[Project Name](REPOSITORY_URL)**
-
-Describe the main functionality and features of your application.
-
-**Tech Stack**
-
-`React` `Node.js` `MongoDB`
-
-[Repository ↗](REPOSITORY_URL) · [Live Demo ↗](LIVE_DEMO_URL)
-
+```{=html}
 </td>
+```
+```{=html}
 </tr>
-<tr>
-<td width="50%" valign="top">
-
-### ◈ PROJECT 03
-
-**[Project Name](REPOSITORY_URL)**
-
-Explain the actual technical implementation and problem solved.
-
-**Tech Stack**
-
-`Express.js` `MongoDB` `REST API`
-
-[Repository ↗](REPOSITORY_URL) · [Live Demo ↗](LIVE_DEMO_URL)
-
-</td>
-<td width="50%" valign="top">
-
-### ◈ PROJECT 04
-
-**[Project Name](REPOSITORY_URL)**
-
-Showcase another real application or technical experiment.
-
-**Tech Stack**
-
-`React` `JavaScript` `Tailwind CSS`
-
-[Repository ↗](REPOSITORY_URL) · [Live Demo ↗](LIVE_DEMO_URL)
-
-</td>
-</tr>
+```
+```{=html}
 </table>
+```
+## 📜 PLAYER BIO
 
----
+I'm **Adil Inamdar**, a Full-Stack Developer and MCA student from
+Nashik, India. I build responsive web applications and work with the
+JavaScript ecosystem, from frontend interfaces to backend APIs and
+database-driven features.
 
-<div align="center">
+I have worked on recruitment and consulting websites, an
+expense-management application, an employee-management platform and an
+AI-powered website builder. I enjoy understanding the problem behind a
+feature, implementing a practical solution and improving the product
+through testing and iteration.
 
-## 04 / GITHUB ANALYTICS
+------------------------------------------------------------------------
 
-*Every contribution tells a story.*
+# 🧰 SKILL TREE
 
-<br/>
+*Skills and technologies from my development work and training.*
 
-<img width="49%" src="https://github-readme-stats.vercel.app/api?username=Adil-Inamdar-FSD&show_icons=true&hide_border=true&bg_color=080810&title_color=B9A5FF&text_color=FFFFFF&icon_color=8B7BFF&rank_icon=github"/>
+```{=html}
+<table>
+```
+```{=html}
+<tr>
+```
+```{=html}
+<td width="50%" valign="top">
+```
+### ⚔️ FRONTEND
 
-<img width="49%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Adil-Inamdar-FSD&layout=compact&hide_border=true&bg_color=080810&title_color=B9A5FF&text_color=FFFFFF"/>
+![HTML5](https://img.shields.io/badge/HTML5-23243A?style=flat-square&logo=html5&logoColor=E34F26)
+![CSS3](https://img.shields.io/badge/CSS3-23243A?style=flat-square&logo=css3&logoColor=1572B6)
+![JavaScript](https://img.shields.io/badge/JavaScript-23243A?style=flat-square&logo=javascript&logoColor=F7DF1E)
+![TypeScript](https://img.shields.io/badge/TypeScript-23243A?style=flat-square&logo=typescript&logoColor=3178C6)
+![React](https://img.shields.io/badge/React-23243A?style=flat-square&logo=react&logoColor=61DAFB)
+![Next.js](https://img.shields.io/badge/Next.js-23243A?style=flat-square&logo=nextdotjs&logoColor=FFFFFF)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-23243A?style=flat-square&logo=bootstrap&logoColor=7952B3)
+![Tailwind
+CSS](https://img.shields.io/badge/Tailwind_CSS-23243A?style=flat-square&logo=tailwindcss&logoColor=06B6D4)
+![GSAP](https://img.shields.io/badge/GSAP-23243A?style=flat-square&logo=greensock&logoColor=88CE02)
+![Framer
+Motion](https://img.shields.io/badge/Framer_Motion-23243A?style=flat-square&logo=framer&logoColor=FFFFFF)
 
-<br/><br/>
+### 🛡️ BACKEND & AUTH
 
-<img width="75%" src="https://streak-stats.demolab.com?user=Adil-Inamdar-FSD&theme=transparent&hide_border=true&ring=B9A5FF&fire=8B7BFF&currStreakLabel=FFFFFF&sideLabels=B9A5FF&dates=999999"/>
+![Node.js](https://img.shields.io/badge/Node.js-23243A?style=flat-square&logo=nodedotjs&logoColor=339933)
+![Express](https://img.shields.io/badge/Express.js-23243A?style=flat-square&logo=express&logoColor=FFFFFF)
+![REST
+API](https://img.shields.io/badge/REST_APIs-23243A?style=flat-square&logo=fastapi&logoColor=009688)
+![JWT](https://img.shields.io/badge/JWT_Authentication-23243A?style=flat-square&logo=jsonwebtokens&logoColor=FFFFFF)
+![OAuth](https://img.shields.io/badge/OAuth_2.0-23243A?style=flat-square&logo=auth0&logoColor=EB5424)
 
-</div>
+```{=html}
+</td>
+```
+```{=html}
+<td width="50%" valign="top">
+```
+### 💎 DATABASES
 
----
+![MongoDB](https://img.shields.io/badge/MongoDB-23243A?style=flat-square&logo=mongodb&logoColor=47A248)
+![MySQL](https://img.shields.io/badge/MySQL-23243A?style=flat-square&logo=mysql&logoColor=4479A1)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-23243A?style=flat-square&logo=postgresql&logoColor=4169E1)
+![Supabase](https://img.shields.io/badge/Supabase-23243A?style=flat-square&logo=supabase&logoColor=3FCF8E)
 
-<div align="center">
+### ☁️ CLOUD & DEPLOYMENT
 
-## 05 / CONTRIBUTION ACTIVITY
+![AWS](https://img.shields.io/badge/AWS_EC2_%7C_S3-23243A?style=flat-square&logo=amazonaws&logoColor=FF9900)
+![GitHub
+Actions](https://img.shields.io/badge/GitHub_Actions-23243A?style=flat-square&logo=githubactions&logoColor=2088FF)
+![CI/CD](https://img.shields.io/badge/CI%2FCD-23243A?style=flat-square&logo=githubactions&logoColor=FFFFFF)
+![Vercel](https://img.shields.io/badge/Vercel-23243A?style=flat-square&logo=vercel&logoColor=FFFFFF)
+![Render](https://img.shields.io/badge/Render-23243A?style=flat-square&logo=render&logoColor=46E3B7)
+![Netlify](https://img.shields.io/badge/Netlify-23243A?style=flat-square&logo=netlify&logoColor=00C7B7)
 
-*The journey continues.*
+### 🔧 TOOLS & ENGINEERING
 
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=Adil-Inamdar-FSD&bg_color=080810&color=B9A5FF&line=8B7BFF&point=FFFFFF&area=true&hide_border=true" width="100%"/>
+![Git](https://img.shields.io/badge/Git-23243A?style=flat-square&logo=git&logoColor=F05032)
+![GitHub](https://img.shields.io/badge/GitHub-23243A?style=flat-square&logo=github&logoColor=FFFFFF)
+![Postman](https://img.shields.io/badge/Postman-23243A?style=flat-square&logo=postman&logoColor=FF6C37)
+![Jest](https://img.shields.io/badge/Jest-23243A?style=flat-square&logo=jest&logoColor=C21325)
 
-</div>
+```{=html}
+</td>
+```
+```{=html}
+</tr>
+```
+```{=html}
+</table>
+```
+**Computer science & engineering concepts:** Data Structures &
+Algorithms, OOP, System Design, SDLC, Code Review and Agile/Scrum.
 
----
+------------------------------------------------------------------------
 
-<div align="center">
+# 🗺️ QUEST LOG --- PROFESSIONAL EXPERIENCE
 
-## 06 / CURRENTLY LEVELING UP
+### 🏢 NerdTech Softwares LLC
 
-*The next stage of my development journey*
+**Web Development** · Nashik · `Aug 2026 – Present`
 
-</div>
+-   Contributing to web application development as part of a software
+    engineering team.
+-   Working across application components while following team
+    development, debugging and code-quality practices.
 
-```text
-DEVELOPER ROADMAP
+### 🏢 Denk Fabrik Tech Solutions
 
-01. FULL-STACK ENGINEERING
-    ├── Advanced Next.js
-    ├── TypeScript
-    ├── Backend Architecture
-    └── API Development
+**Full-Stack Software Development Intern** · Nashik ·
+`Feb 2026 – Aug 2026`
 
-02. DATABASE ENGINEERING
-    ├── MongoDB
-    └── PostgreSQL
+-   Developed backend functionality for **B-App (BillWise)**, a
+    MERN-based expense-management application using Node.js, Express.js
+    and MongoDB.
+-   Designed and integrated REST APIs for expense, bill, budget and
+    category management.
+-   Implemented JWT authentication and OTP verification for secure user
+    access.
+-   Integrated **Tesseract.js OCR** to extract information from bills
+    and reduce manual data entry.
+-   Collaborated in a four-member Agile team using Git and GitHub for
+    version control and code integration.
 
-03. CLOUD & DEVOPS
-    ├── AWS
-    ├── Docker
-    └── CI/CD
+------------------------------------------------------------------------
 
-04. COMPUTER SCIENCE
-    ├── Data Structures & Algorithms
-    └── System Design Fundamentals
+# 🏆 COMPLETED MISSIONS --- PROJECTS
+
+*Selected projects from my development work. Project descriptions below
+reflect the work listed in my resume.*
+
+```{=html}
+<table>
+```
+```{=html}
+<tr>
+```
+```{=html}
+<td width="50%" valign="top">
+```
+### 🏰 KALYCOR
+
+**Talent & Workforce Solutions Platform**
+
+A recruitment company website built with Next.js and React.
+
+-   Developed pages for services, industries, job search and resume
+    submission.
+-   Built responsive layouts and navigation.
+-   Added SEO tags across 25+ pages.
+-   Connected the platform with four sister-business websites.
+
+**Stack:** `Next.js` `React` `SEO`
+
+[🌐 Live Website](https://kalycor-app.vercel.app/)
+
+```{=html}
+</td>
+```
+```{=html}
+<td width="50%" valign="top">
+```
+### 🏰 NB BUSINESS SOLUTIONS
+
+**Consulting Website**
+
+A responsive Next.js website serving small businesses.
+
+-   Added blog, case studies, FAQs and testimonials.
+-   Implemented a contact form.
+-   Added SEO tags and links to three product websites.
+-   Built responsive page layouts.
+
+**Stack:** `Next.js` `React` `Tailwind CSS`
+
+[🌐 Live Website](https://nbbs-app.vercel.app/)
+
+```{=html}
+</td>
+```
+```{=html}
+</tr>
+```
+```{=html}
+<tr>
+```
+```{=html}
+<td width="50%" valign="top">
+```
+### 🧾 B-APP --- BILLWISE
+
+**Smart Bill & Expense Tracker**
+
+A team-built MERN application for expense and bill management.
+
+-   Built REST APIs for bills, expenses, budgets and categories.
+-   Implemented JWT authentication and OTP verification.
+-   Integrated Tesseract.js OCR for bill data extraction.
+-   Contributed to responsive React frontend modules.
+-   Worked in a four-member team.
+
+**Stack:** `MongoDB` `Express` `React` `Node.js` `Tesseract.js`
+
+```{=html}
+</td>
+```
+```{=html}
+<td width="50%" valign="top">
+```
+### 👥 EMPLOYEE MANAGEMENT SYSTEM
+
+**Employee & Admin Platform**
+
+A full-stack platform for employee and administrative operations.
+
+-   Employee records and attendance tracking.
+-   Leave-request management.
+-   Role-based access for administrators and employees.
+-   Secure REST APIs and protected routes.
+-   Responsive admin and employee dashboards.
+
+**Stack:** `React` `Node.js` `Express` `MongoDB` `JWT`
+
+```{=html}
+</td>
+```
+```{=html}
+</tr>
+```
+```{=html}
+<tr>
+```
+```{=html}
+<td colspan="2" valign="top">
+```
+### 🤖 AI WEBSITE BUILDER
+
+**Prompt-Based Website Generation**
+
+An AI-powered platform designed to generate website layouts and content
+from user prompts.
+
+-   Developed dynamic React components with real-time preview
+    functionality.
+-   Integrated AI workflows for website creation.
+-   Built responsive UI and MERN-based application architecture.
+-   Focused on simplifying the website creation workflow.
+
+**Stack:** `React` `MERN` `AI Integration`
+
+```{=html}
+</td>
+```
+```{=html}
+</tr>
+```
+```{=html}
+</table>
 ```
 
----
+------------------------------------------------------------------------
 
-<div align="center">
+# 🎯 ACTIVE QUESTS --- CURRENT LEARNING
 
-## 07 / LET'S CONNECT
+  -----------------------------------------------------------------------
+  Quest                               Focus
+  ----------------------------------- -----------------------------------
+  TypeScript & Next.js                Stronger typing and modern
+                                      application architecture
 
-*Every great project starts with a connection.*
+  AWS                                 Cloud fundamentals and deployment
+                                      with EC2 and S3
 
-Open to Full-Stack / Frontend Developer opportunities and meaningful collaborations.
+  CI/CD                               Automated development and
+                                      deployment workflows
 
-<br/>
+  Docker                              Containerization fundamentals
 
-<a href="https://www.linkedin.com/in/adil-inamdar/">
-<img src="https://img.shields.io/badge/LINKEDIN-Connect-17132B?style=for-the-badge&logo=linkedin&logoColor=white"/>
-</a>
+  DSA                                 Consistent problem-solving practice
 
-<a href="https://adil-inamdar-portfolio.vercel.app/">
-<img src="https://img.shields.io/badge/PORTFOLIO-Explore-17132B?style=for-the-badge&logo=vercel&logoColor=white"/>
-</a>
+  System Design                       Understanding scalable application
+                                      architecture
+  -----------------------------------------------------------------------
 
-<a href="https://github.com/Adil-Inamdar-FSD">
-<img src="https://img.shields.io/badge/GITHUB-Follow-17132B?style=for-the-badge&logo=github&logoColor=white"/>
-</a>
+------------------------------------------------------------------------
 
-<br/><br/>
+# 📊 PLAYER STATISTICS --- GITHUB
 
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:30245A,100:080810&height=130&section=footer"/>
+*Live GitHub metrics. These cards are generated from public GitHub
+activity and may be unavailable if the third-party service is down.*
 
-<sub>Designed with code, creativity and a little anime inspiration.</sub>
+::: {align="center"}
+`<img width="49%" src="https://github-readme-stats.vercel.app/api?username=Adil-Inamdar-FSD&show_icons=true&hide_border=true&bg_color=0D1022&title_color=9DECF5&text_color=E5E7EB&icon_color=F7C96B&rank_icon=github" />`{=html}
 
-</div>
+`<img width="49%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Adil-Inamdar-FSD&layout=compact&hide_border=true&bg_color=0D1022&title_color=9DECF5&text_color=E5E7EB" />`{=html}
 
-<!-- END OF README -->
+`<br/>`{=html}`<br/>`{=html}
+
+`<img width="75%" src="https://streak-stats.demolab.com?user=Adil-Inamdar-FSD&theme=dark&hide_border=true&background=0D1022&ring=9DECF5&fire=F7C96B&currStreakLabel=9DECF5&sideLabels=E5E7EB&dates=9CA3AF" />`{=html}
+:::
+
+## 🌌 CONTRIBUTION MAP
+
+::: {align="center"}
+`<img src="https://github-readme-activity-graph.vercel.app/graph?username=Adil-Inamdar-FSD&bg_color=0D1022&color=9DECF5&line=8B7CFF&point=F7C96B&area=true&hide_border=true" width="100%" />`{=html}
+:::
+
+------------------------------------------------------------------------
+
+# 🎖️ ACHIEVEMENTS & CERTIFICATIONS
+
+-   **MERN Stack Developer Certification** --- Codempower
+-   **6-Month MERN Stack Internship Completion Certificate** ---
+    Codempower
+
+------------------------------------------------------------------------
+
+# 🤝 PARTY UP --- CONNECT WITH ME
+
+I'm interested in connecting with developers, collaborating on practical
+projects and exploring Full-Stack / Frontend Developer opportunities.
+
+::: {align="center"}
+`<a href="https://www.linkedin.com/in/adil-inamdar/">`{=html}`<img src="https://img.shields.io/badge/LINKEDIN-Connect-171A3B?style=for-the-badge&logo=linkedin&logoColor=white" />`{=html}`</a>`{=html}
+`<a href="https://adil-inamdar-portfolio.vercel.app/">`{=html}`<img src="https://img.shields.io/badge/PORTFOLIO-Explore-171A3B?style=for-the-badge&logo=vercel&logoColor=white" />`{=html}`</a>`{=html}
+`<a href="mailto:adilinamdar617@gmail.com">`{=html}`<img src="https://img.shields.io/badge/EMAIL-Contact-171A3B?style=for-the-badge&logo=gmail&logoColor=white" />`{=html}`</a>`{=html}
+
+`<br/>`{=html}`<br/>`{=html}
+
+`<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:11152C,50:34245E,100:090B1A&height=125&section=footer" />`{=html}
+
+**STAY CURIOUS. KEEP BUILDING. LEVEL UP.**
+
+`<sub>`{=html}Player One · Adil Inamdar · India`</sub>`{=html}
+:::
