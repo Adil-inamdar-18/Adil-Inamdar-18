@@ -8,7 +8,7 @@
 
 <a href="https://adil-inamdar-portfolio.vercel.app/"><img src="https://img.shields.io/badge/PORTFOLIO-PLAY-171A3B?style=for-the-badge&logo=vercel&logoColor=white" /></a>
 <a href="https://www.linkedin.com/in/adil-inamdar/"><img src="https://img.shields.io/badge/LINKEDIN-CONNECT-171A3B?style=for-the-badge&logo=linkedin&logoColor=white" /></a>
-<a href="https://github.com/Adil-Inamdar-FSD"><img src="https://img.shields.io/badge/GITHUB-REPOSITORIES-171A3B?style=for-the-badge&logo=github&logoColor=white" /></a>
+<a href="https://github.com/Adil-inamdar-18"><img src="https://img.shields.io/badge/GITHUB-REPOSITORIES-171A3B?style=for-the-badge&logo=github&logoColor=white" /></a>
 
 </div>
 
@@ -34,7 +34,7 @@
 - **Previous degree:** BCA, 2025
 - **Training:** MERN Stack Development, 2026
 - **Current focus:** Full-stack web development
-- **Work:** Web application development at NerdTech Softwares LLC
+- **Professional involvement:** Lead generation and initial client communication at NerdTech
 
 </td>
 <td width="50%" valign="top">
@@ -124,11 +124,11 @@ I have worked on recruitment and consulting websites, an expense-management appl
 
 # 🗺️ QUEST LOG — PROFESSIONAL EXPERIENCE
 
-### 🏢 NerdTech Softwares LLC
-**Web Development** · Nashik · `Aug 2026 – Present`
+### 🏢 NerdTech
+**Lead Generation & Initial Client Communication** · `Present`
 
-- Contributing to web application development as part of a software engineering team.
-- Working across application components while following team development, debugging and code-quality practices.
+- Identifying potential clients who may need web and software development services.
+- Handling initial prospect communication and helping connect business requirements with the company's IT services.
 
 ### 🏢 Denk Fabrik Tech Solutions
 **Full-Stack Software Development Intern** · Nashik · `Feb 2026 – Aug 2026`
@@ -256,13 +256,13 @@ An AI-powered platform designed to generate website layouts and content from use
 
 <div align="center">
 
-<img width="49%" src="https://github-readme-stats.vercel.app/api?username=Adil-Inamdar-FSD&show_icons=true&hide_border=true&bg_color=0D1022&title_color=9DECF5&text_color=E5E7EB&icon_color=F7C96B&rank_icon=github" />
+<img width="49%" src="https://github-readme-stats.vercel.app/api?username=Adil-inamdar-18&show_icons=true&hide_border=true&bg_color=0D1022&title_color=9DECF5&text_color=E5E7EB&icon_color=F7C96B&rank_icon=github" />
 
-<img width="49%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Adil-Inamdar-FSD&layout=compact&hide_border=true&bg_color=0D1022&title_color=9DECF5&text_color=E5E7EB" />
+<img width="49%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Adil-inamdar-18&layout=compact&hide_border=true&bg_color=0D1022&title_color=9DECF5&text_color=E5E7EB" />
 
 <br/><br/>
 
-<img width="75%" src="https://streak-stats.demolab.com?user=Adil-Inamdar-FSD&theme=dark&hide_border=true&background=0D1022&ring=9DECF5&fire=F7C96B&currStreakLabel=9DECF5&sideLabels=E5E7EB&dates=9CA3AF" />
+<img width="75%" src="https://streak-stats.demolab.com?user=Adil-inamdar-18&theme=dark&hide_border=true&background=0D1022&ring=9DECF5&fire=F7C96B&currStreakLabel=9DECF5&sideLabels=E5E7EB&dates=9CA3AF" />
 
 </div>
 
@@ -270,7 +270,7 @@ An AI-powered platform designed to generate website layouts and content from use
 
 <div align="center">
 
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=Adil-Inamdar-FSD&bg_color=0D1022&color=9DECF5&line=8B7CFF&point=F7C96B&area=true&hide_border=true" width="100%" />
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=Adil-inamdar-18&bg_color=0D1022&color=9DECF5&line=8B7CFF&point=F7C96B&area=true&hide_border=true" width="100%" />
 
 </div>
 
